@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0">
+
+	<persistence-unit name="default"
+		transaction-type="RESOURCE_LOCAL">
+
+		<class>tudu.domain.model.Property</class>
+		<class>tudu.domain.model.Role</class>
+		<class>tudu.domain.model.Todo</class>
+		<class>tudu.domain.model.TodoList</class>
+		<class>tudu.domain.model.User</class>
+		<properties>
+			<property name="hibernate.cache.provider_class"
+				value="net.sf.ehcache.hibernate.EhCacheProvider" />
+			<property name="net.sf.ehcache.configurationResourceName"
+				value="/META-INF/ehcache-hibernate.xml" />
+		</properties>
+	</persistence-unit>
+</persistence>

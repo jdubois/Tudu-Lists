@@ -1,0 +1,77 @@
+
+.menuList {
+    border-bottom: 1px solid #cccccc;
+    margin: 0;
+    padding-bottom: 19px;
+    padding-left: 10px;
+}
+
+.menuList a:link, .menuList a:visited	{
+    background: #e8ebf0;
+    border: 1px solid #cccccc;
+    color: #666666;
+    float: left;
+    font-size: small;
+    font-weight: normal;
+    line-height: 14px;
+    margin-right: 8px;
+    padding: 2px 10px 2px 10px;
+    text-decoration: none;
+}
+
+.menuList a:link.active, .menuList a:visited.active	{
+    background: #ffffff;
+    border-bottom: 1px solid #ffffff;
+    color: #000000;
+}
+
+.menuList a:hover	{
+    color: #ff0000;
+}
+
+.menuList li.selected a {
+    background: #ffffff !important;
+    border-bottom: 1px solid #ffffff !important;
+    color: #000000 !important;
+    font-weight: bold !important;
+}
+
+.menuList li.selected ul.submenu {
+    display: block;
+    position: absolute;
+    margin: 25px 0 0 -10px;
+}
+
+.menuList li.selected ul.submenu a {
+    background: #ffffff;
+    border: none;
+    border-left: 1px solid #cccccc;
+    color: #999999 !important;
+    font-size: .98em;
+    font-weight: bold;
+    line-height: 12px;
+    margin-right: 4px;
+    padding: 2px 10px 2px 10px;
+    text-decoration: none;
+}
+
+.menuList li.selected ul.submenu a.selected {
+    background: transparent;
+    color: #000 !important;
+}
+
+.menuList ul a:hover, .menuList ul.submenu a:hover {
+    color: #ff0000 !important;
+}
+
+.menuList ul, .menuList li	{
+    display: inline;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menuList ul.submenu {
+    display: none;
+    width: 90%;
+}

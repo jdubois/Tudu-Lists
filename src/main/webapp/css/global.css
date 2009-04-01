@@ -1,0 +1,215 @@
+/**
+ * Main Tudu Lists CSS file. Author : Julien Dubois
+ * Change this file in order to customize the look and feel of the application.
+ */
+
+body {
+    background: #ffffff;
+    font-family: Verdana, Helvetica, Arial;
+    font-size: 80%;
+    margin: 10px;
+    padding: 0px;
+}
+	
+p { 
+	text-align: justify;
+	padding: 5px 30px 5px 30px;
+	color: #786A47;
+	line-height: 1.5em;
+}
+
+li { 
+	text-align: justify;
+	padding: 0px 30px 5px 30px;
+	color: #786A47;
+	line-height: 1.5em;
+}
+	
+a {
+	text-decoration: none;
+	background: transparent url(../images/dot.gif) repeat-x left bottom;
+}
+
+a:link ,a:visited {
+	color: #5785A4;
+}
+
+a:hover {
+	color: #1D8FDB;
+}
+
+input {
+	background: #EEEEFF;
+}
+
+textarea {
+	background: #EEEEFF;
+}
+
+select {
+	background: #EEEEFF;
+}
+
+/* Main table */
+
+table.list {
+    text-align: left;
+    border: 1px solid #808080;
+    border-collapse: collapse;
+    margin-top: 10px;
+    width: 100%;
+    background: white;
+}
+
+table.list td {
+    padding-left: 3px;
+}
+
+table.list th {
+    background-color: #8080FF;
+    padding: 2px;
+    padding-left: 3px;
+    border-bottom: 1px solid black;
+    text-align: center;
+    color: black;
+}
+
+table.list tr.even {
+    background: #EEEEEE;
+    border-top: 1px solid #C0C0C0;
+    color: #000000;
+}
+
+table.list tr.odd {
+    background: #FFFFFF;
+    border-top: 1px solid #C0C0C0;
+    color: #000000;
+}
+
+table.list tr.hidden {
+    background: #999999;
+    border-top: 1px solid #C0C0C0;
+    color: #000000;
+    font-style: italic;
+    text-align: center;
+}
+
+table.list th.sortable {
+	cursor: pointer;
+	background-image: url(../images/arrow_off.png);
+	background-repeat: no-repeat;
+	background-position: center right;
+}
+
+table.list th.sorted {
+	cursor: pointer;
+	background-image: url(../images/arrow_down.png);
+	background-repeat: no-repeat;
+	background-position: center right;
+}
+
+table.list th.sorted_asc {
+	cursor: pointer;
+	background-image: url(../images/arrow_up.png);
+	background-repeat: no-repeat;
+	background-position: center right;
+}
+
+/* DHTML box for add/edit forms */
+
+.box, .box_body, .box_head, .box_head h2 { 
+	background: transparent url(../images/box.png) no-repeat bottom right; 
+}
+
+.box { 
+	width: 600px;
+	padding-right: 15px; /* the gap on the right edge of the image (not content padding) */ 
+	margin: 20px auto; /* use to position the box */
+	z-index: 10;
+	position: absolute;
+	top: 100px;
+	left: 230px;
+}
+
+.box_head { 
+	background-position: top right;
+	margin-right: -15px; /* pull the right image over on top of border */
+	padding-right: 40px; /* right-image-gap + right-inside padding */
+}
+
+.box_head h2 {
+	background-position: top left;
+	margin: 0; /* reset main site styles*/ 
+	border: 0; /* ditto */
+	padding: 25px 0 15px 40px; /* padding-left = image gap + interior padding ... no padding-right */ 
+	height: auto !important; height: 1%; /* IE Holly Hack */
+}
+
+.box_body { 
+	background-position: bottom left; 
+	margin-right: 25px; /* interior-padding right */ 
+	padding: 15px 0 15px 40px; /* mirror .cssbox_head right/left */
+}
+
+/* specific elements */
+
+#page {
+    width: 95%;
+}
+
+#title {
+    font-size: 8px;
+}
+
+#username {
+    font-size: 12px;
+    text-align: right;
+}
+
+#content {
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    width: 95%;
+    border-top: 0;
+    clear: both;
+    margin: 0px;
+    padding: 15px;
+}
+
+#sourceforge {
+}
+
+#bug {
+    font-size: 10px;
+    text-align: right;
+}
+
+#menuTable {
+	width: 150px;
+	text-align: left;
+}
+
+.message {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    font-size: 150%;
+    font-weight: bold;
+    font-style: italic;
+	text-align: center
+}
+
+.error {
+    color: #FF0000;
+}
+
+.success {
+	color: #FF0000;
+}
+
+.completed {
+	font-style: italic;
+	font-size: 80%;
+}
+
+
+

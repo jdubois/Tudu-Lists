@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MenuConfig>
+    <Displayers>
+        <Displayer 	name="TabbedMenu"
+  					type="net.sf.navigator.displayer.TabbedMenuDisplayer"/>
+    </Displayers>
+    <Menus>
+        <Menu 	name="Welcome" 
+				title="menu.welcome" 
+				description="Welcome Menu" 
+				page="/welcome.action"/>
+	    <Menu 	name="Register" 
+				title="menu.register" 
+				description="Register Menu" 
+				page="/register.action"/>
+        <Menu 	name="Info" 
+				title="menu.info" 
+				description="Login Menu" 
+				page="/secure/myInfo.action"/>
+		<Menu 	name="Todos" 
+				title="menu.todos" 
+				description="Todos Menu" 
+				page="/secure/showTodos.action"/>
+		<Menu 	name="Administration" 
+				title="menu.administration" 
+				description="Administration" 
+				page="/secure/admin/administration.action"/>
+		<Menu 	name="Monitoring" 
+				title="menu.monitoring" 
+				description="Monitoring" 
+				page="/secure/admin/JAMonAdmin.jsp"/>
+		<Menu 	name="Logout" 
+				title="menu.logout" 
+				description="Log out Menu" 
+				page="/logout.action"/>
+     </Menus>
+</MenuConfig>
