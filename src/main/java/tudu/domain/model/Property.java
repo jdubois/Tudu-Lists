@@ -21,12 +21,12 @@ public class Property implements Serializable {
 
     private static final long serialVersionUID = 3434972458764657217L;
 
+    @Id
+    @Column(name = "pkey")
     private String key;
 
     private String value;
 
-    @Id
-    @Column(name = "pkey")
     public String getKey() {
         return key;
     }

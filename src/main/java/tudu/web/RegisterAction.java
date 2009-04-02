@@ -1,17 +1,12 @@
 package tudu.web;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import tudu.domain.model.User;
-import tudu.service.UserAlreadyExistsException;
 import tudu.service.UserManager;
+import tudu.domain.model.User;
 
 /**
  * Register a new Tudu Lists user.
@@ -19,9 +14,8 @@ import tudu.service.UserManager;
  * @author Julien Dubois
  */
 @Controller
+@RequestMapping("/register.action")
 public class RegisterAction {
-
-    private final Log log = LogFactory.getLog(RegisterAction.class);
 
     @Autowired
     private UserManager userManager;
@@ -29,14 +23,17 @@ public class RegisterAction {
     /**
      * Show the "register a new user" page.
      */
+    @RequestMapping(method = RequestMethod.GET)
     public ModelAndView display() {
-
-        return new ModelAndView("register");
+        ModelAndView mv = new ModelAndView("register");
+        mv.addObject("user", new User());
+        return mv;
     }
 
     /**
      * Register a new user.
      */
+    @RequestMapping(method = RequestMethod.POST)
     public ModelAndView register() {
 
         /*log.debug("Execute register action");
@@ -76,7 +73,7 @@ public class RegisterAction {
     /**
      * Cancel the action.
      */
-    public ModelAndView cancel() {
-        return new ModelAndView("cancel");
+    public String cancel() {
+        return "cancel";
     }
 }

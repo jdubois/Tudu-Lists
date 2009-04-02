@@ -1,5 +1,9 @@
-<%@ page language="java" errorPage="/WEB-INF/jsp/error.jsp" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
-<%@ include file="/WEB-INF/jspf/header.jsp"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page language="java" errorPage="/WEB-INF/views/error.jsp" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
+<html>
+<head></head>
+<body>
 
 <div align="center">
  <h3><fmt:message key="register.title"/></h3>
@@ -13,9 +17,8 @@
    </li>
   </ul>
  </div>
- <html:form action="/register" focus="login">
- <html:errors/>
- <html:hidden property="method" value="cancel"/>
+ <form:form commandName="user">
+ <form:errors/>
  <table class="list" style="width:400px">
   <tr>
    <th colspan="2">
@@ -28,7 +31,7 @@
      <fmt:message key="user.info.login"/> *
     </td>
     <td>
-     <html:text property="login" size="20" maxlength="50"/>
+     <form:input path="login" size="20" maxlength="50"/>
     </td>
    </tr>
    <tr class="even">
@@ -36,7 +39,7 @@
      <fmt:message key="user.info.first.name"/> *
     </td>
     <td>
-     <html:text property="firstName" size="15" maxlength="60"/>
+     <form:input path="firstName" size="15" maxlength="60"/>
     </td>
    </tr>
    <tr class="odd">
@@ -44,7 +47,7 @@
      <fmt:message key="user.info.last.name"/> *
     </td>
     <td>
-     <html:text property="lastName" size="15" maxlength="60"/>
+     <form:input path="lastName" size="15" maxlength="60"/>
     </td>
    </tr>
    <tr class="even">
@@ -52,7 +55,7 @@
      <fmt:message key="user.info.email"/>
     </td>
     <td>
-     <html:text property="email" size="30" maxlength="100"/>
+     <form:input path="email" size="30" maxlength="100"/>
     </td>
    </tr>
    <tr class="odd">
@@ -60,7 +63,7 @@
      <fmt:message key="user.info.password"/> *
     </td>
     <td>
-     <html:password property="password" size="15" maxlength="32"/>
+     <form:password path="password" size="15" maxlength="32"/>
     </td>
    </tr>
    <tr class="even">
@@ -68,18 +71,17 @@
      <fmt:message key="user.info.verifypassword"/> *
     </td>
     <td>
-     <html:password property="verifyPassword" size="15" maxlength="32"/>
+     <form:password path="verifyPassword" size="15" maxlength="32"/>
     </td>
    </tr>
   </tbody>
  </table>
   <br/>
   <br/>
-  <html:submit onclick="document.forms[0].elements['method'].value='register';">
-   <fmt:message key="form.submit"/>
-  </html:submit>
-  <html:submit><fmt:message key="form.cancel"/></html:submit>
- </html:form>
+  <input type="submit" value="<fmt:message key="form.submit"/>"/>
+  <input type="reset" value="<fmt:message key="form.cancel"/>"/>
+ </form:form>
 </div>
 
-<%@ include file="/WEB-INF/jspf/footer.jsp"%>
+</body>
+</html>

@@ -20,9 +20,9 @@ public class Role implements Serializable {
 
     private static final long serialVersionUID = -5636845397516495671L;
 
+    @Id
     private String role;
 
-    @Id
     public String getRole() {
         return role;
     }

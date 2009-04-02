@@ -1,6 +1,10 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" errorPage="/WEB-INF/views/error.jsp" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
 <%@ page import="org.springframework.security.ui.webapp.AuthenticationProcessingFilter" %>
-<%@ include file="/WEB-INF/jspf/header.jsp"%>
+<html>
+<head></head>
+<body>
 
 <h2><fmt:message key="login.welcome"/></h2>
 
@@ -16,7 +20,7 @@
      <li><fmt:message key="login.advantages.3"/></li>
      <li>
       <fmt:message key="login.advantages.4.1"/> 
-      <a href="${ctx}/register.action"><fmt:message key="login.advantages.4.link"/></a>
+      <a href="register.action"><fmt:message key="login.advantages.4.link"/></a>
       <fmt:message key="login.advantages.4.2"/>
      </li>
      <li><fmt:message key="login.advantages.5"/></li>
@@ -68,14 +72,15 @@
    </form>
    <p>
     <fmt:message key="login.register.1"/>
-    <a href="${ctx}/register.action"><fmt:message key="login.register.link"/></a><fmt:message key="login.register.2"/>
+    <a href="register.action"><fmt:message key="login.register.link"/></a><fmt:message key="login.register.2"/>
    </p>
    <p>
     <fmt:message key="login.forgotten.password.1"/>
-    <a href="${ctx}/recoverPassword.action"><fmt:message key="login.forgotten.password.link"/></a> <fmt:message key="login.forgotten.password.2"/>
+    <a href="recoverPassword.action"><fmt:message key="login.forgotten.password.link"/></a> <fmt:message key="login.forgotten.password.2"/>
    </p>
   </td>
  </tr>
 </table>
 
-<%@ include file="/WEB-INF/jspf/footer.jsp"%>
+</body>
+</html>

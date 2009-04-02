@@ -5,12 +5,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -33,9 +28,13 @@ public class User implements Serializable, Comparable<User> {
      */
     private static final long serialVersionUID = 4048798961366546485L;
 
+    @Id
     private String login;
 
     private String password;
+
+    @Transient
+    private String verifyPassword;
 
     private String firstName;
 
@@ -51,11 +50,14 @@ public class User implements Serializable, Comparable<User> {
 
     private String dateFormat;
 
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<Role> roles = new HashSet<Role>();
 
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<TodoList> todoLists = new HashSet<TodoList>();
 
-    @Id
     public String getLogin() {
         return login;
     }
@@ -70,6 +72,14 @@ public class User implements Serializable, Comparable<User> {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getVerifyPassword() {
+        return verifyPassword;
+    }
+
+    public void setVerifyPassword(String verifyPassword) {
+        this.verifyPassword = verifyPassword;
     }
 
     public String getFirstName() {
@@ -128,8 +138,6 @@ public class User implements Serializable, Comparable<User> {
         this.dateFormat = dateFormat;
     }
 
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     public Set<Role> getRoles() {
         return roles;
     }
@@ -138,8 +146,6 @@ public class User implements Serializable, Comparable<User> {
         this.roles = roles;
     }
 
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     public Set<TodoList> getTodoLists() {
         return todoLists;
     }

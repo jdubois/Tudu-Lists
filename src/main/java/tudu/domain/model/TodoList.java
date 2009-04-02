@@ -32,6 +32,10 @@ public class TodoList implements Serializable, Comparable<TodoList> {
      */
     private static final long serialVersionUID = 4048798961366546485L;
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String listId;
 
     private String name;
@@ -40,14 +44,14 @@ public class TodoList implements Serializable, Comparable<TodoList> {
 
     private Date lastUpdate;
 
+    @OneToMany(mappedBy = "todoList")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<Todo> todos = new HashSet<Todo>();
 
+    @ManyToMany(mappedBy = "todoLists")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<User> users = new HashSet<User>();
 
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
     public String getListId() {
         return listId;
     }
@@ -80,8 +84,6 @@ public class TodoList implements Serializable, Comparable<TodoList> {
         this.lastUpdate = lastUpdate;
     }
 
-    @OneToMany(mappedBy = "todoList")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     public Set<Todo> getTodos() {
         return todos;
     }
@@ -90,8 +92,6 @@ public class TodoList implements Serializable, Comparable<TodoList> {
         this.todos = todos;
     }
 
-    @ManyToMany(mappedBy = "todoLists")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     public Set<User> getUsers() {
         return users;
     }

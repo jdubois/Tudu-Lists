@@ -34,8 +34,13 @@ public class Todo implements Serializable, Comparable<Todo> {
      */
     private static final long serialVersionUID = 4048798961366546485L;
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String todoId;
 
+    @ManyToOne
     private TodoList todoList;
 
     private Date creationDate;
@@ -50,18 +55,20 @@ public class Todo implements Serializable, Comparable<Todo> {
 
     private Date dueDate;
 
+    @ManyToOne
     private User assignedUser;
 
+    /**
+     * The length of this field is 10000, which is OK with MySQL but which will
+     * cause trouble with other databases (Oracle is limited at 4000 characters,
+     * SQL Server at 8000).
+     */
+    @Basic(fetch = FetchType.LAZY)
+    @Column(length = 10000)
     private String notes;
 
     private boolean hasNotes;
 
-    private Set<Todo> subTodos = new HashSet<Todo>();
-
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
     public String getTodoId() {
         return todoId;
     }
@@ -118,7 +125,6 @@ public class Todo implements Serializable, Comparable<Todo> {
         this.priority = priority;
     }
 
-    @ManyToOne
     public User getAssignedUser() {
         return assignedUser;
     }
@@ -135,13 +141,6 @@ public class Todo implements Serializable, Comparable<Todo> {
         this.hasNotes = hasNotes;
     }
 
-    /**
-     * The length of this field is 10000, which is OK with MySQL but which will
-     * cause trouble with other databases (Oracle is limited at 4000 characters,
-     * SQL Server at 8000).
-     */
-    @Basic(fetch = FetchType.LAZY)
-    @Column(length = 10000)
     public String getNotes() {
         return notes;
     }
@@ -150,16 +149,6 @@ public class Todo implements Serializable, Comparable<Todo> {
         this.notes = notes;
     }
 
-    @Transient
-    public Set<Todo> getSubTodos() {
-        return subTodos;
-    }
-
-    public void setSubTodos(Set<Todo> subTodos) {
-        this.subTodos = subTodos;
-    }
-
-    @ManyToOne
     public TodoList getTodoList() {
         return todoList;
     }
