@@ -251,6 +251,179 @@
     <option name="ADDITIONAL_OPTIONS_STRING" value="" />
   </component>
   <component name="SvnBranchConfigurationManager">
+    <option name="myConfigurationMap">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchMap">
+                <map>
+                  <entry key="https://tudu.svn.sourceforge.net/svnroot/tudu/branches">
+                    <value>
+                      <list>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1236512729428" />
+                          <option name="revision" value="655" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/branches/tudu2_splp_v2" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1137855577000" />
+                          <option name="revision" value="240" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/branches/web_services_branch" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1133627295000" />
+                          <option name="revision" value="213" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/branches/Spring_MVC_Branch" />
+                        </SvnBranchItem>
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="https://tudu.svn.sourceforge.net/svnroot/tudu/tags">
+                    <value>
+                      <list>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1231326919319" />
+                          <option name="revision" value="640" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_2_3" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1190217825456" />
+                          <option name="revision" value="553" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_2_2" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1186674719121" />
+                          <option name="revision" value="533" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_2_1" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1184099826082" />
+                          <option name="revision" value="523" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_2_0" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1180615837178" />
+                          <option name="revision" value="511" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_2_0_rc_1" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1167251984890" />
+                          <option name="revision" value="474" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_2_0_beta_1" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1165844961324" />
+                          <option name="revision" value="449" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_2_0_alpha_1" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1148811184000" />
+                          <option name="revision" value="313" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_1_2" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1144596204000" />
+                          <option name="revision" value="303" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_1_1" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1141681375000" />
+                          <option name="revision" value="294" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_1_1_rc_3" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1140972114000" />
+                          <option name="revision" value="290" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_1_1_rc_2" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1139272184000" />
+                          <option name="revision" value="260" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_1_1_rc_1" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1137771723000" />
+                          <option name="revision" value="239" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_1_1_beta_2" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1136744439000" />
+                          <option name="revision" value="233" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/Root_web_services_branch" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1136162776000" />
+                          <option name="revision" value="230" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_1_1_beta_1" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1133216511000" />
+                          <option name="revision" value="210" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/Root_Spring_MVC_Branch" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1129331608000" />
+                          <option name="revision" value="196" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_1_0" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1127755491000" />
+                          <option name="revision" value="184" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_1_0_rc_3" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1127686522000" />
+                          <option name="revision" value="181" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_1_0_rc_2" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1126643408000" />
+                          <option name="revision" value="168" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_1_0_rc_1" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1125861462000" />
+                          <option name="revision" value="152" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_1_0_beta_5" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1125831264000" />
+                          <option name="revision" value="149" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_1_0_beta_4" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1125701554000" />
+                          <option name="revision" value="145" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_1_0_beta_3" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1125254248000" />
+                          <option name="revision" value="119" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_1_0_beta_2" />
+                        </SvnBranchItem>
+                        <SvnBranchItem>
+                          <option name="creationDateMillis" value="1125077639000" />
+                          <option name="revision" value="108" />
+                          <option name="url" value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags/v_1_0_beta_1" />
+                        </SvnBranchItem>
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://tudu.svn.sourceforge.net/svnroot/tudu/branches" />
+                  <option value="https://tudu.svn.sourceforge.net/svnroot/tudu/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://tudu.svn.sourceforge.net/svnroot/tudu/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="myVersion" value="124" />
     <option name="mySupportsUserInfoFilter" value="true" />
   </component>
@@ -928,6 +1101,17 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/asm/asm/3.1/asm-3.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: opensymphony:sitemesh:2.4">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/opensymphony/sitemesh/2.4/sitemesh-2.4.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/opensymphony/sitemesh/2.4/sitemesh-2.4-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/opensymphony/sitemesh/2.4/sitemesh-2.4-sources.jar!/" />
       </SOURCES>
     </library>
   </component>

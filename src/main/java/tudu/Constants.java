@@ -10,7 +10,7 @@ public class Constants {
     /**
      * The version of the application.
      */
-    public static final String VERSION = "2.3";
+    public static final String VERSION = "3.0-ALPHA";
 
     /**
      * US-style date format.
