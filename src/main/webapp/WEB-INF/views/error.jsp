@@ -1,5 +1,5 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isErrorPage="true" language="java" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
-<%@ include file="/WEB-INF/jspf/header.jsp"%>
 
 <title><fmt:message key="error.title"/></title>
 
@@ -29,4 +29,3 @@
 </pre>
 </p>
 
-<%@ include file="/WEB-INF/jspf/footer.jsp"%>

@@ -5,25 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\springsource\tudu\tudu3\src\main\webapp\WEB-INF\jspf\todos_table.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/fragments/todos_table.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators" />
-      <change type="MOVED" beforePath="C:\springsource\tudu\tudu3\src\main\webapp\WEB-INF\jspf\todos_permission_denied.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/fragments/todos_permission_denied.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tudu.iml" afterPath="$PROJECT_DIR$/tudu.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators/main.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tudu/web/RegisterAction.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/web/RegisterAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators/main.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators/main.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/css/global.css" afterPath="$PROJECT_DIR$/src/main/webapp/css/global.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tudu.iws" afterPath="$PROJECT_DIR$/tudu.iws" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jspf" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/fragments" />
-      <change type="MOVED" beforePath="C:\springsource\tudu\tudu3\src\main\webapp\WEB-INF\jspf\todos_table_filter.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/fragments/todos_table_filter.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MOVED" beforePath="C:\springsource\tudu\tudu3\src\main\webapp\WEB-INF\jspf\object_retrieval_failure.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/fragments/object_retrieval_failure.jsp" />
-      <change type="DELETED" beforePath="C:\springsource\tudu\tudu3\src\main\webapp\WEB-INF\fragments\footer.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\springsource\tudu\tudu3\src\main\webapp\WEB-INF\fragments\header.jsp" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-      <change type="DELETED" beforePath="C:\springsource\tudu\tudu3\src\main\webapp\WEB-INF\jspf\footer.jsp" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tudu/Constants.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/Constants.java" />
-      <change type="MOVED" beforePath="C:\springsource\tudu\tudu3\src\main\webapp\WEB-INF\jspf\todos_menu.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/fragments/todos_menu.jsp" />
-      <change type="DELETED" beforePath="C:\springsource\tudu\tudu3\src\main\webapp\WEB-INF\jspf\header.jsp" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tudu.ipr" afterPath="$PROJECT_DIR$/tudu.ipr" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/error.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/error.jsp" />
     </list>
     <ignored path="tudu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -72,11 +58,30 @@
     <breakpoint_rules />
     <ui_properties />
   </component>
+  <component name="FacetEditorsStateManager">
+    <facet-type-state type="javaeeApplication">
+      <facet-type>
+        <state>
+          <packaging-tree show-included-content="false" show-library-files="false" />
+        </state>
+      </facet-type>
+    </facet-type-state>
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="tudu" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="RegisterAction.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/tudu/web/RegisterAction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="40" selection-start="801" selection-end="801" vertical-scroll-proportion="0.19306931">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -390,6 +395,36 @@
           <option name="myItemId" value="resources" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Resource Bundle 'messages'" />
+          <option name="myItemType" value="com.intellij.lang.properties.projectView.ResourceBundleNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="tudu" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="tudu" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="tudu3" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="main" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="resources" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
       </PATH>
       <PATH>
         <PATH_ELEMENT>
@@ -549,7 +584,7 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="domain" />
+          <option name="myItemId" value="service" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -583,11 +618,11 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="domain" />
+          <option name="myItemId" value="service" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="model" />
+          <option name="myItemId" value="impl" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -612,10 +647,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="RunManagerConfig.showSettingsBeforeRunnig" value="false" />
+    <property name="RESOURCE_BUNDLE_SPLITTER_PROPORTION" value="0.5" />
     <property name="options.lastSelected" value="SQL Dialects" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -842,7 +878,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1600" height="1186" extended-state="0" />
+    <frame x="-8" y="-8" width="1296" height="786" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32927817" sideWeight="0.5" order="3" side_tool="false" />
@@ -856,11 +892,11 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32927817" sideWeight="0.3971519" order="4" side_tool="false" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26089785" sideWeight="0.4021318" order="0" side_tool="false" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32522303" sideWeight="0.39873418" order="0" side_tool="false" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" />
       <window_info id="Web Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39873418" sideWeight="0.5" order="5" side_tool="false" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.59108526" sideWeight="0.5" order="2" side_tool="false" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5901899" sideWeight="0.5" order="2" side_tool="false" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" />
@@ -877,7 +913,7 @@
     <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Migrated to SiteMesh" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated the registration page" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
@@ -891,6 +927,7 @@
     <MESSAGE value="Corrected IDEA Subversion importation error" />
     <MESSAGE value="Started migration to Spring MVC" />
     <MESSAGE value="Migrated to SiteMesh" />
+    <MESSAGE value="Updated the registration page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -900,50 +937,6 @@
     <find-history />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/web/RegisterAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="24" selection-start="442" selection-end="442" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/domain/model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="55" selection-start="1333" selection-end="1333" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/domain/model/TodoList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="55" selection-start="1351" selection-end="1351" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/sql/create_schema_mysql.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/domain/model/Todo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="14" selection-start="1084" selection-end="1084" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/domain/model/Role.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="540" selection-end="540" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="84" column="0" selection-start="2943" selection-end="2958" vertical-scroll-proportion="0.0">
@@ -954,20 +947,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/tudu/domain/model/Property.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="0" selection-start="674" selection-end="674" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="24" selection-start="3165" selection-end="3165" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators/main.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="33" selection-start="1927" selection-end="1927" vertical-scroll-proportion="-24.083334">
           <folding />
         </state>
       </provider>
@@ -1019,9 +998,71 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/error.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="65" selection-start="65" selection-end="65" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/css/global.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="9" selection-start="891" selection-end="893" vertical-scroll-proportion="0.33333334">
+        <state line="68" column="0" selection-start="985" selection-end="985" vertical-scroll-proportion="0.7522124">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/messages.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="130.94737">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="ResourceBundle">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="209" column="28" selection-start="7339" selection-end="7343" vertical-scroll-proportion="-16.68">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="63" selection-start="4692" selection-end="4692" vertical-scroll-proportion="2.0160427">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/menu-config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/service/impl/UserManagerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/web/RegisterAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="40" selection-start="801" selection-end="801" vertical-scroll-proportion="0.19306931">
           <folding />
         </state>
       </provider>

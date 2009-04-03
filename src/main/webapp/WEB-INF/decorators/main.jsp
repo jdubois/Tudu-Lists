@@ -20,7 +20,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>Tudu Lists</title>
+    <title><decorator:title default="Tudu Lists" /></title>
     <meta http-equiv="content-type" content="text/javascript; charset=utf-8"/>
     <meta http-equiv="content-script-type" content="text/javascript"/>
     <meta name="Keywords"
@@ -91,7 +91,7 @@
                                                                                border="0"/></a></td>
                     <td>
                         <menu:useMenuDisplayer name="TabbedMenu"
-                                               bundle="org.apache.struts.action.MESSAGE">
+                                               bundle="messages">
 
                             <menu:displayMenu name="Welcome"/>
                             <menu:displayMenu name="Register"/>
