@@ -2,15 +2,16 @@ package tudu.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
-import tudu.service.UserManager;
-import tudu.service.UserAlreadyExistsException;
 import tudu.domain.model.User;
+import tudu.service.UserAlreadyExistsException;
+import tudu.service.UserManager;
 
 /**
  * Register a new Tudu Lists user.
@@ -23,6 +24,16 @@ public class RegisterAction {
 
     @Autowired
     private UserManager userManager;
+
+    @ModelAttribute("user")
+    public User formBackingObject() {
+        return new User();
+    }
+
+    @InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.setRequiredFields(new String[]{"login", "firstName", "lastName", "password", "verifyPassword"});
+	}
 
     /**
      * Show the "register a new user" page.
@@ -39,13 +50,16 @@ public class RegisterAction {
      */
     @RequestMapping(method = RequestMethod.POST)
     public String register(@ModelAttribute User user, BindingResult result) {
+        if (result.hasErrors()) {
+            return "register";
+        }
         try {
             userManager.createUser(user);
         } catch (UserAlreadyExistsException e) {
             result.reject("register.user.already.exists");
             return "register";
         }
-        return "success";
+        return "register_ok";
     }
 
     /**

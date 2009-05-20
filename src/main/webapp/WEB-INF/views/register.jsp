@@ -2,7 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" errorPage="/WEB-INF/views/error.jsp" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
 <html>
-<head></head>
+<head>New user registration</head>
 <body>
 
 <div align="center">
@@ -21,7 +21,7 @@
  <form:errors/>
  <table class="list" style="width:400px">
   <tr>
-   <th colspan="2">
+   <th colspan="3">
     <fmt:message key="register.subtitle"/>
    </th>
   </tr>
@@ -33,6 +33,9 @@
     <td>
      <form:input path="login" size="20" maxlength="50"/>
     </td>
+    <td>
+     <form:errors path="login"/>
+    </td>
    </tr>
    <tr class="even">
     <td>
@@ -41,6 +44,9 @@
     <td>
      <form:input path="firstName" size="15" maxlength="60"/>
     </td>
+    <td>
+     <form:errors path="firstName"/>
+    </td>
    </tr>
    <tr class="odd">
     <td>
@@ -48,6 +54,9 @@
     </td>
     <td>
      <form:input path="lastName" size="15" maxlength="60"/>
+    </td>
+    <td>
+     <form:errors path="lastName"/>
     </td>
    </tr>
    <tr class="even">
@@ -65,6 +74,9 @@
     <td>
      <form:password path="password" size="15" maxlength="32"/>
     </td>
+    <td>
+     <form:errors path="password"/>
+    </td>
    </tr>
    <tr class="even">
     <td>
@@ -72,6 +84,9 @@
     </td>
     <td>
      <form:password path="verifyPassword" size="15" maxlength="32"/>
+    </td>
+    <td>
+     <form:errors path="verifyPassword"/>
     </td>
    </tr>
   </tbody>
