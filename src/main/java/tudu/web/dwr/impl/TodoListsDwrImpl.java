@@ -17,12 +17,14 @@ import tudu.service.UserManager;
 import tudu.web.dwr.TodoListsDwr;
 import tudu.web.dwr.bean.RemoteTodoList;
 
+import javax.annotation.PostConstruct;
+
 /**
  * Implementation of the tudu.service.TodoListsManager interface.
  * 
  * @author Julien Dubois
  */
-@Component
+@Component("todoListsDwr")
 public class TodoListsDwrImpl implements TodoListsDwr {
 
     private final Log log = LogFactory.getLog(TodoListsDwrImpl.class);

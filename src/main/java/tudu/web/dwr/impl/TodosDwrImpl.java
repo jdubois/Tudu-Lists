@@ -43,7 +43,7 @@ import tudu.web.dwr.bean.RemoteTodoList;
  * 
  * @author Julien Dubois
  */
-@Component
+@Component("todosDwr")
 public class TodosDwrImpl implements TodosDwr {
 
     private static final String TODO_LIST_SORT_BY = "TODO_LIST_SORT_BY";

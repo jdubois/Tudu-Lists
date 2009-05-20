@@ -15,6 +15,6 @@
 
     <aop:aspectj-autoproxy/>
     <tx:annotation-driven/>
-    <context:component-scan base-package="tudu.domain.dao,tudu.security,tudu.service"/>
+    <context:component-scan base-package="tudu.domain.dao,tudu.security,tudu.service,tudu.web.dwr"/>
 
 </beans>

@@ -1,17 +1,11 @@
-package tudu.web;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+package tudu.web.mvc;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
-
-import tudu.domain.model.User;
 import tudu.service.UserManager;
-import tudu.Constants;
 
 /**
  * Manage the user information.

@@ -1,4 +1,4 @@
-package tudu.web;
+package tudu.web.mvc;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

@@ -96,8 +96,9 @@
         <servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
         <init-param>
             <param-name>debug</param-name>
-            <param-value>false</param-value>
+            <param-value>true</param-value>
         </init-param>
+        <load-on-startup>2</load-on-startup>
     </servlet>
 
     <servlet>
