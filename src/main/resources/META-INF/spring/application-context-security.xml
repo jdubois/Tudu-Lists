@@ -7,10 +7,10 @@
                                  http://www.springframework.org/schema/security
                                  http://www.springframework.org/schema/security/spring-security-2.0.4.xsd">
 
-    <http auto-config='true'>
+    <http>
         <intercept-url pattern="/secure/admin/**" access="ROLE_ADMIN"/>
         <intercept-url pattern="/secure/**" access="ROLE_USER"/>
-        <form-login login-page="/welcome.action"/>
+        <form-login login-page="/welcome.action" default-target-url="/secure/showTodos.action"/>
     </http>
 
     <authentication-provider user-service-ref='userDetailsService'/>

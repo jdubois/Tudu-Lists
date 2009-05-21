@@ -1,5 +1,9 @@
-<%@ page language="java" errorPage="/WEB-INF/jsp/error.jsp" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
-<%@ include file="/WEB-INF/jspf/header.jsp"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page language="java" errorPage="/WEB-INF/views/error.jsp" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
+<html>
+<head>New user registration</head>
+<body>
 
 <script type='text/javascript' src='${staticCtx}/scripts/calendar.js'></script>
 <script type='text/javascript' src='${staticCtx}/scripts/calendar-en.js'></script>
@@ -303,7 +307,7 @@ function validateForm(priority, dueDate, notes) {
  <tr>
   <td style="width: 150px; vertical-align: top; border: 1px solid #C0C0C0">
    <div id="menuDiv">
-    <jsp:include page="/WEB-INF/jspf/todos_menu.jsp"/>
+    <jsp:include page="/WEB-INF/fragments/todos_menu.jsp"/>
    </div>
   </td>
   <td style="width:10px"></td>
@@ -554,7 +558,7 @@ function validateForm(priority, dueDate, notes) {
   </div>
 
    <!-- The main table, displaying the current Todos -->
-   <div id="todosTable" style="min-height: 500px; width=100%"></div>
+   <div id="todosTable" style="min-height: 500px; width:100%"></div>
 
   </td>
  </tr>
@@ -573,4 +577,5 @@ function validateForm(priority, dueDate, notes) {
  reloadingTable();
 </script>
 
-<%@ include file="/WEB-INF/jspf/footer.jsp"%>
+</body>
+</html>

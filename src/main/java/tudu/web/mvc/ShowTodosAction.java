@@ -1,11 +1,18 @@
 package tudu.web.mvc;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import tudu.service.UserManager;
+import tudu.domain.model.User;
+import tudu.domain.model.TodoList;
+import tudu.Constants;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.TreeSet;
+import java.util.Collection;
 
 /**
  * Show the Todos belonging to the current List.
@@ -13,9 +20,8 @@ import tudu.service.UserManager;
  * @author Julien Dubois
  */
 @Controller
+@RequestMapping("/secure/showTodos.action")
 public class ShowTodosAction {
-
-    private final Log log = LogFactory.getLog(ShowTodosAction.class);
 
     @Autowired
     private UserManager userManager;
@@ -23,9 +29,9 @@ public class ShowTodosAction {
     /**
      * Show the Todos main page.
      */
-    public ModelAndView execute() {
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView showTodos(HttpServletRequest request) {
 
-        /*log.debug("Execute show action");
         User user = userManager.getCurrentUser();
         Collection<TodoList> todoLists = new TreeSet<TodoList>(user
                 .getTodoLists());
@@ -53,7 +59,6 @@ public class ShowTodosAction {
         request.getSession().setAttribute("calendarDateFormat",
                 calendarDateFormat);
 
-        return mapping.findForward("show");*/
-        return new ModelAndView();
+        return new ModelAndView("todos");
     }
 }

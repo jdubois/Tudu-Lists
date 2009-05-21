@@ -1,11 +1,14 @@
 package tudu.web.mvc;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import tudu.service.UserManager;
+import tudu.domain.model.User;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Manage the user information.
@@ -13,9 +16,8 @@ import tudu.service.UserManager;
  * @author Julien Dubois
  */
 @Controller
+@RequestMapping("/secure/myInfo.action")
 public class MyInfoAction {
-
-    private final Log log = LogFactory.getLog(MyInfoAction.class);
 
     @Autowired
     private UserManager userManager;
@@ -23,20 +25,12 @@ public class MyInfoAction {
     /**
      * Display the "my user info" page.
      */
+    @RequestMapping(method = RequestMethod.GET)
     public ModelAndView display() {
-
-        /*log.debug("Execute display action");
-        String login = request.getRemoteUser();
-        User user = userManager.findUser(login);
-        DynaActionForm userForm = (DynaActionForm) form;
-        userForm.set("password", user.getPassword());
-        userForm.set("verifyPassword", user.getPassword());
-        userForm.set("firstName", user.getFirstName());
-        userForm.set("lastName", user.getLastName());
-        userForm.set("email", user.getEmail());
-        userForm.set("dateFormat", user.getDateFormat());
-        return mapping.findForward("user.info");*/
-        return new ModelAndView();
+        User user = userManager.getCurrentUser();
+        ModelAndView mv = new ModelAndView("my_info");
+        mv.addObject("user", user);
+        return mv;
     }
 
     /**
