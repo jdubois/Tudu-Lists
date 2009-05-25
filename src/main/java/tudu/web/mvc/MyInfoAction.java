@@ -29,12 +29,15 @@ public class MyInfoAction {
 
     @ModelAttribute("user")
     public User formBackingObject() {
-        return userManager.getCurrentUser();
+        User user = userManager.getCurrentUser();
+        user.setVerifyPassword(user.getPassword());
+        return user;
     }
 
     @InitBinder
 	public void initBinder(WebDataBinder binder) {
-		binder.setRequiredFields(new String[]{"login", "firstName", "lastName", "password", "verifyPassword"});
+		binder.setRequiredFields(new String[]{"firstName", "lastName", "password", "verifyPassword"});
+        binder.setDisallowedFields(new String[] {"login"});
 	}
 
     /**
