@@ -6,6 +6,8 @@ import org.springframework.security.context.SecurityContextHolder;
 import org.springframework.security.ui.rememberme.TokenBasedRememberMeServices;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -19,18 +21,12 @@ import java.util.Enumeration;
  * @author Julien Dubois
  */
 @Controller
+@RequestMapping("/logout.action")
 public class LogoutAction {
 
-    private final Log log = LogFactory.getLog(LogoutAction.class);
+    @RequestMapping(method = RequestMethod.GET)
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
 
-    /**
-     * Log out action.
-     */
-    @SuppressWarnings("unchecked")
-    public ModelAndView execute(HttpServletRequest request, HttpServletResponse response) {
-
-        log.debug("Execute action");
-        // Remove the security information
         SecurityContextHolder.clearContext();
 
         // Remove all session data
@@ -46,6 +42,6 @@ public class LogoutAction {
         terminate.setMaxAge(-1);
         terminate.setPath(request.getContextPath() + "/");
         response.addCookie(terminate);
-        return new ModelAndView("logout");
+        return "logout";
     }
 }

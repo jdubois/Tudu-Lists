@@ -1,5 +1,9 @@
-<%@ page language="java" errorPage="/WEB-INF/jsp/error.jsp" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
-<%@ include file="/WEB-INF/jspf/header.jsp"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page language="java" errorPage="/WEB-INF/views/error.jsp" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
+<html>
+<head>Logout</head>
+<body>
 
 <h3><fmt:message key="logout.title"/></h3>
 
@@ -7,7 +11,8 @@
  <fmt:message key="logout.description"/>
  <br/>
  <br/>
- <a href="${ctx}/welcome.action"><fmt:message key="logout.reconnect"/></a>
+ <a href="welcome.action"><fmt:message key="logout.reconnect"/></a>
 </div>
 
-<%@ include file="/WEB-INF/jspf/footer.jsp"%>
+</body>
+</html>

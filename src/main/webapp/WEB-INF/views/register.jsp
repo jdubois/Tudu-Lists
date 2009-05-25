@@ -18,7 +18,6 @@
   </ul>
  </div>
  <form:form commandName="user">
- <form:errors/>
  <table class="list" style="width:400px">
   <tr>
    <th colspan="3">
