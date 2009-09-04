@@ -1,15 +1,11 @@
 package tudu.web.dwr.impl;
 
-import java.util.Collection;
-import java.util.TreeSet;
-
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.stereotype.Component;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import tudu.domain.model.TodoList;
 import tudu.domain.model.User;
 import tudu.service.TodoListsManager;
@@ -17,7 +13,8 @@ import tudu.service.UserManager;
 import tudu.web.dwr.TodoListsDwr;
 import tudu.web.dwr.bean.RemoteTodoList;
 
-import javax.annotation.PostConstruct;
+import java.util.Collection;
+import java.util.TreeSet;
 
 /**
  * Implementation of the tudu.service.TodoListsManager interface.

@@ -1,8 +1,8 @@
 package tudu.domain.dao;
 
-import java.util.List;
-
 import tudu.domain.model.User;
+
+import java.util.List;
 
 /**
  * DAO for the User table.

@@ -1,12 +1,11 @@
 package tudu.domain.dao.jpa;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import org.springframework.stereotype.Repository;
-
 import tudu.domain.dao.PropertyDAO;
 import tudu.domain.model.Property;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  * Hibernate implementation of the tudu.domain.dao.PropertyDAO interface.

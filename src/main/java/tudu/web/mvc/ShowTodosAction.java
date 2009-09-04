@@ -2,17 +2,17 @@ package tudu.web.mvc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import tudu.service.UserManager;
-import tudu.domain.model.User;
-import tudu.domain.model.TodoList;
+import org.springframework.web.servlet.ModelAndView;
 import tudu.Constants;
+import tudu.domain.model.TodoList;
+import tudu.domain.model.User;
+import tudu.service.UserManager;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.TreeSet;
 import java.util.Collection;
+import java.util.TreeSet;
 
 /**
  * Show the Todos belonging to the current List.

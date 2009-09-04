@@ -1,15 +1,13 @@
 package tudu.domain.dao.jpa;
 
-import java.util.List;
+import org.springframework.stereotype.Repository;
+import tudu.domain.dao.UserDAO;
+import tudu.domain.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
-import org.springframework.stereotype.Repository;
-
-import tudu.domain.dao.UserDAO;
-import tudu.domain.model.User;
+import java.util.List;
 
 /**
  * Hibernate implementation of the tudu.domain.dao.UserDAO interface.

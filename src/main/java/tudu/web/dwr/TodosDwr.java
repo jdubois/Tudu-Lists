@@ -1,9 +1,9 @@
 package tudu.web.dwr;
 
-import java.util.Date;
-
 import tudu.web.dwr.bean.RemoteTodo;
 import tudu.web.dwr.bean.RemoteTodoList;
+
+import java.util.Date;
 
 /**
  * Todos actions presented with DWR.

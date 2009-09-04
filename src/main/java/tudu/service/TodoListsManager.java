@@ -1,12 +1,11 @@
 package tudu.service;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 import org.jdom.Document;
 import org.jdom.JDOMException;
-
 import tudu.domain.model.TodoList;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Manage Todo Lists.

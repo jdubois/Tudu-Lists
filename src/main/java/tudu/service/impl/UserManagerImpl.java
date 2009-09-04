@@ -1,34 +1,25 @@
 package tudu.service.impl;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.security.context.SecurityContext;
 import org.springframework.security.context.SecurityContextHolder;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.transaction.annotation.Transactional;
 import tudu.Constants;
 import tudu.domain.RolesEnum;
-import tudu.domain.dao.PropertyDAO;
-import tudu.domain.dao.RoleDAO;
-import tudu.domain.dao.TodoDAO;
-import tudu.domain.dao.TodoListDAO;
-import tudu.domain.dao.UserDAO;
-import tudu.domain.model.Property;
-import tudu.domain.model.Role;
-import tudu.domain.model.Todo;
-import tudu.domain.model.TodoList;
-import tudu.domain.model.User;
+import tudu.domain.dao.*;
+import tudu.domain.model.*;
 import tudu.service.UserAlreadyExistsException;
 import tudu.service.UserManager;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Implementation of the tudu.service.UserManager interface.

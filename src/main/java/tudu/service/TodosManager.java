@@ -1,8 +1,8 @@
 package tudu.service;
 
-import java.util.Collection;
-
 import tudu.domain.model.Todo;
+
+import java.util.Collection;
 
 /**
  * Manage Todos.

@@ -1,11 +1,8 @@
 package tudu.web.mvc;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.security.context.SecurityContextHolder;
 import org.springframework.security.ui.rememberme.TokenBasedRememberMeServices;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 

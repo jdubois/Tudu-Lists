@@ -1,21 +1,14 @@
 package tudu.service.impl;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tudu.domain.dao.TodoDAO;
 import tudu.domain.dao.TodoListDAO;
 import tudu.domain.model.Todo;
@@ -24,6 +17,12 @@ import tudu.domain.model.User;
 import tudu.security.PermissionDeniedException;
 import tudu.service.TodoListsManager;
 import tudu.service.UserManager;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Implementation of the tudu.service.TodoListsManager interface.

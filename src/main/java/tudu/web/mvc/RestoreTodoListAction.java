@@ -1,9 +1,9 @@
 package tudu.web.mvc;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import tudu.service.TodoListsManager;
 
@@ -15,15 +15,14 @@ import tudu.service.TodoListsManager;
 @Controller
 public class RestoreTodoListAction {
 
-    private final Log log = LogFactory.getLog(RestoreTodoListAction.class);
-
     @Autowired
     private TodoListsManager todoListsManager;
 
     /**
      * Display the main screen for restoring a Todo List.
      */
-    public ModelAndView display() {
+    @RequestMapping("secure/restoreTodoList.action")
+    public ModelAndView display(@RequestParam String listId) {
 
         /*log.debug("Execute display action");
         RestoreTodoListForm restoreTodoListForm = (RestoreTodoListForm) form;

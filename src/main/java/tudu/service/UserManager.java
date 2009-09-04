@@ -1,8 +1,8 @@
 package tudu.service;
 
-import java.util.List;
-
 import tudu.domain.model.User;
+
+import java.util.List;
 
 /**
  * Manage the security: user authentification and autorizations.

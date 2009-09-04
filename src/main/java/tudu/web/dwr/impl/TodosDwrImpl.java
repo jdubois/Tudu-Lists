@@ -1,42 +1,30 @@
 package tudu.web.dwr.impl;
 
-import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Set;
-import java.util.TreeSet;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.directwebremoting.WebContextFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.stereotype.Component;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import tudu.domain.model.Todo;
 import tudu.domain.model.TodoList;
 import tudu.domain.model.User;
-import tudu.domain.model.comparator.TodoByAssignedUserAscComparator;
-import tudu.domain.model.comparator.TodoByAssignedUserComparator;
-import tudu.domain.model.comparator.TodoByDescriptionAscComparator;
-import tudu.domain.model.comparator.TodoByDescriptionComparator;
-import tudu.domain.model.comparator.TodoByDueDateAscComparator;
-import tudu.domain.model.comparator.TodoByDueDateComparator;
-import tudu.domain.model.comparator.TodoByPriorityAscComparator;
+import tudu.domain.model.comparator.*;
 import tudu.service.TodoListsManager;
 import tudu.service.TodosManager;
 import tudu.service.UserManager;
 import tudu.web.dwr.TodosDwr;
 import tudu.web.dwr.bean.RemoteTodo;
 import tudu.web.dwr.bean.RemoteTodoList;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Implementation of the tudu.service.TodosManager interface.

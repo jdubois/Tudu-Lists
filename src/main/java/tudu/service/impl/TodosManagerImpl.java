@@ -1,19 +1,10 @@
 package tudu.service.impl;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tudu.domain.dao.TodoDAO;
 import tudu.domain.model.Todo;
 import tudu.domain.model.TodoList;
@@ -23,6 +14,8 @@ import tudu.security.PermissionDeniedException;
 import tudu.service.TodoListsManager;
 import tudu.service.TodosManager;
 import tudu.service.UserManager;
+
+import java.util.*;
 
 /**
  * Implementation of the tudu.service.TodosManager interface.

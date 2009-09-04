@@ -1,13 +1,12 @@
 package tudu.domain.dao.jpa;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.stereotype.Repository;
-
 import tudu.domain.dao.TodoListDAO;
 import tudu.domain.model.TodoList;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  * Hibernate implementation of the tudu.domain.dao.TodoListDAO interface.

@@ -1,5 +1,11 @@
-<%@ page language="java" errorPage="/WEB-INF/jsp/error.jsp" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
-<%@ include file="/WEB-INF/jspf/header.jsp"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page language="java" errorPage="/WEB-INF/views/error.jsp" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
+<html>
+<head>Restore Todo List</head>
+<body>
+
 
 <div align="center">
  <h3><fmt:message key="restore.title"/></h3>
@@ -55,4 +61,5 @@
  </html:form>
 </div>
 
-<%@ include file="/WEB-INF/jspf/footer.jsp"%>
+</body>
+</html>

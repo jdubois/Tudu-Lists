@@ -1,17 +1,14 @@
 package tudu.service.impl;
 
-import java.util.Set;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.orm.ObjectRetrievalFailureException;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.transaction.annotation.Transactional;
 import tudu.domain.RolesEnum;
 import tudu.domain.dao.PropertyDAO;
 import tudu.domain.dao.RoleDAO;
@@ -21,6 +18,8 @@ import tudu.domain.model.User;
 import tudu.service.ConfigurationManager;
 import tudu.service.UserAlreadyExistsException;
 import tudu.service.UserManager;
+
+import java.util.Set;
 
 /**
  * Implementation of the tudu.service.ConfigurationManager interface.

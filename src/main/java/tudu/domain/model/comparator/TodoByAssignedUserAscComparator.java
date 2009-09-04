@@ -1,8 +1,8 @@
 package tudu.domain.model.comparator;
 
-import java.util.Comparator;
-
 import tudu.domain.model.Todo;
+
+import java.util.Comparator;
 
 /**
  * Comparator used to sort todos by their assigned user, in ascending order.
