@@ -4,8 +4,14 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.InternalResourceView;
+import tudu.domain.model.TodoList;
 import tudu.service.TodoListsManager;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Generate the RSS feed.
@@ -20,35 +26,27 @@ public class ShowRssFeedAction {
     @Autowired
     private TodoListsManager todoListsManager;
 
-    public ModelAndView execute()
+    @RequestMapping("/rss/showRssFeed.action")
+    public ModelAndView showRss(@RequestParam String listId, HttpServletRequest request)
             throws Exception {
 
-/*        log.debug("Execute action");
-        DynaActionForm todoListForm = (DynaActionForm) form;
-        String listId = (String) todoListForm.get("listId");
-
+        ModelAndView mv = new ModelAndView();
         TodoList todoList = todoListsManager.unsecuredFindTodoList(listId);
 
         if (todoList.isRssAllowed()) {
-            if (log.isDebugEnabled()) {
-                log.debug("Rendering RSS feed for Todo List ID '"
-                        + todoList.getListId() + "', named '"
-                        + todoList.getName() + "'");
-            }
-
-            request.setAttribute("todoList", todoList);
-            request.setAttribute("link", request.getScheme() + "://"
+            mv.addObject("todoList", todoList);
+            mv.addObject("link", request.getScheme() + "://"
                     + request.getServerName() + ":" + request.getServerPort()
                     + request.getContextPath() + "/secure/showTodos.action");
 
-            return mapping.findForward("rssFeed");
+            mv.setView(new InternalResourceView("/WEB-INF/servlet/RssFeedServlet"));
         } else {
             if (log.isDebugEnabled()) {
                 log.debug("Rendering RSS feed for Todo List ID '"
                         + todoList.getListId() + "' is not allowed");
             }
-            return mapping.findForward("notAllowed");
-        }*/
-        return new ModelAndView();
+            mv.setViewName("rss_not_allowed");
+        }
+        return mv;
     }
 }
