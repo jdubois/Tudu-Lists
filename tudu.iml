@@ -101,6 +101,14 @@
             <attribute name="method" value="1" />
             <attribute name="URI" value="/WEB-INF/lib/" />
           </containerElement>
+          <containerElement type="library" name="Maven: org.mortbay.jetty:cometd:6.1.4" level="project">
+            <attribute name="method" value="1" />
+            <attribute name="URI" value="/WEB-INF/lib/" />
+          </containerElement>
+          <containerElement type="library" name="Maven: org.mortbay.jetty:jetty-util:6.1.4" level="project">
+            <attribute name="method" value="1" />
+            <attribute name="URI" value="/WEB-INF/lib/" />
+          </containerElement>
           <containerElement type="library" name="Maven: org.hibernate:hibernate-entitymanager:3.4.0.GA" level="project">
             <attribute name="method" value="1" />
             <attribute name="URI" value="/WEB-INF/lib/" />
@@ -300,6 +308,8 @@
     <orderEntry type="library" exported="" name="Maven: org.aspectj:aspectjrt:1.5.4" level="project" />
     <orderEntry type="library" exported="" name="Maven: org.aspectj:aspectjweaver:1.5.4" level="project" />
     <orderEntry type="library" exported="" name="Maven: org.directwebremoting:dwr:3.0.M1" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.mortbay.jetty:cometd:6.1.4" level="project" />
+    <orderEntry type="library" exported="" name="Maven: org.mortbay.jetty:jetty-util:6.1.4" level="project" />
     <orderEntry type="library" name="Maven: org.easymock:easymock:2.0" level="project" />
     <orderEntry type="library" exported="" name="Maven: org.hibernate:hibernate-entitymanager:3.4.0.GA" level="project" />
     <orderEntry type="library" exported="" name="Maven: org.hibernate:ejb3-persistence:1.0.2.GA" level="project" />
