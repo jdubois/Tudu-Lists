@@ -62,8 +62,8 @@ public class ConfigurationManagerImpl implements ConfigurationManager,
      * @see tudu.service.ConfigurationManager#initDatabase()
      */
     public void initDatabase() {
+        log.warn("Testing Database.");
         try {
-            log.warn("Testing Database.");
             roleDAO.getRole(RolesEnum.ROLE_USER.name());
         } catch (ObjectRetrievalFailureException erfe) {
             log.warn("Database is empty : populating with default values.");
@@ -125,6 +125,7 @@ public class ConfigurationManagerImpl implements ConfigurationManager,
                         + "the user already exists.");
             }
         }
+        
     }
 
     /**

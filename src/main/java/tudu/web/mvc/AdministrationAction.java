@@ -4,9 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import tudu.service.ConfigurationManager;
 import tudu.service.UserManager;
+import tudu.domain.model.User;
+
+import java.util.List;
 
 /**
  * Application administration actions.
@@ -14,6 +19,7 @@ import tudu.service.UserManager;
  * @author Julien Dubois
  */
 @Controller
+@RequestMapping("/secure/admin/administration.action")
 public class AdministrationAction {
 
     @Autowired
@@ -25,10 +31,11 @@ public class AdministrationAction {
     /**
      * Show the administration page action.
      */
-    @RequestMapping("/secure/admin/administration/display.html")
+    @RequestMapping(method = RequestMethod.GET)
     public ModelAndView display(@RequestParam(required = false) String page) {
 
         ModelAndView mv = new ModelAndView();
+        AdministrationModel model = new AdministrationModel();
 
         if (page == null || page.equals("")) {
             page = "configuration";
@@ -36,46 +43,45 @@ public class AdministrationAction {
 
         if (page.equals("configuration")) {
             mv.addObject("page", "configuration");
-
             String propertyStaticPath = this.configurationManager.getProperty(
                     "application.static.path").getValue();
 
-            mv.addObject("propertyStaticPath", propertyStaticPath);
+            model.setPropertyStaticPath(propertyStaticPath);
 
             String googleAnalyticsKey = configurationManager.getProperty(
                     "google.analytics.key").getValue();
 
-            mv.addObject("googleAnalyticsKey", googleAnalyticsKey);
+            model.setGoogleAnalyticsKey(googleAnalyticsKey);
 
             String smtpHost = configurationManager.getProperty("smtp.host")
                     .getValue();
-            mv.addObject("smtpHost", smtpHost);
+            model.setSmtpHost(smtpHost);
 
             String smtpPort = configurationManager.getProperty("smtp.port")
                     .getValue();
-            mv.addObject("smtpPort", smtpPort);
+            model.setSmtpPort(smtpPort);
 
             String smtpUser = configurationManager.getProperty("smtp.user")
                     .getValue();
-            mv.addObject("smtpUser", smtpUser);
+            model.setSmtpUser(smtpUser);
 
             String smtpPassword = configurationManager.getProperty(
                     "smtp.password").getValue();
-            mv.addObject("smtpPassword", smtpPassword);
+            model.setSmtpPassword(smtpPassword);
 
             String smtpFrom = configurationManager.getProperty("smtp.from")
                     .getValue();
-            mv.addObject("smtpFrom", smtpFrom);
+            model.setSmtpFrom(smtpFrom);
+
 
         } else if (page.equals("users")) {
             mv.addObject("page", "users");
+            model.setSearchLogin("");
             mv.addObject("numberOfUsers", this.userManager
                     .getNumberOfUsers());
 
-        } else if (page.equals("database")) {
-            mv.addObject("page", "database");
         }
-
+        mv.addObject("administrationModel", model);
         mv.setViewName("administration");
         return mv;
     }
@@ -83,72 +89,37 @@ public class AdministrationAction {
     /**
      * Update the application configuration.
      */
-    @RequestMapping("/secure/admin/administration/update_configuration.html")
-    public ModelAndView updateConfiguration() {
+    @RequestMapping(method = RequestMethod.POST)
+    public ModelAndView update(@ModelAttribute AdministrationModel model) {
+        ModelAndView mv = new ModelAndView();
+        if ("configuration".equals(model.getAction())) {
+            this.configurationManager.updateApplicationProperties(model.getPropertyStaticPath(),
+                    model.getGoogleAnalyticsKey());
 
-        /*DynaActionForm administrationForm = (DynaActionForm) form;
-        String staticPath = (String) administrationForm
-                .get("propertyStaticPath");
-        String googleAnalyticsKey = (String) administrationForm
-                .get("googleAnalyticsKey");
+            this.configurationManager.updateEmailProperties(model.getSmtpHost(), model.getSmtpPort(),
+                    model.getSmtpUser(), model.getSmtpPassword(), model.getSmtpFrom());
 
-        this.configurationManager.updateApplicationProperties(staticPath,
-                googleAnalyticsKey);
-
-        String smtpHost = (String) administrationForm.get("smtpHost");
-        String smtpPort = (String) administrationForm.get("smtpPort");
-        String smtpUser = (String) administrationForm.get("smtpUser");
-        String smtpPassword = (String) administrationForm.get("smtpPassword");
-        String smtpFrom = (String) administrationForm.get("smtpFrom");
-        configurationManager.updateEmailProperties(smtpHost, smtpPort,
-                smtpUser, smtpPassword, smtpFrom);
-
-        request.setAttribute("success", "true");*/
-        return new ModelAndView();
-    }
-
-    /**
-     * Search for users.
-     */
-    public ModelAndView searchUser() {
-
-        /*DynaActionForm administrationForm = (DynaActionForm) form;
-        String loginStart = (String) administrationForm.get("loginStart");
-        if (loginStart == null) {
-            loginStart = "";
+            mv = this.display("configuration");
+            mv.addObject("success", "true");
+        } else {
+            if ("disableUser".equals(model.getAction())) {
+                String login = model.getLogin();
+                this.userManager.disableUser(login);
+            }
+            if ("enableUser".equals(model.getAction())) {
+                String login = model.getLogin();
+                this.userManager.enableUser(login);
+            }
+            if (model.getSearchLogin() == null) {
+                model.setSearchLogin("");
+            }
+            List<User> users = this.userManager.findUsersByLogin(model.getSearchLogin());
+            mv.addObject("users", users);
+            mv.addObject("page", "users");
+            mv.addObject("administrationModel", model);
+            mv.setViewName("administration");
         }
-        List<User> users = this.userManager.findUsersByLogin(loginStart);
-        request.setAttribute("users", users);*/
-        return new ModelAndView();
-    }
 
-    /**
-     * Disable a user.
-     */
-    public ModelAndView disableUser() {
-
-        /*DynaActionForm administrationForm = (DynaActionForm) form;
-        String login = (String) administrationForm.get("login");
-        if (login == null || login.equals("")) {
-            return searchUser(mapping, form, request, response);
-        }
-        this.userManager.disableUser(login);
-        request.setAttribute("success", "true");*/
-        return new ModelAndView();
-    }
-
-    /**
-     * Enable a user.
-     */
-    public ModelAndView enableUser() {
-
-        /*DynaActionForm administrationForm = (DynaActionForm) form;
-        String login = (String) administrationForm.get("login");
-        if (login == null || login.equals("")) {
-            return searchUser(mapping, form, request, response);
-        }
-        this.userManager.enableUser(login);
-        request.setAttribute("success", "true");*/
-        return new ModelAndView();
+        return mv;
     }
 }

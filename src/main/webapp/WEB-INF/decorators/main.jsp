@@ -125,7 +125,7 @@
                 </tr>
                 <tr>
                     <td id="sourceforge">
-                        <a href="http://tudu.sourceforge.net">
+                        <a href="http://www.julien-dubois.com/tudu-lists">
                             <img src="http://sourceforge.net/sflogo.php?group_id=131842&amp;type=1" width="88"
                                  height="31" border="0" alt="SourceForge.net"/>
                         </a>

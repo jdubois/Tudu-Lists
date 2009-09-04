@@ -58,7 +58,7 @@
       <td colspan="2">
        <p>
         <fmt:message key="login.auto.login"/>
-        <input type="checkbox" name="_acegi_security_remember_me"/>
+        <input type="checkbox" name="_spring_security_remember_me">
        </p>
       </td>
      </tr>

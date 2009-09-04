@@ -1,5 +1,10 @@
-<%@ page language="java" errorPage="/WEB-INF/jsp/error.jsp" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
-<%@ include file="/WEB-INF/jspf/header.jsp"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page language="java" errorPage="/WEB-INF/views/error.jsp" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
+<html>
+<head>Administration</head>
+<body>
 
 <div align="center">
  <h3><fmt:message key="administration.title"/></h3>
@@ -8,31 +13,24 @@
  </c:if>
  <table>
   <tr>
-   <td style="width: 150px; vertical-align: top; border: 1px solid #C0C0C0">
+   <td style="vertical-align: top; border: 1px solid #C0C0C0">
     <div id="menuDiv" style="min-height: 400px">
-     <table id="menuTable">
+     <table id="menuTable" style="min-width:160px">
       <thead>
        <tr>
         <td style="font-weight: bold;">Actions</td>
        </tr>
        <tr>
         <td>
-         [ <a href="${ctx}/secure/admin/administration.action?method=display&page=configuration">
+         [ <a href="administration.action">
           <fmt:message key="administration.menu.configuration"/>
          </a> ]
         </td>
        </tr>
        <tr>
         <td>
-         [ <a href="${ctx}/secure/admin/administration.action?method=display&page=users">
+         [ <a href="administration.action?page=users">
           <fmt:message key="administration.menu.users"/>
-         </a> ]
-        </td>
-       </tr>
-       <tr>
-        <td>
-         [ <a href="${ctx}/secure/admin/administration.action?method=display&page=database">
-          <fmt:message key="administration.menu.database"/>
          </a> ]
         </td>
        </tr>
@@ -43,19 +41,91 @@
    <td style="width:10px"></td>
    <td style="width: 100%; vertical-align: top; text-align: center; border: 1px solid #C0C0C0">
     <div style="min-height: 400px" align="center">
+
+    <c:if test="${page eq 'configuration' or page == null}">
+     <form:form commandName="administrationModel">
+     <form:errors/>
+     <input name="action" type="hidden" value="configuration"/>
+     <table class="list" style="width:450px">
+      <tr>
+       <th colspan="2">
+        <fmt:message key="administration.configuration"/>
+       </th>
+      </tr>
+      <tbody>
+       <tr class="odd">
+        <td>
+         <fmt:message key="administration.configuration.static.path"/>
+        </td>
+        <td>
+         <form:input path="propertyStaticPath" size="30" maxlength="200"/>
+        </td>
+       </tr>
+	   <tr class="even">
+        <td>
+         <fmt:message key="administration.configuration.google.analytics.key"/>
+        </td>
+        <td>
+         <form:input path="googleAnalyticsKey" size="30" maxlength="200"/>
+        </td>
+       </tr>
+       <tr class="odd">
+        <td>
+         <fmt:message key="administration.configuration.email.host"/>
+        </td>
+        <td>
+         <form:input path="smtpHost" size="30" maxlength="200"/>
+        </td>
+       </tr>
+       <tr class="even">
+        <td>
+         <fmt:message key="administration.configuration.email.port"/>
+        </td>
+        <td>
+	     <form:input path="smtpPort" size="30" maxlength="200"/>
+        </td>
+       </tr>
+       <tr class="odd">
+        <td>
+         <fmt:message key="administration.configuration.email.user"/>
+        </td>
+        <td>
+         <form:input path="smtpUser" size="30" maxlength="200"/>
+        </td>
+       </tr>
+       <tr class="even">
+        <td>
+         <fmt:message key="administration.configuration.email.password"/>
+        </td>
+        <td>
+         <form:input path="smtpPassword" size="30" maxlength="200"/>
+        </td>
+       </tr>
+       <tr class="odd">
+        <td>
+         <fmt:message key="administration.configuration.email.from"/>
+        </td>
+        <td>
+         <form:input path="smtpFrom" size="30" maxlength="200"/>
+        </td>
+       </tr>
+      </tbody>
+     </table>
+      <br/>
+      <input type="submit" value="<fmt:message key="form.submit"/>"/>
+     </form:form>
+    </c:if>
+
     <c:if test="${page eq 'users'}">
-      <html:form action="/secure/admin/administration">
+      <form:form commandName="administrationModel">
       <p>
-       <html:hidden property="page" value="users"/>
-       <html:hidden property="method" value="cancel"/>
-       <html:hidden property="login" value=""/>
+       <input name="action" type="hidden" value="userSearch"/>
+       <input name="login" type="hidden" value=""/>
        <fmt:message key="administration.number.of.users"/> : <b>${numberOfUsers}</b>
        <br/><br/>
        <fmt:message key="administration.user.login"/> :
-       <html:text property="loginStart" size="30" maxlength="200"/>
-       <html:submit onclick="document.forms[0].elements['method'].value='searchUser';">
-        <fmt:message key="form.submit"/>
-       </html:submit>
+       <form:input path="searchLogin" size="30" maxlength="200"/>
+       <input type="submit" value="<fmt:message key="form.submit"/>"/>
       </p>
       <c:if test="${not empty users}">
        <p>
@@ -96,14 +166,10 @@
           </td>
           <td style="text-align: center">
            <c:if test="${user.enabled}">
-            <html:submit onclick="document.forms[0].elements['method'].value='disableUser';document.forms[0].elements['login'].value='${user.login}';">
-             Disable
-            </html:submit>
+            <input type="submit" value="Disable" onclick="document.forms[0].elements['action'].value='disableUser';document.forms[0].elements['login'].value='${user.login}';"/>
            </c:if>
            <c:if test="${not user.enabled}">
-            <html:submit onclick="document.forms[0].elements['method'].value='enableUser';document.forms[0].elements['login'].value='${user.login}';">
-             Enable
-            </html:submit>
+            <input type="submit" value="Enable" onclick="document.forms[0].elements['action'].value='enableUser';document.forms[0].elements['login'].value='${user.login}';"/>
            </c:if>
           </td>
          </tr>
@@ -111,100 +177,14 @@
         </table>
        </p>
       </c:if>
-     </html:form> 
+     </form:form>
     </c:if>
 
-    <c:if test="${page eq 'configuration' or page == null}">
-     <html:form action="/secure/admin/administration">
-     <html:errors/>
-     <html:hidden property="page" value="configuration"/>
-     <html:hidden property="method" value="cancel"/>
-     <table class="list" style="width:450px">
-      <tr>
-       <th colspan="2">
-        <fmt:message key="administration.configuration"/>
-       </th>
-      </tr>
-      <tbody>
-       <tr class="odd">
-        <td>
-         <fmt:message key="administration.configuration.static.path"/>
-        </td>
-        <td>
-         <html:text property="propertyStaticPath" size="30" maxlength="200"/>
-        </td>
-       </tr>
-	   <tr class="even">
-        <td>
-         <fmt:message key="administration.configuration.google.analytics.key"/>
-        </td>
-        <td>
-         <html:text property="googleAnalyticsKey" size="30" maxlength="200"/>
-        </td>
-       </tr>
-       <tr class="odd">
-        <td>
-         <fmt:message key="administration.configuration.email.host"/>
-        </td>
-        <td>
-         <html:text property="smtpHost" size="30" maxlength="200"/>
-        </td>
-       </tr>
-       <tr class="even">
-        <td>
-         <fmt:message key="administration.configuration.email.port"/>
-        </td>
-        <td>  
-	     <html:text property="smtpPort" size="30" maxlength="200"/>
-        </td>
-       </tr>
-       <tr class="odd">
-        <td>
-         <fmt:message key="administration.configuration.email.user"/>
-        </td>
-        <td>
-         <html:text property="smtpUser" size="30" maxlength="200"/>
-        </td>
-       </tr>
-       <tr class="even">
-        <td>
-         <fmt:message key="administration.configuration.email.password"/>
-        </td>
-        <td>
-         <html:password property="smtpPassword" size="30" maxlength="200"/>
-        </td>
-       </tr>
-       <tr class="odd">
-        <td>
-         <fmt:message key="administration.configuration.email.from"/>
-        </td>
-        <td>
-         <html:text property="smtpFrom" size="30" maxlength="200"/>
-        </td>
-       </tr>
-      </tbody>
-     </table>
-      <br/>
-      <html:submit onclick="document.forms[0].elements['method'].value='updateConfiguration';">
-       <fmt:message key="form.submit"/>
-      </html:submit>
-      <html:submit><fmt:message key="form.cancel"/></html:submit>
-     </html:form>
-    </c:if>
- 
-    <c:if test="${page eq 'database'}">
-     <h3><fmt:message key="administration.database.dump"/></h3>
-     <html:form action="/secure/admin/administration">
-      <html:hidden property="method" value="dumpDatabase"/>
-      <html:submit>
-       <fmt:message key="form.submit"/>
-      </html:submit>
-     </html:form>
-    </c:if>
    </div>
    </td>
   </tr>
  </table>
 </div>
 
-<%@ include file="/WEB-INF/jspf/footer.jsp"%>
+</body>
+</html>
