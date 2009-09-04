@@ -474,17 +474,6 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/aspectj/aspectjweaver/1.5.4/aspectjweaver-1.5.4-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.directwebremoting:dwr:2.0.3">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/directwebremoting/dwr/2.0.3/dwr-2.0.3.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/directwebremoting/dwr/2.0.3/dwr-2.0.3-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/directwebremoting/dwr/2.0.3/dwr-2.0.3-sources.jar!/" />
-      </SOURCES>
-    </library>
     <library name="Maven: org.easymock:easymock:2.0">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/easymock/easymock/2.0/easymock-2.0.jar!/" />
@@ -956,6 +945,17 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/opensymphony/sitemesh/2.4/sitemesh-2.4-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.directwebremoting:dwr:3.0.M1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/directwebremoting/dwr/3.0.M1/dwr-3.0.M1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/directwebremoting/dwr/3.0.M1/dwr-3.0.M1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/directwebremoting/dwr/3.0.M1/dwr-3.0.M1-sources.jar!/" />
       </SOURCES>
     </library>
   </component>
