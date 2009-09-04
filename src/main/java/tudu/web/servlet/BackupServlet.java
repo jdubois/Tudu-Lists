@@ -1,18 +1,17 @@
 package tudu.web.servlet;
 
-import java.io.IOException;
-import java.io.Writer;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jdom.Document;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.Writer;
 
 /**
  * RSS feed presentation layer.
@@ -29,7 +28,6 @@ public class BackupServlet extends HttpServlet {
     protected final void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
 
-        log.debug("Execute backup action");
         Document doc = (Document) request.getSession().getAttribute(
                 "todoListDocument");
         request.getSession().removeAttribute("todoListDocument");

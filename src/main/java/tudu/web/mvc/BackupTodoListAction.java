@@ -1,11 +1,16 @@
 package tudu.web.mvc;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.jdom.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.InternalResourceView;
+import tudu.domain.model.TodoList;
 import tudu.service.TodoListsManager;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * Backup a Todo List.
@@ -15,23 +20,21 @@ import tudu.service.TodoListsManager;
 @Controller
 public class BackupTodoListAction {
 
-    private final Log log = LogFactory.getLog(BackupTodoListAction.class);
-
     @Autowired
     private TodoListsManager todoListsManager;
 
     /**
      * Backup a Todo List.
      */
-    public ModelAndView execute()
+    @RequestMapping("/secure/backupTodoList.action")
+    public ModelAndView backup(@RequestParam String listId, HttpSession session)
             throws Exception {
 
-        /*log.debug("Execute action");
-        DynaActionForm todoListForm = (DynaActionForm) form;
-        String listId = (String) todoListForm.get("listId");
         TodoList todoList = todoListsManager.findTodoList(listId);
         Document doc = todoListsManager.backupTodoList(todoList);
-        request.getSession().setAttribute("todoListDocument", doc);*/
-        return new ModelAndView();
+        session.setAttribute("todoListDocument", doc);
+        ModelAndView mv = new ModelAndView();
+        mv.setView(new InternalResourceView("/secure/servlet/tudu_lists_backup.xml"));
+        return mv;
     }
 }
