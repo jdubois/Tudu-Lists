@@ -25,10 +25,6 @@
 				title="menu.administration" 
 				description="Administration" 
 				page="/secure/admin/administration.action"/>
-		<Menu 	name="Monitoring" 
-				title="menu.monitoring" 
-				description="Monitoring" 
-				page="/secure/admin/JAMonAdmin.jsp"/>
 		<Menu 	name="Logout" 
 				title="menu.logout" 
 				description="Log out Menu" 

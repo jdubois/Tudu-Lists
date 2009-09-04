@@ -309,17 +309,6 @@
         <root url="jar://$MAVEN_REPOSITORY$/commons-lang/commons-lang/2.4/commons-lang-2.4-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.jamonapi:jamon:1.0">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/jamonapi/jamon/1.0/jamon-1.0.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/jamonapi/jamon/1.0/jamon-1.0-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/jamonapi/jamon/1.0/jamon-1.0-sources.jar!/" />
-      </SOURCES>
-    </library>
     <library name="Maven: hsqldb:hsqldb:1.8.0.7">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/hsqldb/hsqldb/1.8.0.7/hsqldb-1.8.0.7.jar!/" />

@@ -33,10 +33,6 @@
             <attribute name="method" value="1" />
             <attribute name="URI" value="/WEB-INF/lib/" />
           </containerElement>
-          <containerElement type="library" name="Maven: com.jamonapi:jamon:1.0" level="project">
-            <attribute name="method" value="1" />
-            <attribute name="URI" value="/WEB-INF/lib/" />
-          </containerElement>
           <containerElement type="library" name="Maven: hsqldb:hsqldb:1.8.0.7" level="project">
             <attribute name="method" value="1" />
             <attribute name="URI" value="/WEB-INF/lib/" />
@@ -287,7 +283,6 @@
     <orderEntry type="library" exported="" name="Maven: commons-dbcp:commons-dbcp:1.2.2" level="project" />
     <orderEntry type="library" exported="" name="Maven: commons-pool:commons-pool:1.3" level="project" />
     <orderEntry type="library" exported="" name="Maven: commons-lang:commons-lang:2.4" level="project" />
-    <orderEntry type="library" exported="" name="Maven: com.jamonapi:jamon:1.0" level="project" />
     <orderEntry type="library" exported="" name="Maven: hsqldb:hsqldb:1.8.0.7" level="project" />
     <orderEntry type="library" exported="" name="Maven: javax.mail:mail:1.4" level="project" />
     <orderEntry type="library" exported="" name="Maven: javax.activation:activation:1.1" level="project" />

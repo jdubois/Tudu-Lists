@@ -72,7 +72,6 @@
    if (request.isUserInRole("ROLE_ADMIN")) {
   %>
                 <menu:displayMenu name="Administration"/>
-                <menu:displayMenu name="Monitoring"/>
                     <%
    }
   %>
