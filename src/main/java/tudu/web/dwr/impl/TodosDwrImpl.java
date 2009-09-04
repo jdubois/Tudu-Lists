@@ -261,7 +261,7 @@ public class TodosDwrImpl implements TodosDwr {
         }
         try {
             return WebContextFactory.get().forwardToString(
-                    "/WEB-INF/jspf/todos_table.jsp");
+                    "/WEB-INF/fragments/todos_table.jsp");
         } catch (ServletException e) {
             log.error("ServletException : " + e);
             return "";
@@ -298,7 +298,7 @@ public class TodosDwrImpl implements TodosDwr {
     private String renderFilter() {
         try {
             return WebContextFactory.get().forwardToString(
-                    "/WEB-INF/jspf/todos_table_filter.jsp");
+                    "/WEB-INF/fragments/todos_table_filter.jsp");
         } catch (ServletException e) {
             log.error("ServletException : " + e);
             return "";

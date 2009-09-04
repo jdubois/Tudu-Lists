@@ -101,7 +101,6 @@ public class TodoListsDwrImpl implements TodoListsDwr {
      *      java.lang.String)
      */
     public void addTodoList(String name, String rssAllowed) {
-        log.debug("Execute addTodoList action");
         boolean rssAllowedBool = false;
         if (rssAllowed != null && rssAllowed.equals("1")) {
             rssAllowedBool = true;
@@ -137,7 +136,6 @@ public class TodoListsDwrImpl implements TodoListsDwr {
      * @see tudu.web.dwr.TodoListsDwr#deleteTodoList(java.lang.String)
      */
     public void deleteTodoList(String listId) {
-        log.debug("Execute deleteTodoList action");
         todoListsManager.deleteTodoList(listId);
     }
 }

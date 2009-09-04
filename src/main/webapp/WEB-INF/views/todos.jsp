@@ -5,6 +5,16 @@
 <head>New user registration</head>
 <body>
 
+<%
+    request.setAttribute("ctx", request.getContextPath());
+    String staticCtx = tudu.service.impl.ConfigurationManagerImpl.staticFilesPath;
+    if (staticCtx.equals("")) {
+        request.setAttribute("staticCtx", request.getContextPath());
+    } else {
+        request.setAttribute("staticCtx", staticCtx);
+    }
+%>
+
 <script type='text/javascript' src='${staticCtx}/scripts/calendar.js'></script>
 <script type='text/javascript' src='${staticCtx}/scripts/calendar-en.js'></script>
 <script type='text/javascript' src='${staticCtx}/scripts/calendar-setup.js'></script>
