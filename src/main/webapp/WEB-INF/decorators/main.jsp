@@ -84,7 +84,7 @@
             <body onload="initMenu();">
             <table width="100%">
                 <tr>
-                    <td width="152"><a href="http://tudu.sourceforge.net"><img src="${staticCtx}/images/tudu_logo.png"
+                    <td width="152"><a href="http://www.julien-dubois.com/tudu-lists"><img src="${staticCtx}/images/tudu_logo.png"
                                                                                alt="Tudu Lists" width="150" height="30"
                                                                                border="0"/></a></td>
                     <td>

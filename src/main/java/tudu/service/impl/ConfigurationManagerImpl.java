@@ -75,7 +75,7 @@ public class ConfigurationManagerImpl implements ConfigurationManager,
             propertyDAO.saveProperty(hostProperty);
             Property portProperty = new Property();
             portProperty.setKey("smtp.port");
-            portProperty.setValue("");
+            portProperty.setValue("25");
             propertyDAO.saveProperty(portProperty);
             Property userProperty = new Property();
             userProperty.setKey("smtp.user");

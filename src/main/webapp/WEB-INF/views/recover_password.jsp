@@ -1,14 +1,21 @@
-<%@ page language="java" errorPage="/WEB-INF/jsp/error.jsp" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
-<%@ include file="/WEB-INF/jspf/header.jsp"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="html" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" errorPage="/WEB-INF/views/error.jsp" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
+<html>
+<head>My info</head>
+<body>
 
 <div align="center">
  <h3><fmt:message key="recover.password.title"/></h3>
- <html:form action="/recoverPassword" focus="login">
+ <form:form commandName="user">
  <c:if test="${success eq 'true'}">
   <span class="success"><fmt:message key="recover.password.success"/></span>
  </c:if>
- <html:errors/>
- <html:hidden property="method" value="cancel"/>
+ <c:if test="${message ne null}">
+  <span class="error"><fmt:message key="${message}"/></span>
+ </c:if>
  
  <table class="list" style="width:250px">
   <tr>
@@ -22,17 +29,15 @@
      <fmt:message key="user.info.login"/> *
     </td>
     <td>
-     <html:text property="login" size="20" maxlength="50"/>
+     <form:input path="login" size="20" maxlength="50"/>
     </td>
    </tr>
   </tbody>
  </table>
   <br/>
-  <html:submit onclick="document.forms[0].elements['method'].value='sendMail';">
-   <fmt:message key="form.submit"/>
-  </html:submit>
-  <html:submit><fmt:message key="form.cancel"/></html:submit>
- </html:form>
+  <input type="submit" value="<fmt:message key="form.submit"/>" />
+ </form:form>
 </div>
 
-<%@ include file="/WEB-INF/jspf/footer.jsp"%>
+</body>
+</html>
