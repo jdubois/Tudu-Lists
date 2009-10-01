@@ -2,10 +2,12 @@ package tudu.web.mvc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.multipart.support.StringMultipartFileEditor;
 import tudu.service.TodoListsManager;
+import tudu.domain.model.TodoList;
 
 /**
  * Restore a Todo List.
@@ -13,35 +15,38 @@ import tudu.service.TodoListsManager;
  * @author Julien Dubois
  */
 @Controller
+@RequestMapping("/secure/restoreTodoList.action")
 public class RestoreTodoListAction {
 
     @Autowired
     private TodoListsManager todoListsManager;
 
+    @InitBinder
+	public void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(String.class, new StringMultipartFileEditor());
+	}
+
     /**
      * Display the main screen for restoring a Todo List.
      */
-    @RequestMapping("secure/restoreTodoList.action")
+    @RequestMapping(method = RequestMethod.GET)
     public ModelAndView display(@RequestParam String listId) {
-
-        /*log.debug("Execute display action");
-        RestoreTodoListForm restoreTodoListForm = (RestoreTodoListForm) form;
-        String listId = restoreTodoListForm.getListId();
-
+        ModelAndView mv = new ModelAndView();
         TodoList todoList = todoListsManager.findTodoList(listId);
-        request.setAttribute("todoList", todoList);
-
-        if (restoreTodoListForm.getRestoreChoice() == null) {
-            restoreTodoListForm.setRestoreChoice("create");
-        }
-        return mapping.findForward("restore");*/
-        return new ModelAndView();
+        mv.addObject("todoList", todoList);
+        RestoreTodoListForm form = new RestoreTodoListForm();
+        form.setRestoreChoice("create");
+        form.setListId(listId);
+        mv.addObject("restoreTodoListForm", form);
+        mv.setViewName("restore");
+        return mv;
     }
 
     /**
      * Restore a Todo List.
      */
-    public ModelAndView restore() {
+    @RequestMapping(method = RequestMethod.POST)
+    public ModelAndView restore(@ModelAttribute RestoreTodoListForm form) {
 
         /*log.debug("Execute restore action");
         ActionMessages errors = form.validate(mapping, request);
@@ -89,8 +94,8 @@ public class RestoreTodoListAction {
         return new ModelAndView();
     }
 
-    public ModelAndView cancel() {
-        return new ModelAndView();
+    public String cancel() {
+        return "redirect:showTodos.action";
     }
 
 }

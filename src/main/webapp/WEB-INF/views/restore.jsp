@@ -9,10 +9,9 @@
 
 <div align="center">
  <h3><fmt:message key="restore.title"/></h3>
- <html:form action="/secure/restoreTodoList" method="POST" enctype="multipart/form-data">
- <html:errors/>
- <html:hidden property="listId"/>
- <html:hidden property="method" value="cancel"/>
+ <form:form commandName="restoreTodoListForm" enctype="multipart/form-data">
+ <form:errors/>
+ <form:hidden path="listId"/>
  <table class="list" style="width:600px">
   <tr>
    <th colspan="2">
@@ -26,7 +25,7 @@
     </td>
     <td>
      <br/>
-     <html:file property="backupFile" />
+     <input type="file" name="backupFile" />
      <br/><br/>
     </td>
    </tr>
@@ -36,15 +35,15 @@
     </td>
     <td>
      <br/>
-     <html:radio property="restoreChoice" value="create"/>
+     <form:radiobutton path="restoreChoice" value="create"/>
      <fmt:message key="restore.choice.create"/>
      <br/><br/>
-     <html:radio property="restoreChoice" value="replace"/>
+     <form:radiobutton path="restoreChoice" value="replace"/>
      <fmt:message key="restore.choice.replace">
       <fmt:param value="${todoList.name}"/>
      </fmt:message>
      <br/><br/>
-     <html:radio property="restoreChoice" value="merge"/>
+     <form:radiobutton path="restoreChoice" value="merge"/>
      <fmt:message key="restore.choice.merge">
       <fmt:param value="${todoList.name}"/>
      </fmt:message>
@@ -54,11 +53,8 @@
   </tbody>
  </table>
   <br/>
-  <html:submit onclick="document.forms[0].elements['method'].value='restore';">
-   <fmt:message key="form.submit"/>
-  </html:submit>
-  <html:submit><fmt:message key="form.cancel"/></html:submit>
- </html:form>
+  <input type="submit" value="<fmt:message key="form.submit"/>" />
+ </form:form>
 </div>
 
 </body>

@@ -86,7 +86,6 @@
  </table>
   <br/>
   <input type="submit" value="<fmt:message key="form.submit"/>" />
-  <input type="reset" value="<fmt:message key="form.cancel"/>" />
  </form:form>
 </div>
 
