@@ -103,7 +103,7 @@
             <table align="center" id="page">
                 <tr>
                     <td>
-                        <div id="title">Tudu Lists v. <%=tudu.Constants.VERSION%>
+                        <div id="title">Tudu Lists v. <%=tudu.Constants.VERSION%> - <%=request.getSession().getServletContext().getContextPath()%>
                         </div>
                     </td>
                     <td>

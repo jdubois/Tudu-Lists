@@ -35,7 +35,7 @@
     </div>
     <br/>
    </c:if>
-   <form action="<c:url value="/j_spring_security_check"/>" method="post">
+   <form action="j_spring_security_check" method="post">
     <table border="0" cellspacing="2" cellpadding="3">
      <tr>
       <th style="text-align: left"><fmt:message key="login.login"/></th>

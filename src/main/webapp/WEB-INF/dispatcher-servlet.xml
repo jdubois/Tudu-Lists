@@ -22,7 +22,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+<!--    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="exceptionMappings">
             <map>
                 <entry key="DataAccessException" value="databaseDown"/>
@@ -30,5 +30,5 @@
             </map>
         </property>
         <property name="defaultErrorView" value="error"/>
-    </bean>
+    </bean>-->
 </beans>

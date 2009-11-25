@@ -5,14 +5,6 @@
 
 <h3><fmt:message key="error.title"/></h3>
 <p>
-<pre>
-<% 
-    Exception ex = (Exception) request.getAttribute("org.apache.struts.action.EXCEPTION");
-    if (ex != null) {
-        ex.printStackTrace(new java.io.PrintWriter(out));
-    }
-%>
-</pre>
 <hr/>
 <pre>
 <%
