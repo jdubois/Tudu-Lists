@@ -1,16 +1,16 @@
 package tudu.integration;
 
-import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.orm.ObjectRetrievalFailureException;
-import org.springframework.security.context.SecurityContextHolder;
-import org.springframework.security.context.SecurityContextImpl;
-import org.springframework.security.providers.ProviderManager;
-import org.springframework.security.providers.UsernamePasswordAuthenticationToken;
-import org.springframework.security.userdetails.UserDetails;
-import org.springframework.security.userdetails.UserDetailsService;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.context.SecurityContextImpl;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +23,8 @@ import tudu.service.TodoListsManager;
 import tudu.service.TodosManager;
 import tudu.service.UserAlreadyExistsException;
 import tudu.service.UserManager;
+
+import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath*:/META-INF/spring/*.xml"})
@@ -41,7 +43,8 @@ public class IntegrationTest {
     private UserDetailsService userDetailsService;
 
     @Autowired
-    private ProviderManager authenticationManager;
+    @Qualifier("authenticationManager")
+    private AuthenticationManager authenticationManager;
 
     @Test
     @Transactional
@@ -204,7 +207,7 @@ public class IntegrationTest {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
                 userDetails, "test_password");
 
-        authenticationManager.doAuthentication(token);
+        authenticationManager.authenticate(token);
         secureContext.setAuthentication(token);
         SecurityContextHolder.setContext(secureContext);
     }

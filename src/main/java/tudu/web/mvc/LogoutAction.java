@@ -1,7 +1,7 @@
 package tudu.web.mvc;
 
-import org.springframework.security.context.SecurityContextHolder;
-import org.springframework.security.ui.rememberme.TokenBasedRememberMeServices;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

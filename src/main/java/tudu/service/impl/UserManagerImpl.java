@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.ObjectRetrievalFailureException;
-import org.springframework.security.context.SecurityContext;
-import org.springframework.security.context.SecurityContextHolder;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tudu.Constants;
@@ -96,7 +96,7 @@ public class UserManagerImpl implements UserManager {
     @Transactional(readOnly = true)
     public User getCurrentUser() {
         SecurityContext securityContext = SecurityContextHolder.getContext();
-        org.springframework.security.userdetails.User springSecurityUser = (org.springframework.security.userdetails.User) securityContext
+        org.springframework.security.core.userdetails.User springSecurityUser = (org.springframework.security.core.userdetails.User) securityContext
                 .getAuthentication().getPrincipal();
 
         return this.findUser(springSecurityUser.getUsername());

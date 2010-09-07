@@ -1,16 +1,17 @@
 package tudu.security;
 
 import org.easymock.EasyMock;
-import static org.easymock.EasyMock.*;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
-import org.springframework.security.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.test.util.ReflectionTestUtils;
 import tudu.domain.RolesEnum;
 import tudu.domain.model.Role;
 import tudu.domain.model.User;
 import tudu.service.UserManager;
+
+import static org.easymock.EasyMock.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class UserDetailsServiceImplTest {
 
@@ -39,9 +40,9 @@ public class UserDetailsServiceImplTest {
         assertEquals(user.getLogin(), springSecurityUser.getUsername());
         assertEquals(user.getPassword(), springSecurityUser.getPassword());
         assertNotNull(user.getLastAccessDate());
-        assertEquals(1, springSecurityUser.getAuthorities().length);
+        assertEquals(1, springSecurityUser.getAuthorities().size());
         assertEquals(RolesEnum.ROLE_USER.toString(),
-                springSecurityUser.getAuthorities()[0].getAuthority());
+                springSecurityUser.getAuthorities().iterator().next().getAuthority());
 
         verify(userManager);
     }

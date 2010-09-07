@@ -5,11 +5,11 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.orm.ObjectRetrievalFailureException;
-import org.springframework.security.GrantedAuthority;
-import org.springframework.security.GrantedAuthorityImpl;
-import org.springframework.security.userdetails.UserDetails;
-import org.springframework.security.userdetails.UserDetailsService;
-import org.springframework.security.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +17,9 @@ import tudu.domain.model.Role;
 import tudu.domain.model.User;
 import tudu.service.UserManager;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Set;
 
 /**
@@ -44,7 +46,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (log.isDebugEnabled()) {
             log.debug("Security verification for user '" + login + "'");
         }
-        User user = null;
+        User user;
         try {
             user = userManager.findUser(login);
         } catch (ObjectRetrievalFailureException orfe) {
@@ -55,14 +57,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         userManager.updateUser(user);
 
         Set<Role> roles = user.getRoles();
-        GrantedAuthority[] arrayAuths = new GrantedAuthority[roles.size()];
-        int index = 0;
+
+        Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
         for (Role role : roles) {
-            arrayAuths[index++] = new GrantedAuthorityImpl(role.getRole());
+            authorities.add(new GrantedAuthorityImpl(role.getRole()));
         }
 
-        return new org.springframework.security.userdetails.User(login,
+        return new org.springframework.security.core.userdetails.User(login,
                 user.getPassword(), user.isEnabled(), true, true, true,
-                arrayAuths);
+                authorities);
     }
 }
