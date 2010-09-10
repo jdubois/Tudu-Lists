@@ -1,12 +1,14 @@
 package tudu.domain.model;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotSame;
 import org.junit.Test;
+import tudu.domain.Todo;
 
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.TreeSet;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
 
 public class TodoTest {
 

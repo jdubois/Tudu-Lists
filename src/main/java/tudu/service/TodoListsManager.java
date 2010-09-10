@@ -2,7 +2,7 @@ package tudu.service;
 
 import org.jdom.Document;
 import org.jdom.JDOMException;
-import tudu.domain.model.TodoList;
+import tudu.domain.TodoList;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -92,11 +92,11 @@ public interface TodoListsManager {
      * Restore a Todo List.
      * 
      * @param restoreChoice
-     *            The type of restore (create, replace or merge)
+     *            The type of RestoreController (create, replace or merge)
      * @param listId
      *            The Todo List ID
      * @param todoListContent
-     *            The content to restore
+     *            The content to RestoreController
      */
     void restoreTodoList(String restoreChoice, String listId,
             InputStream todoListContent) throws JDOMException, IOException;

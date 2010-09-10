@@ -1,6 +1,6 @@
 package tudu.service;
 
-import tudu.domain.model.User;
+import tudu.domain.User;
 
 import java.util.List;
 
@@ -42,7 +42,7 @@ public interface UserManager {
 
     /**
      * Update a user's information.
-     * 
+     *
      * @param user
      *            The user to update
      */

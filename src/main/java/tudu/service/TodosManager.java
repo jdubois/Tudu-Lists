@@ -1,6 +1,6 @@
 package tudu.service;
 
-import tudu.domain.model.Todo;
+import tudu.domain.Todo;
 
 import java.util.Collection;
 
@@ -43,14 +43,6 @@ public interface TodosManager {
      *            The Todo to create
      */
     void createTodo(String listId, Todo todo);
-
-    /**
-     * Update a Todo.
-     * 
-     * @param todo
-     *            The Todo to update
-     */
-    void updateTodo(Todo todo);
 
     /**
      * Delete a Todo.

@@ -1,15 +1,16 @@
 package tudu.web.dwr.impl;
 
-import static org.easymock.EasyMock.*;
 import org.junit.After;
-import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.util.ReflectionTestUtils;
-import tudu.domain.model.TodoList;
-import tudu.domain.model.User;
+import tudu.domain.TodoList;
+import tudu.domain.User;
 import tudu.service.TodoListsManager;
 import tudu.service.UserManager;
+
+import static org.easymock.EasyMock.*;
+import static org.junit.Assert.assertEquals;
 
 public class TodoListsDwrImplTest {
 

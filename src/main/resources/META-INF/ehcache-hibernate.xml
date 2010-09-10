@@ -13,70 +13,70 @@
 
     <!-- Object cache -->
 
-     <cache name="tudu.domain.model.User"
+     <cache name="tudu.domain.User"
         maxElementsInMemory="5000"
         eternal="false"
         overflowToDisk="true"
         timeToIdleSeconds="600"
         />
         
-     <cache name="tudu.domain.model.User.roles"
+     <cache name="tudu.domain.User.roles"
         maxElementsInMemory="20000"
         eternal="false"
         overflowToDisk="true"
         timeToIdleSeconds="600"
         /> 
         
-     <cache name="tudu.domain.model.User.todoLists"
+     <cache name="tudu.domain.User.todoLists"
         maxElementsInMemory="20000"
         eternal="false"
         overflowToDisk="true"
         timeToIdleSeconds="600"
         /> 
         
-     <cache name="tudu.domain.model.Role"
+     <cache name="tudu.domain.Role"
         maxElementsInMemory="20000"
         eternal="false"
         overflowToDisk="true"
         timeToIdleSeconds="600"
         /> 
 
-     <cache name="tudu.domain.model.Todo"
+     <cache name="tudu.domain.Todo"
         maxElementsInMemory="50000"
         eternal="false"
         overflowToDisk="true"
         timeToIdleSeconds="600"
         />
 	
-	<cache name="tudu.domain.model.Todo.subTodos"
+	<cache name="tudu.domain.Todo.subTodos"
         maxElementsInMemory="50000"
         eternal="false"
         overflowToDisk="true"
         timeToIdleSeconds="600"
         />
 
-     <cache name="tudu.domain.model.TodoList"
+     <cache name="tudu.domain.TodoList"
         maxElementsInMemory="20000"
         eternal="false"
         overflowToDisk="true"
         timeToIdleSeconds="600"
         />
         
-     <cache name="tudu.domain.model.TodoList.todos"
+     <cache name="tudu.domain.TodoList.todos"
         maxElementsInMemory="50000"
         eternal="false"
         overflowToDisk="true"
         timeToIdleSeconds="600"
         />
         
-     <cache name="tudu.domain.model.TodoList.users"
+     <cache name="tudu.domain.TodoList.users"
         maxElementsInMemory="5000"
         eternal="false"
         overflowToDisk="true"
         timeToIdleSeconds="300"
         />
         
-     <cache name="tudu.domain.model.Property"
+     <cache name="tudu.domain.Property"
         maxElementsInMemory="50"
         eternal="false"
         overflowToDisk="true"

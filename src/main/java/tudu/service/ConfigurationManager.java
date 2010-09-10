@@ -1,6 +1,6 @@
 package tudu.service;
 
-import tudu.domain.model.Property;
+import tudu.domain.Property;
 
 /**
  * Manage the application configuration.

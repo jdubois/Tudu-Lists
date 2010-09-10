@@ -1,7 +1,7 @@
 package tudu.web.mvc;
 
 /**
- * Form used by RestoreTodoListAction.
+ * Form used by RestoreController.
  *
  * @author Julien Dubois
  */

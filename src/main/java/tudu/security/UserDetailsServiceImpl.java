@@ -11,10 +11,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import tudu.domain.model.Role;
-import tudu.domain.model.User;
+import tudu.domain.Role;
+import tudu.domain.User;
 import tudu.service.UserManager;
 
 import java.util.ArrayList;
@@ -28,7 +27,6 @@ import java.util.Set;
  * @author Julien Dubois
  */
 @Service("userDetailsService")
-@Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final Log log = LogFactory.getLog(UserDetailsServiceImpl.class);
@@ -39,7 +37,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     /**
      * Load a user for Spring Security.
      */
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional
     public UserDetails loadUserByUsername(String login)
             throws UsernameNotFoundException, DataAccessException {
         login = login.toLowerCase();
@@ -54,7 +52,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                     + "' could not be found.");
         }
         user.setLastAccessDate(Calendar.getInstance().getTime());
-        userManager.updateUser(user);
 
         Set<Role> roles = user.getRoles();
 

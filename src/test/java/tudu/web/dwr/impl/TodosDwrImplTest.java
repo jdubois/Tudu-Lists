@@ -1,20 +1,21 @@
 package tudu.web.dwr.impl;
 
-import static org.easymock.EasyMock.*;
 import org.junit.After;
-import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.util.ReflectionTestUtils;
-import tudu.domain.model.Todo;
-import tudu.domain.model.TodoList;
-import tudu.domain.model.User;
+import tudu.domain.Todo;
+import tudu.domain.TodoList;
+import tudu.domain.User;
 import tudu.service.TodosManager;
 import tudu.service.UserManager;
 import tudu.web.dwr.bean.RemoteTodo;
 import tudu.web.dwr.bean.RemoteTodoList;
 
 import java.util.Calendar;
+
+import static org.easymock.EasyMock.*;
+import static org.junit.Assert.*;
 
 public class TodosDwrImplTest {
 
@@ -150,7 +151,7 @@ public class TodosDwrImplTest {
     public void testEditTodo() {
         expect(todosManager.findTodo("001")).andReturn(todo);
 
-        todosManager.updateTodo(todo);
+        //todosManager.updateTodo(todo);
 
         replay_();
 
@@ -172,7 +173,7 @@ public class TodosDwrImplTest {
     public void testEditTodoWithErrors() {
         expect(todosManager.findTodo("001")).andReturn(todo);
 
-        todosManager.updateTodo(todo);
+        //todosManager.updateTodo(todo);
 
         replay_();
 

@@ -1,7 +1,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" errorPage="/WEB-INF/views/error.jsp" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
-<%@ page import="org.springframework.security.ui.webapp.AuthenticationProcessingFilter" %>
 <html>
 <head></head>
 <body>
@@ -43,10 +42,7 @@
        <input 	type="text" 
            		name="j_username" 
            		size="20" 
-           		maxlength="50" 
-           		<c:if test="${not empty param.login_error}">
-            			value='<%= session.getAttribute(AuthenticationProcessingFilter.SPRING_SECURITY_LAST_USERNAME_KEY) %>'
-           		</c:if>
+           		maxlength="50"
        />
       </td>
      </tr>

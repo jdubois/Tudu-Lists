@@ -1,26 +1,25 @@
 package tudu.service.impl;
 
 import org.easymock.EasyMock;
-import static org.easymock.EasyMock.*;
 import org.jdom.Document;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 import org.junit.After;
-import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.util.ReflectionTestUtils;
-import tudu.domain.dao.TodoDAO;
-import tudu.domain.dao.TodoListDAO;
-import tudu.domain.model.Todo;
-import tudu.domain.model.TodoList;
-import tudu.domain.model.User;
+import tudu.domain.Todo;
+import tudu.domain.TodoList;
+import tudu.domain.User;
 import tudu.security.PermissionDeniedException;
 import tudu.service.UserManager;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Calendar;
+
+import static org.easymock.EasyMock.*;
+import static org.junit.Assert.*;
 
 public class TodoListsManagerImplTest {
 
@@ -36,8 +35,6 @@ public class TodoListsManagerImplTest {
     TodoList todoList = new TodoList();
     User user = new User();
 
-    TodoListDAO todoListDAO = null;
-    TodoDAO todoDAO = null;
     UserManager userManager = null;
 
     TodoListsManagerImpl todoListsManager = new TodoListsManagerImpl();
@@ -52,35 +49,24 @@ public class TodoListsManagerImplTest {
         user.setFirstName("First name");
         user.setLastName("Last name");
 
-        todoListDAO = createMock(TodoListDAO.class);
         userManager = createMock(UserManager.class);
 
-        todoDAO = createMock(TodoDAO.class);
-
-        ReflectionTestUtils.setField(todoListsManager, "todoListDAO", todoListDAO);
-        ReflectionTestUtils.setField(todoListsManager, "todoDAO", todoDAO);
         ReflectionTestUtils.setField(todoListsManager, "userManager", userManager);
     }
 
     @After
     public void after() {
-        verify(todoListDAO);
-        verify(todoDAO);
         verify(userManager);
     }
 
     private void replay() {
-        EasyMock.replay(todoListDAO);
-        EasyMock.replay(todoDAO);
         EasyMock.replay(userManager);
     }
 
     @Test
     public void testCreateTodoList() {
-        todoListDAO.saveTodoList(todoList);
 
         expect(userManager.getCurrentUser()).andReturn(user);
-        userManager.updateUser(user);
 
         replay();
 
@@ -94,7 +80,7 @@ public class TodoListsManagerImplTest {
         todoList.getUsers().add(user);
         user.getTodoLists().add(todoList);
 
-        expect(todoListDAO.getTodoList("001")).andReturn(todoList);
+        //expect(todoListDAO.getTodoList("001")).andReturn(todoList);
 
         expect(userManager.getCurrentUser()).andReturn(user);
 
@@ -109,7 +95,7 @@ public class TodoListsManagerImplTest {
 
     @Test
     public void testFailedFindTodoList() {
-        expect(todoListDAO.getTodoList("001")).andReturn(todoList);
+        //expect(todoListDAO.getTodoList("001")).andReturn(todoList);
 
         expect(userManager.getCurrentUser()).andReturn(user);
 
@@ -125,7 +111,7 @@ public class TodoListsManagerImplTest {
 
     @Test
     public void testUpdateTodoList() {
-        todoListDAO.updateTodoList(todoList);
+        //todoListDAO.updateTodoList(todoList);
 
         replay();
 
@@ -139,11 +125,11 @@ public class TodoListsManagerImplTest {
 
         expect(userManager.getCurrentUser()).andReturn(user);
 
-        expect(todoListDAO.getTodoList("001")).andReturn(todoList);
+        //expect(todoListDAO.getTodoList("001")).andReturn(todoList);
 
         userManager.updateUser(user);
 
-        todoListDAO.removeTodoList("001");
+        //todoListDAO.removeTodoList("001");
 
         replay();
 
@@ -159,13 +145,13 @@ public class TodoListsManagerImplTest {
 
         expect(userManager.getCurrentUser()).andReturn(user);
 
-        expect(todoListDAO.getTodoList("001")).andReturn(todoList);
+        //expect(todoListDAO.getTodoList("001")).andReturn(todoList);
 
         User user2 = new User();
         user2.setLogin("another_user");
         expect(userManager.findUser("another_user")).andReturn(user2);
 
-        todoListDAO.updateTodoList(todoList);
+        //todoListDAO.updateTodoList(todoList);
 
         replay();
 
@@ -187,11 +173,11 @@ public class TodoListsManagerImplTest {
 
         expect(userManager.getCurrentUser()).andReturn(user);
 
-        expect(todoListDAO.getTodoList("001")).andReturn(todoList);
+        //expect(todoListDAO.getTodoList("001")).andReturn(todoList);
 
         expect(userManager.findUser("another_user")).andReturn(user2);
 
-        todoListDAO.updateTodoList(todoList);
+        //todoListDAO.updateTodoList(todoList);
 
         replay();
 
@@ -241,10 +227,10 @@ public class TodoListsManagerImplTest {
 
         expect(userManager.getCurrentUser()).andReturn(user);
         TodoList todoList = new TodoList();
-        todoListDAO.saveTodoList(todoList);
+        //todoListDAO.saveTodoList(todoList);
         userManager.updateUser(user);
         Todo todo = new Todo();
-        todoDAO.saveTodo(todo);
+        //todoDAO.saveTodo(todo);
 
         replay();
 
@@ -264,12 +250,12 @@ public class TodoListsManagerImplTest {
         todo.setTodoList(todoList);
         todoList.getTodos().add(todo);
 
-        expect(todoListDAO.getTodoList("001")).andReturn(todoList);
+        //expect(todoListDAO.getTodoList("001")).andReturn(todoList);
         expect(userManager.getCurrentUser()).andReturn(user);
-        todoDAO.removeTodo("0001");
-        todoListDAO.updateTodoList(todoList);
+        //todoDAO.removeTodo("0001");
+        //todoListDAO.updateTodoList(todoList);
         Todo createdTodo = new Todo();
-        todoDAO.saveTodo(createdTodo);
+        //todoDAO.saveTodo(createdTodo);
 
         replay();
 
@@ -284,13 +270,13 @@ public class TodoListsManagerImplTest {
         todoList.getUsers().add(user);
         user.getTodoLists().add(todoList);
 
-        expect(todoListDAO.getTodoList("001")).andReturn(todoList);
+        //expect(todoListDAO.getTodoList("001")).andReturn(todoList);
         expect(userManager.getCurrentUser()).andReturn(user);
 
         Todo createdTodo = new Todo();
-        todoDAO.saveTodo(createdTodo);
+        //todoDAO.saveTodo(createdTodo);
 
-        todoListDAO.updateTodoList(todoList);
+        //todoListDAO.updateTodoList(todoList);
 
         replay();
 

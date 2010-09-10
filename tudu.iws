@@ -5,18 +5,109 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="240a5786-c378-4e5a-bcc9-1c95d6efb01b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tudu.iml" afterPath="$PROJECT_DIR$/tudu.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tudu/service/impl/TodosManagerImpl.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/service/impl/TodosManagerImpl.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/model/Todo.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/domain/Todo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tudu.ipr" afterPath="$PROJECT_DIR$/tudu.ipr" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/META-INF/spring/application-context-security.xml" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/spring/application-context-security.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/menu-config.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/ShowRssFeedAction.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/ShowRssFeedAction.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/scripts/tabs.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/secure/admin/asc.gif" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/tudu/web/servlet/RssFeedServletTest.java" afterPath="$PROJECT_DIR$/src/test/java/tudu/web/servlet/RssFeedServletTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/ShowTodosAction.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/ListsController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/model/comparator/package.html" afterPath="$PROJECT_DIR$/src/main/java/tudu/domain/comparator/package.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/RestoreTodoListForm.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/RestoreTodoListForm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/tudu/service/impl/ConfigurationManagerImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/tudu/service/impl/ConfigurationManagerImplTest.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/scripts/scriptaculous/controls.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/tudu/integration/IntegrationTest.java" afterPath="$PROJECT_DIR$/src/test/java/tudu/integration/IntegrationTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/model/comparator/TodoByDueDateAscComparator.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/domain/comparator/TodoByDueDateAscComparator.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/dao/jpa/PropertyDAOJpa.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/tudu/domain/model/comparator/TodoByDueDateComparatorTest.java" afterPath="$PROJECT_DIR$/src/test/java/tudu/domain/comparator/TodoByDueDateComparatorTest.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/dao/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/dao/UserDAO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/welcome.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/welcome.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/tudu/service/impl/UserManagerImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/tudu/service/impl/UserManagerImplTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tudu/web/servlet/RssFeedServlet.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/web/servlet/RssFeedServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/tudu/security/UserDetailsServiceImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/tudu/security/UserDetailsServiceImplTest.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/css/calendar-blue.css" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/tudu/AllTests.java" afterPath="$PROJECT_DIR$/src/test/java/tudu/AllTests.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tudu/service/impl/ConfigurationManagerImpl.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/service/impl/ConfigurationManagerImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/META-INF/spring/application-context-infrastructure.xml" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/spring/application-context-infrastructure.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tudu/service/impl/UserManagerImpl.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/service/impl/UserManagerImpl.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/css/global.css" afterPath="$PROJECT_DIR$/src/main/webapp/css/tudu.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/WelcomeAction.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/WelcomeController.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/dao/PropertyDAO.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/tudu/web/dwr/impl/TodosDwrImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/tudu/web/dwr/impl/TodosDwrImplTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/package.html" afterPath="$PROJECT_DIR$/src/main/java/tudu/domain/package.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/RegisterAction.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/RegisterController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/tudu/domain/model/comparator/TodoByDueDateAscComparatorTest.java" afterPath="$PROJECT_DIR$/src/test/java/tudu/domain/comparator/TodoByDueDateAscComparatorTest.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/scripts/calendar-en.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/META-INF/spring/application-context-security.xml" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/spring/application-context-security.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/model/Role.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/domain/Role.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/dao/jpa/TodoListDAOJpa.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tudu/service/impl/package.html" afterPath="$PROJECT_DIR$/src/main/java/tudu/service/impl/package.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/dao/RoleDAO.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/tudu/web/dwr/impl/TodoListsDwrImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/tudu/web/dwr/impl/TodoListsDwrImplTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/tudu/domain/model/comparator/TodoByDescriptionComparatorTest.java" afterPath="$PROJECT_DIR$/src/test/java/tudu/domain/comparator/TodoByDescriptionComparatorTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tudu/service/UserManager.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/service/UserManager.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/model/comparator/TodoByDescriptionAscComparator.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/domain/comparator/TodoByDescriptionAscComparator.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/tudu/domain/model/comparator/TodoByAssignedUserComparatorTest.java" afterPath="$PROJECT_DIR$/src/test/java/tudu/domain/comparator/TodoByAssignedUserComparatorTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/tudu/web/filter/MonitorFilter.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/dao/jpa/TodoDAOJpa.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/scripts/scriptaculous/effects.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/tudu/web/dwr/aspectj/DwrExceptionHandlerAspect.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tudu/service/ConfigurationManager.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/service/ConfigurationManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tudu.iml" afterPath="$PROJECT_DIR$/tudu.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tudu/service/TodosManager.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/service/TodosManager.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/scripts/calendar-setup.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/tudu/domain/model/comparator/TodoByDescriptionAscComparatorTest.java" afterPath="$PROJECT_DIR$/src/test/java/tudu/domain/comparator/TodoByDescriptionAscComparatorTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/model/comparator/TodoByPriorityAscComparator.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/domain/comparator/TodoByPriorityAscComparator.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/scripts/calendar.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/domain/User.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/MyInfoAction.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/AccountController.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/dao/TodoListDAO.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/RestoreTodoListAction.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/RestoreController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/tudu/service/impl/TodosManagerImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/tudu/service/impl/TodosManagerImplTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/RecoverPasswordAction.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/RecoverPasswordController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/tudu/domain/model/comparator/TodoByPriorityAscComparatorTest.java" afterPath="$PROJECT_DIR$/src/test/java/tudu/domain/comparator/TodoByPriorityAscComparatorTest.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/secure/admin/JAMonAdmin.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/scripts/scriptaculous/scriptaculous.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/model/comparator/TodoByDueDateComparator.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/domain/comparator/TodoByDueDateComparator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/tudu/service/impl/TodoListsManagerImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/tudu/service/impl/TodoListsManagerImplTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tudu/web/dwr/impl/TodosDwrImpl.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/web/dwr/impl/TodosDwrImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tudu.iws" afterPath="$PROJECT_DIR$/tudu.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/LogoutAction.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/LogoutAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/tudu/integration/IntegrationTest.java" afterPath="$PROJECT_DIR$/src/test/java/tudu/integration/IntegrationTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tudu/web/dwr/impl/TodoListsDwrImpl.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/web/dwr/impl/TodoListsDwrImpl.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/scripts/scriptaculous/builder.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/scripts/scriptaculous/slider.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tudu/service/TodoListsManager.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/service/TodoListsManager.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/model/comparator/TodoByAssignedUserComparator.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/domain/comparator/TodoByAssignedUserComparator.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/dao/TodoDAO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/css/jamon_styles.css" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/AdministrationAction.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/AdministrationController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/scripts/scriptaculous/MIT-LICENSE" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/tudu/domain/model/TodoTest.java" afterPath="$PROJECT_DIR$/src/test/java/tudu/domain/model/TodoTest.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/secure/admin/desc.gif" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/model/comparator/TodoByAssignedUserAscComparator.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/domain/comparator/TodoByAssignedUserAscComparator.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/model/TodoList.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/domain/TodoList.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/LogoutAction.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/LogoutController.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/scripts/scriptaculous/version.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/model/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/css/tabs.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/scripts/scriptaculous/prototype.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/BackupTodoListAction.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/web/mvc/BackupController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/META-INF/ehcache-hibernate.xml" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/ehcache-hibernate.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/scripts/scriptaculous/dragdrop.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/model/comparator/TodoByDescriptionComparator.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/domain/comparator/TodoByDescriptionComparator.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/dao/jpa/RoleDAOJpa.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/dwr.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tudu/service/impl/TodoListsManagerImpl.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/service/impl/TodoListsManagerImpl.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/dao/jpa/UserDAOJpa.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tudu/security/UserDetailsServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/security/UserDetailsServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/tudu/security/UserDetailsServiceImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/tudu/security/UserDetailsServiceImplTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/META-INF/spring/application-context.xml" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/spring/application-context.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/tudu/domain/model/comparator/TodoByAssignedUserAscComparatorTest.java" afterPath="$PROJECT_DIR$/src/test/java/tudu/domain/comparator/TodoByAssignedUserAscComparatorTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tudu/domain/model/Property.java" afterPath="$PROJECT_DIR$/src/main/java/tudu/domain/Property.java" />
     </list>
     <ignored path=".idea/workspace.xml" />
     <ignored path="tudu.iws" />
@@ -85,21 +176,10 @@
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="IntegrationTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/tudu/integration/IntegrationTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="38" selection-start="1672" selection-end="1695" vertical-scroll-proportion="-13.384615">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application-context-security.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="application-context-security.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/spring/application-context-security.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="36" selection-start="953" selection-end="953" vertical-scroll-proportion="-8.181818">
+            <state line="23" column="30" selection-start="1266" selection-end="1266" vertical-scroll-proportion="0.48591548">
               <folding />
             </state>
           </provider>
@@ -108,45 +188,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application-context-infrastructure.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/spring/application-context-infrastructure.xml">
+      <file leaf-file-name="BackupController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/tudu/web/mvc/BackupController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="14" selection-start="1491" selection-end="1491" vertical-scroll-proportion="-14.772727">
+            <state line="20" column="13" selection-start="598" selection-end="598" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
-          <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
-            <state />
-          </provider>
         </entry>
       </file>
-      <file leaf-file-name="application-context.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/spring/application-context.xml">
+      <file leaf-file-name="AdministrationController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/tudu/web/mvc/AdministrationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="1331" selection-end="1331" vertical-scroll-proportion="-9.409091">
+            <state line="22" column="13" selection-start="690" selection-end="690" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
-          <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
-            <state />
-          </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserDetailsServiceImpl.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/tudu/security/UserDetailsServiceImpl.java">
+      <file leaf-file-name="AccountController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/tudu/web/mvc/AccountController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="16" selection-start="2096" selection-end="2096" vertical-scroll-proportion="1.056277">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="31" selection-start="808" selection-end="808" vertical-scroll-proportion="0.0">
+            <state line="21" column="13" selection-start="691" selection-end="691" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -166,15 +229,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+        <option value="$PROJECT_DIR$/src/main/java/tudu/web/mvc/AdministrationAction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tudu/web/mvc/AdministrationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tudu/web/mvc/BackupTodoListAction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tudu/web/mvc/BackupController.java" />
         <option value="$PROJECT_DIR$/src/main/java/tudu/web/mvc/LogoutAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/tudu/service/impl/UserManagerImpl.java" />
-        <option value="$PROJECT_DIR$/src/test/java/tudu/security/UserDetailsServiceImplTest.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/META-INF/spring/application-context-infrastructure.xml" />
-        <option value="$PROJECT_DIR$/src/test/java/tudu/integration/IntegrationTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tudu/web/mvc/LogoutController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tudu/web/mvc/MyInfoAction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tudu/web/mvc/AccountController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tudu/web/mvc/RecoverPasswordAction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tudu/web/mvc/RecoverPasswordController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tudu/web/mvc/RegisterAction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tudu/web/mvc/RegisterController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tudu/web/mvc/RestoreTodoListAction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tudu/web/mvc/RestoreTodoListForm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tudu/service/impl/TodoListsManagerImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/META-INF/spring/application-context-security.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/META-INF/spring/application-context.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/tudu/security/UserDetailsServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -188,6 +258,7 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="mavenHome" value="/Applications/apache-maven-2.2.1" />
+        <option name="workOffline" value="true" />
       </MavenGeneralSettings>
     </option>
     <option name="importingSettings">
@@ -220,24 +291,6 @@
         <PATH_ELEMENT>
           <option name="myItemId" value="Plugins" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Tudu Lists Web application" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Plugins" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="jetty" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginNode" />
         </PATH_ELEMENT>
       </PATH>
       <PATH>
@@ -441,6 +494,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -448,116 +502,6 @@
               <option name="myItemId" value="tudu" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tudu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Maven: org.springframework.security:spring-security-core:3.0.2.RELEASE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spring-security-core-3.0.2.RELEASE.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="security" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tudu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Maven: org.springframework.security:spring-security-core:3.0.2.RELEASE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spring-security-core-3.0.2.RELEASE.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="security" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="authentication" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tudu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Maven: org.springframework.security:spring-security-core:3.0.2.RELEASE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spring-security-core-3.0.2.RELEASE.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tudu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Maven: org.springframework.security:spring-security-config:3.0.2.RELEASE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spring-security-config-3.0.2.RELEASE.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tudu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Maven: org.springframework.security:spring-security-config:3.0.2.RELEASE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spring-security-config-3.0.2.RELEASE.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -601,15 +545,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tudu" />
+              <option name="myItemId" value="webapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -627,19 +567,101 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="webapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="tudu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tudu-Lists" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="integration" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fragments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tudu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tudu-Lists" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="decorators" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tudu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tudu-Lists" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -791,14 +813,47 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="security" />
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tudu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tudu-Lists" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tudu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mvc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Favorites" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -818,16 +873,20 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="tudu.domain" />
       <recent name="tudu.web.mvc" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IntegrationTest">
+  <component name="RunManager" selected="JUnit.TodoByDueDateAscComparatorTest">
     <configuration default="false" name="IntegrationTest" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" runner="emma">
         <pattern>
@@ -840,6 +899,60 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="tudu.integration" />
       <option name="MAIN_CLASS_NAME" value="tudu.integration.IntegrationTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TodoByDescriptionComparatorTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="emma">
+        <pattern>
+          <option name="PATTERN" value="tudu.domain.comparator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="tudu" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="tudu.domain.comparator" />
+      <option name="MAIN_CLASS_NAME" value="tudu.domain.comparator.TodoByDescriptionComparatorTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TodoByDueDateAscComparatorTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" runner="emma">
+        <pattern>
+          <option name="PATTERN" value="tudu.domain.comparator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="tudu" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="tudu.domain.comparator" />
+      <option name="MAIN_CLASS_NAME" value="tudu.domain.comparator.TodoByDueDateAscComparatorTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
@@ -1052,9 +1165,11 @@
         </option>
       </method>
     </configuration>
-    <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 6" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.IntegrationTest" />
+    <list size="4">
+      <item index="0" class="java.lang.String" itemvalue="JUnit.IntegrationTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.TodoByDescriptionComparatorTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.TodoByDueDateAscComparatorTest" />
+      <item index="3" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 6" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -1140,6 +1255,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+      <changelist id="240a5786-c378-4e5a-bcc9-1c95d6efb01b" name="Default" comment="" />
       <created>1283895090863</created>
       <updated>1283895090863</updated>
     </task>
@@ -1166,29 +1282,29 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="22" width="1422" height="937" extended-state="0" />
+    <frame x="0" y="22" width="1280" height="774" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289689" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44186047" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19241983" sideWeight="0.6744186" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19559695" sideWeight="0.6737013" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29008746" sideWeight="0.6744186" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3520325" sideWeight="0.6737013" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31701347" sideWeight="0.9978134" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31493506" sideWeight="0.9978134" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925835" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925835" sideWeight="0.0" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3262987" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28899083" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Web Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39873418" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1196,7 +1312,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
     <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
@@ -1209,7 +1325,7 @@
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="LAST_COMMIT_MESSAGE" value="Migration to Spring 3 and Spring Security 3" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
-    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
@@ -1258,131 +1374,98 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/spring/infrastructure/test.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/web/mvc/LogoutController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="375" selection-end="375" vertical-scroll-proportion="0.3626943" />
+        <state line="21" column="13" selection-start="676" selection-end="676" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/spring/infrastructure/prod.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/web/mvc/RecoverPasswordController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="13" selection-start="718" selection-end="718" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/web/mvc/RegisterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="13" selection-start="773" selection-end="773" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/web/mvc/RestoreTodoListForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="16" selection-start="43" selection-end="43" vertical-scroll-proportion="0.06132879" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/web/mvc/ListsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="13" selection-start="664" selection-end="664" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/web/mvc/RestoreController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="13" selection-start="548" selection-end="548" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/service/impl/TodoListsManagerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="235" column="19" selection-start="8411" selection-end="8411" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/web/mvc/ShowRssFeedAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="43" selection-start="1035" selection-end="1035" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/web/servlet/RssFeedServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="13" selection-start="686" selection-end="686" vertical-scroll-proportion="0.18398637" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/tudu.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tudu.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tudu.iws">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/3.0.2.RELEASE/spring-security-core-3.0.2.RELEASE.jar!/org/springframework/security/core/userdetails/User.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="11" selection-start="677" selection-end="677" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/web/mvc/LogoutAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="22" selection-end="22" vertical-scroll-proportion="0.02366864">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/service/impl/UserManagerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="83" selection-start="3249" selection-end="3249" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/tudu/security/UserDetailsServiceImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="69" selection-start="1700" selection-end="1700" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/3.0.2.RELEASE/spring-security-config-3.0.2.RELEASE.jar!/org/springframework/security/config/spring-security-3.0.xsd">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1098" column="59" selection-start="61369" selection-end="61390" vertical-scroll-proportion="0.35700196">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/3.0.2.RELEASE/spring-security-core-3.0.2.RELEASE-sources.jar!/org/springframework/security/authentication/AuthenticationManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="31" selection-start="2503" selection-end="2515" vertical-scroll-proportion="0.87573963">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/tudu/integration/IntegrationTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="38" selection-start="1672" selection-end="1695" vertical-scroll-proportion="-13.384615">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="31" selection-start="808" selection-end="808" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="37" column="21" selection-start="1257" selection-end="1258" vertical-scroll-proportion="0.021390375" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
+        <state />
+      </provider>
+      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/web/mvc/BackupController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="13" selection-start="598" selection-end="598" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/web/mvc/AdministrationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="13" selection-start="690" selection-end="690" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/web/mvc/AccountController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="13" selection-start="691" selection-end="691" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/spring/application-context-security.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="36" selection-start="953" selection-end="953" vertical-scroll-proportion="-8.181818">
+        <state line="23" column="30" selection-start="1266" selection-end="1266" vertical-scroll-proportion="0.48591548">
           <folding />
         </state>
       </provider>
       <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/spring/application-context-infrastructure.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="14" selection-start="1491" selection-end="1491" vertical-scroll-proportion="-14.772727">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/spring/application-context.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="1331" selection-end="1331" vertical-scroll-proportion="-9.409091">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tudu/security/UserDetailsServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="16" selection-start="2096" selection-end="2096" vertical-scroll-proportion="1.056277">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
       </provider>
     </entry>
   </component>

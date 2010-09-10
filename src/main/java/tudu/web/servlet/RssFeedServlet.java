@@ -5,8 +5,8 @@ import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedOutput;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import tudu.domain.model.Todo;
-import tudu.domain.model.TodoList;
+import tudu.domain.Todo;
+import tudu.domain.TodoList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

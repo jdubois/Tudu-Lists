@@ -1,13 +1,14 @@
 package tudu.web.servlet;
 
-import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-import tudu.domain.model.Todo;
-import tudu.domain.model.TodoList;
+import tudu.domain.Todo;
+import tudu.domain.TodoList;
 
 import java.util.Calendar;
+
+import static org.junit.Assert.assertTrue;
 
 public class RssFeedServletTest {
 

@@ -4,9 +4,9 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.test.util.ReflectionTestUtils;
+import tudu.domain.Role;
 import tudu.domain.RolesEnum;
-import tudu.domain.model.Role;
-import tudu.domain.model.User;
+import tudu.domain.User;
 import tudu.service.UserManager;
 
 import static org.easymock.EasyMock.*;

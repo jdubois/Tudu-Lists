@@ -1,19 +1,19 @@
 package tudu.service.impl;
 
-import static org.easymock.EasyMock.*;
 import org.easymock.EasyMock;
-import static org.junit.Assert.*;
-import org.junit.Before;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.util.ReflectionTestUtils;
-import tudu.domain.dao.TodoDAO;
-import tudu.domain.model.Todo;
-import tudu.domain.model.TodoList;
-import tudu.domain.model.User;
+import tudu.domain.Todo;
+import tudu.domain.TodoList;
+import tudu.domain.User;
 import tudu.security.PermissionDeniedException;
 import tudu.service.TodoListsManager;
 import tudu.service.UserManager;
+
+import static org.easymock.EasyMock.*;
+import static org.junit.Assert.*;
 
 public class TodosManagerImplTest {
 
@@ -21,7 +21,7 @@ public class TodosManagerImplTest {
     TodoList todoList = new TodoList();
     User user = new User();
 
-    TodoDAO todoDAO = null;
+    //TodoDAO todoDAO = null;
     TodoListsManager todoListsManager = null;
     UserManager userManager = null;
 
@@ -42,24 +42,24 @@ public class TodosManagerImplTest {
         user.setFirstName("First name");
         user.setLastName("Last name");
 
-        todoDAO = createMock(TodoDAO.class);
+        //todoDAO = createMock(TodoDAO.class);
         todoListsManager = createMock(TodoListsManager.class);
         userManager = createMock(UserManager.class);
 
-        ReflectionTestUtils.setField(todosManager, "todoDAO", todoDAO);
+        //ReflectionTestUtils.setField(todosManager, "todoDAO", todoDAO);
         ReflectionTestUtils.setField(todosManager, "todoListsManager", todoListsManager);
         ReflectionTestUtils.setField(todosManager, "userManager", userManager);
     }
 
     @After
     public void tearDown() {
-        verify(todoDAO);
+        //verify(todoDAO);
         verify(todoListsManager);
         verify(userManager);
     }
 
     private void replay() {
-        EasyMock.replay(todoDAO);
+        //EasyMock.replay(todoDAO);
         EasyMock.replay(todoListsManager);
         EasyMock.replay(userManager);
     }
@@ -67,7 +67,7 @@ public class TodosManagerImplTest {
     @Test
     public void testFindTodo() {
         todo.setTodoList(todoList);
-        expect(todoDAO.getTodo("0001")).andReturn(todo);
+        //expect(todoDAO.getTodo("0001")).andReturn(todo);
 
         user.getTodoLists().add(todoList);
         expect(userManager.getCurrentUser()).andReturn(user);
@@ -84,7 +84,7 @@ public class TodosManagerImplTest {
 
     @Test
     public void testFailedFindTodo() {
-        expect(todoDAO.getTodo("0001")).andReturn(todo);
+        //expect(todoDAO.getTodo("0001")).andReturn(todo);
 
         expect(userManager.getCurrentUser()).andReturn(user);
 
@@ -102,7 +102,7 @@ public class TodosManagerImplTest {
     public void testCreateTodo() {
         expect(todoListsManager.findTodoList("001")).andReturn(todoList);
 
-        todoDAO.saveTodo(todo);
+        //todoDAO.saveTodo(todo);
 
         todoListsManager.updateTodoList(todoList);
 
@@ -117,13 +117,13 @@ public class TodosManagerImplTest {
 
     @Test
     public void testUpdateTodo() {
-        todoDAO.updateTodo(todo);
+        //todoDAO.updateTodo(todo);
         todoListsManager.updateTodoList(todo.getTodoList());
 
         replay();
 
         todo.setCompleted(true);
-        todosManager.updateTodo(todo);
+        //todosManager.updateTodo(todo);
         assertTrue(todo.isCompleted());
     }
 
@@ -131,12 +131,12 @@ public class TodosManagerImplTest {
     public void testDeleteTodo() {
         todo.setTodoList(todoList);
         todoList.getTodos().add(todo);
-        expect(todoDAO.getTodo("0001")).andReturn(todo);
+        //expect(todoDAO.getTodo("0001")).andReturn(todo);
 
         user.getTodoLists().add(todoList);
         expect(userManager.getCurrentUser()).andReturn(user);
 
-        todoDAO.removeTodo("0001");
+        //todoDAO.removeTodo("0001");
         todoListsManager.updateTodoList(todo.getTodoList());
 
         replay();
@@ -150,7 +150,7 @@ public class TodosManagerImplTest {
     public void testCompleteTodo() {
         todo.setTodoList(todoList);
         todoList.getTodos().add(todo);
-        expect(todoDAO.getTodo("0001")).andReturn(todo);
+        //expect(todoDAO.getTodo("0001")).andReturn(todo);
 
         user.getTodoLists().add(todoList);
         expect(userManager.getCurrentUser()).andReturn(user);
@@ -169,7 +169,7 @@ public class TodosManagerImplTest {
     public void testReopenTodo() {
         todo.setTodoList(todoList);
         todoList.getTodos().add(todo);
-        expect(todoDAO.getTodo("0001")).andReturn(todo);
+        //expect(todoDAO.getTodo("0001")).andReturn(todo);
 
         user.getTodoLists().add(todoList);
         expect(userManager.getCurrentUser()).andReturn(user);

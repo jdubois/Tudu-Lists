@@ -7,11 +7,11 @@
 	<persistence-unit name="default"
 		transaction-type="RESOURCE_LOCAL">
 
-		<class>tudu.domain.model.Property</class>
-		<class>tudu.domain.model.Role</class>
-		<class>tudu.domain.model.Todo</class>
-		<class>tudu.domain.model.TodoList</class>
-		<class>tudu.domain.model.User</class>
+		<class>tudu.domain.Property</class>
+		<class>tudu.domain.Role</class>
+		<class>tudu.domain.Todo</class>
+		<class>tudu.domain.TodoList</class>
+		<class>tudu.domain.User</class>
 		<properties>
 			<property name="hibernate.cache.provider_class"
 				value="net.sf.ehcache.hibernate.EhCacheProvider" />

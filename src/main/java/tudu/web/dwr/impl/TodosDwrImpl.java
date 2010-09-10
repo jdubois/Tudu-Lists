@@ -3,14 +3,13 @@ package tudu.web.dwr.impl;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.directwebremoting.WebContextFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.stereotype.Component;
-import tudu.domain.model.Todo;
-import tudu.domain.model.TodoList;
-import tudu.domain.model.User;
-import tudu.domain.model.comparator.*;
+import tudu.domain.Todo;
+import tudu.domain.TodoList;
+import tudu.domain.User;
+import tudu.domain.comparator.*;
 import tudu.service.TodoListsManager;
 import tudu.service.TodosManager;
 import tudu.service.UserManager;
@@ -18,10 +17,8 @@ import tudu.web.dwr.TodosDwr;
 import tudu.web.dwr.bean.RemoteTodo;
 import tudu.web.dwr.bean.RemoteTodoList;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -140,8 +137,7 @@ public class TodosDwrImpl implements TodosDwr {
      * @see tudu.web.dwr.TodosDwr#renderTodos(java.lang.String, java.util.Date)
      */
     public String renderTodos(String listId, Date tableDate) {
-        HttpServletRequest request = WebContextFactory.get()
-                .getHttpServletRequest();
+        HttpServletRequest request = null;
 
         if (listId != null && !listId.equals("")) {
             TodoList todoList = todoListsManager.findTodoList(listId);
@@ -247,24 +243,14 @@ public class TodosDwrImpl implements TodosDwr {
         } else {
             return "";
         }
-        try {
-            return WebContextFactory.get().forwardToString(
-                    "/WEB-INF/fragments/todos_table.jsp");
-        } catch (ServletException e) {
-            log.error("ServletException : " + e);
-            return "";
-        } catch (IOException ioe) {
-            log.error("IOException : " + ioe);
-            return "";
-        }
+        return "/WEB-INF/fragments/todos_table.jsp";
     }
 
     /**
      * @see tudu.web.dwr.TodosDwr#renderNextDays()
      */
     public String renderNextDays() {
-        HttpServletRequest request = WebContextFactory.get()
-                .getHttpServletRequest();
+        HttpServletRequest request = null;
 
         request.setAttribute("filter", "nextDays");
         request.setAttribute("todos", todosManager.findUrgentTodos());
@@ -272,8 +258,7 @@ public class TodosDwrImpl implements TodosDwr {
     }
 
     public String renderAssignedToMe() {
-        HttpServletRequest request = WebContextFactory.get()
-                .getHttpServletRequest();
+        HttpServletRequest request = null;
 
         request.setAttribute("filter", "assignedToMe");
         request.setAttribute("todos", todosManager.findAssignedTodos());
@@ -284,16 +269,7 @@ public class TodosDwrImpl implements TodosDwr {
      * Render the filtered data.
      */
     private String renderFilter() {
-        try {
-            return WebContextFactory.get().forwardToString(
-                    "/WEB-INF/fragments/todos_table_filter.jsp");
-        } catch (ServletException e) {
-            log.error("ServletException : " + e);
-            return "";
-        } catch (IOException ioe) {
-            log.error("IOException : " + ioe);
-            return "";
-        }
+        return "/WEB-INF/fragments/todos_table_filter.jsp";
     }
 
     /**
@@ -315,8 +291,7 @@ public class TodosDwrImpl implements TodosDwr {
      *      java.lang.String)
      */
     public String sortAndRenderTodos(String listId, String sorter) {
-        HttpSession session = WebContextFactory.get().getHttpServletRequest()
-                .getSession();
+        HttpSession session = null;
 
         String currentSorter = (String) session.getAttribute(TODO_LIST_SORT_BY);
         if (currentSorter != null && currentSorter.equals(sorter)
@@ -388,7 +363,7 @@ public class TodosDwrImpl implements TodosDwr {
     public String editTodo(String todoId, String description, String priority,
             String dueDate, String notes, String assignedUserLogin) {
 
-        Todo todo = todosManager.findTodo(todoId);
+        /*Todo todo = todosManager.findTodo(todoId);
         String escapedDescription = StringEscapeUtils.escapeHtml(description);
         todo.setDescription(escapedDescription);
 
@@ -415,18 +390,20 @@ public class TodosDwrImpl implements TodosDwr {
         inputAssignedUser(todo, assignedUserLogin);
 
         todosManager.updateTodo(todo);
-        return forceRenderTodos(todo.getTodoList().getListId());
+        return forceRenderTodos(todo.getTodoList().getListId());*/
+        return "";
     }
     
     /**
      * @see tudu.web.dwr.TodosDwr#quickEditTodo(java.lang.String, java.lang.String)
      */
     public String quickEditTodo(String todoId, String description) {
-        Todo todo = todosManager.findTodo(todoId);
+        /*Todo todo = todosManager.findTodo(todoId);
         String escapedDescription = StringEscapeUtils.escapeHtml(description);
         todo.setDescription(escapedDescription);
         todosManager.updateTodo(todo);
-        return forceRenderTodos(todo.getTodoList().getListId());
+        return forceRenderTodos(todo.getTodoList().getListId());*/
+        return "";
     }
 
     /**
@@ -451,8 +428,7 @@ public class TodosDwrImpl implements TodosDwr {
      * @see tudu.web.dwr.TodosDwr#showOlderTodos(java.lang.String)
      */
     public String showOlderTodos(String listId) {
-        HttpSession session = WebContextFactory.get().getHttpServletRequest()
-                .getSession();
+        HttpSession session = null;
 
         session.setAttribute("hideOlderTodos", "false");
         return forceRenderTodos(listId);
@@ -462,8 +438,7 @@ public class TodosDwrImpl implements TodosDwr {
      * @see tudu.web.dwr.TodosDwr#hideOlderTodos(java.lang.String)
      */
     public String hideOlderTodos(String listId) {
-        HttpSession session = WebContextFactory.get().getHttpServletRequest()
-                .getSession();
+        HttpSession session = null;
 
         session.setAttribute("hideOlderTodos", "true");
         return forceRenderTodos(listId);
@@ -475,13 +450,11 @@ public class TodosDwrImpl implements TodosDwr {
      * @return the Date formatter
      */
     protected SimpleDateFormat getDateFormatter() {
-        String dateFormat = (String) WebContextFactory.get().getSession()
-                .getAttribute("dateFormat");
+        String dateFormat = null; //(String) WebContextFactory.get().getSession().getAttribute("dateFormat");
 
         if (dateFormat == null) {
             dateFormat = userManager.getCurrentUser().getDateFormat();
-            WebContextFactory.get().getSession().setAttribute("dateFormat",
-                    dateFormat);
+            //WebContextFactory.get().getSession().setAttribute("dateFormat", dateFormat);
         }
         return new SimpleDateFormat(dateFormat);
     }

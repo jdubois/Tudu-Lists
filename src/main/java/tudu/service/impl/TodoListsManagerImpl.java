@@ -7,17 +7,18 @@ import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import tudu.domain.dao.TodoDAO;
-import tudu.domain.dao.TodoListDAO;
-import tudu.domain.model.Todo;
-import tudu.domain.model.TodoList;
-import tudu.domain.model.User;
+import tudu.domain.Todo;
+import tudu.domain.TodoList;
+import tudu.domain.User;
 import tudu.security.PermissionDeniedException;
 import tudu.service.TodoListsManager;
 import tudu.service.UserManager;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Calendar;
@@ -26,7 +27,7 @@ import java.util.List;
 
 /**
  * Implementation of the tudu.service.TodoListsManager interface.
- * 
+ *
  * @author Julien Dubois
  */
 @Service
@@ -35,19 +36,17 @@ public class TodoListsManagerImpl implements TodoListsManager {
 
     private final Log log = LogFactory.getLog(TodoListsManagerImpl.class);
 
-    @Autowired
-    private TodoListDAO todoListDAO;
 
-    @Autowired
-    private TodoDAO todoDAO;
+    @PersistenceContext
+    private EntityManager em;
 
     @Autowired
     private UserManager userManager;
 
     /**
      * Create a new Todo List.
-     * 
-     * @see tudu.service.TodoListsManager#createTodoList(tudu.domain.model.TodoList)
+     *
+     * @see tudu.service.TodoListsManager#createTodoList(tudu.domain.TodoList)
      */
     public void createTodoList(final TodoList todoList) {
         if (log.isDebugEnabled()) {
@@ -57,9 +56,8 @@ public class TodoListsManagerImpl implements TodoListsManager {
         todoList.setLastUpdate(Calendar.getInstance().getTime());
         User user = userManager.getCurrentUser();
         todoList.getUsers().add(user);
-        todoListDAO.saveTodoList(todoList);
+        em.persist(todoList);
         user.getTodoLists().add(todoList);
-        userManager.updateUser(user);
     }
 
     /**
@@ -67,7 +65,10 @@ public class TodoListsManagerImpl implements TodoListsManager {
      */
     @Transactional(readOnly = true)
     public TodoList findTodoList(String listId) {
-        TodoList todoList = todoListDAO.getTodoList(listId);
+        TodoList todoList = em.find(TodoList.class, listId);
+        if (todoList == null) {
+            throw new ObjectRetrievalFailureException(TodoList.class, listId);
+        }
         User user = userManager.getCurrentUser();
         if (!user.getTodoLists().contains(todoList)) {
             if (log.isInfoEnabled()) {
@@ -85,34 +86,32 @@ public class TodoListsManagerImpl implements TodoListsManager {
      */
     @Transactional(readOnly = true)
     public TodoList unsecuredFindTodoList(String listId) {
-        return todoListDAO.getTodoList(listId);
+        return em.find(TodoList.class, listId);
     }
 
     /**
-     * Update a Todo List.
-     * 
-     * @see tudu.service.TodoListsManager#updateTodoList(tudu.domain.model.TodoList)
+     * Updates the Todo List last update date.
+     *
+     * @see tudu.service.TodoListsManager#updateTodoList(tudu.domain.TodoList)
      */
     public void updateTodoList(final TodoList todoList) {
         todoList.setLastUpdate(Calendar.getInstance().getTime());
-        todoListDAO.updateTodoList(todoList);
     }
 
     /**
      * Delete a Todo List.
-     * 
+     *
      * @see tudu.service.TodoListsManager#deleteTodoList(java.lang.String)
      */
     public void deleteTodoList(final String listId) {
         TodoList todoList = this.findTodoList(listId);
         for (User user : todoList.getUsers()) {
             user.getTodoLists().remove(todoList);
-            userManager.updateUser(user);
         }
         for (Todo todo : todoList.getTodos()) {
-            todoDAO.removeTodo(todo.getTodoId());
+            em.remove(todo.getTodoId());
         }
-        todoListDAO.removeTodoList(listId);
+        em.remove(listId);
     }
 
     /**
@@ -147,7 +146,7 @@ public class TodoListsManagerImpl implements TodoListsManager {
     }
 
     /**
-     * @see tudu.service.TodoListsManager#backupTodoList(tudu.domain.model.TodoList)
+     * @see tudu.service.TodoListsManager#backupTodoList(tudu.domain.TodoList)
      */
     public Document backupTodoList(TodoList todoList) {
         Document doc = new Document();
@@ -182,7 +181,7 @@ public class TodoListsManagerImpl implements TodoListsManager {
             if (todo.isCompleted() && todo.getCompletionDate() != null) {
                 todoElement.addContent(new Element("completionDate")
                         .addContent(Long.toString(todo.getCompletionDate()
-                                .getTime())));
+                        .getTime())));
             }
 
             todoElement.addContent(new Element("notes").addContent(todo
@@ -202,7 +201,7 @@ public class TodoListsManagerImpl implements TodoListsManager {
      *      java.lang.String, java.io.InputStream)
      */
     public void restoreTodoList(String restoreChoice, String listId,
-            InputStream todoListContent) throws JDOMException, IOException {
+                                InputStream todoListContent) throws JDOMException, IOException {
 
         SAXBuilder saxBuilder = new SAXBuilder();
         Document doc = saxBuilder.build(todoListContent);
@@ -218,7 +217,7 @@ public class TodoListsManagerImpl implements TodoListsManager {
         } else if (restoreChoice.equals("replace")) {
             TodoList todoList = this.findTodoList(listId);
             for (Todo todo : todoList.getTodos()) {
-                todoDAO.removeTodo(todo.getTodoId());
+                em.remove(todo);
             }
             todoList.getTodos().clear();
             todoList.setName(title);
@@ -230,17 +229,15 @@ public class TodoListsManagerImpl implements TodoListsManager {
             importTodosFromXml(todoList, rootElement);
             this.updateTodoList(todoList);
         } else {
-            log.error("Wrong choice of restore option");
+            log.error("Wrong choice of RestoreController option");
         }
     }
 
     /**
      * Import Todos from a JDOM document.
-     * 
-     * @param todoList
-     *            The current Todo List
-     * @param rootElement
-     *            The root element of the JDOM document.
+     *
+     * @param todoList    The current Todo List
+     * @param rootElement The root element of the JDOM document.
      */
     @SuppressWarnings("unchecked")
     private void importTodosFromXml(TodoList todoList, Element rootElement) {
@@ -276,7 +273,7 @@ public class TodoListsManagerImpl implements TodoListsManager {
             }
             todo.setTodoList(todoList);
             todoList.getTodos().add(todo);
-            todoDAO.saveTodo(todo);
+            em.persist(todo);
         }
     }
 }

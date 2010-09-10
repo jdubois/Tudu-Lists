@@ -5,21 +5,22 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import tudu.domain.dao.TodoDAO;
-import tudu.domain.model.Todo;
-import tudu.domain.model.TodoList;
-import tudu.domain.model.User;
-import tudu.domain.model.comparator.TodoByDueDateComparator;
+import tudu.domain.Todo;
+import tudu.domain.TodoList;
+import tudu.domain.User;
+import tudu.domain.comparator.TodoByDueDateComparator;
 import tudu.security.PermissionDeniedException;
 import tudu.service.TodoListsManager;
 import tudu.service.TodosManager;
 import tudu.service.UserManager;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.*;
 
 /**
  * Implementation of the tudu.service.TodosManager interface.
- * 
+ *
  * @author Julien Dubois
  */
 @Service
@@ -28,8 +29,9 @@ public class TodosManagerImpl implements TodosManager {
 
     private final Log log = LogFactory.getLog(TodosManagerImpl.class);
 
-    @Autowired
-    private TodoDAO todoDAO;
+
+    @PersistenceContext
+    private EntityManager em;
 
     @Autowired
     private TodoListsManager todoListsManager;
@@ -39,7 +41,7 @@ public class TodosManagerImpl implements TodosManager {
 
     /**
      * Find a Todo by ID.
-     * 
+     *
      * @see tudu.service.TodosManager#findTodo(java.lang.String)
      */
     @Transactional(readOnly = true)
@@ -47,7 +49,7 @@ public class TodosManagerImpl implements TodosManager {
         if (log.isDebugEnabled()) {
             log.debug("Finding Todo with ID " + todoId);
         }
-        Todo todo = todoDAO.getTodo(todoId);
+        Todo todo = em.find(Todo.class, todoId);
         TodoList todoList = todo.getTodoList();
         User user = userManager.getCurrentUser();
         if (!user.getTodoLists().contains(todoList)) {
@@ -108,9 +110,9 @@ public class TodosManagerImpl implements TodosManager {
 
     /**
      * Create a new Todo.
-     * 
-     * @see tudu.service.TodosManager#createTodo( java.lang.String listId,
-     *      tudu.domain.model.Todo)
+     *
+     * @see tudu.service.TodosManager#createTodo(java.lang.String listId,
+     *      tudu.domain.Todo)
      */
     public void createTodo(final String listId, final Todo todo) {
 
@@ -119,30 +121,19 @@ public class TodosManagerImpl implements TodosManager {
         TodoList todoList = todoListsManager.findTodoList(listId);
         todo.setTodoList(todoList);
         todoList.getTodos().add(todo);
-        todoDAO.saveTodo(todo);
         todoListsManager.updateTodoList(todoList);
     }
 
     /**
-     * Update a Todo.
-     * 
-     * @see tudu.service.TodosManager#updateTodo(tudu.domain.model.Todo)
-     */
-    public void updateTodo(final Todo todo) {
-        todoDAO.updateTodo(todo);
-        todoListsManager.updateTodoList(todo.getTodoList());
-    }
-
-    /**
      * Delete a Todo.
-     * 
+     *
      * @see tudu.service.TodosManager#deleteTodo(java.lang.String)
      */
     public void deleteTodo(final String todoId) {
         Todo todo = this.findTodo(todoId);
         TodoList todoList = todo.getTodoList();
         todoList.getTodos().remove(todo);
-        todoDAO.removeTodo(todoId);
+        em.remove(todo);
         todoListsManager.updateTodoList(todoList);
     }
 
@@ -159,7 +150,7 @@ public class TodosManagerImpl implements TodosManager {
         }
         todoList.getTodos().removeAll(todosToRemove);
         for (Todo todo : todosToRemove) {
-            todoDAO.removeTodo(todo.getTodoId());
+            em.remove(todo);
         }
         todoListsManager.updateTodoList(todoList);
     }

@@ -10,11 +10,22 @@
     <global-method-security secured-annotations="enabled"/>
     
     <http>
-        <intercept-url pattern="/secure/admin/**" access="ROLE_ADMIN"/>
-        <intercept-url pattern="/secure/**" access="ROLE_USER"/>
-        <form-login login-page="/welcome.action" default-target-url="/secure/showTodos.action"/>
+        <intercept-url pattern="/rss" filters="none"/>
+        <intercept-url pattern="/static/**" filters="none"/>
+        <intercept-url pattern="/welcome" filters="none"/>
+        <intercept-url pattern="/register" filters="none"/>
+        <intercept-url pattern="/recoverPassword" filters="none"/>
+
+        <intercept-url pattern="/lists" access="ROLE_USER"/>
+        <intercept-url pattern="/account" access="ROLE_USER"/>
+        <intercept-url pattern="/backup" access="ROLE_USER"/>
+        <intercept-url pattern="/restore" access="ROLE_USER"/>
+
+        <intercept-url pattern="/admin" access="ROLE_ADMIN"/>
+
+        <form-login login-page="/welcome" default-target-url="/tudu/lists"/>
         <remember-me key="tuduRocks"/>
-        <logout logout-url="/logout.action"/>
+        <logout logout-url="/logout"/>
     </http>
 
     <authentication-manager alias="authenticationManager">
