@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration>
+
+	<appender name="messagesAppender"
+		class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="messages.log" />
+		<param name="maxFileSize" value="1000KB" />
+		<param name="maxBackupIndex" value="20" />
+		<param name="threshold" value="info" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d %-5p: %c - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="monitoringAppender"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="requests.log" />
+		<param name="Threshold" value="DEBUG"/>
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d %m%n" />
+		</layout>
+	</appender>
+
+	<appender class="org.apache.log4j.AsyncAppender" name="asyncMonitoringAppender">
+		<param name="bufferSize" value="64"/>
+		<param name="blocking" value="false"/>
+		<appender-ref ref="monitoringAppender"/>
+	</appender>
+
+	<logger name="monitoring">
+            <level value="debug"/>
+            <appender-ref ref="asyncMonitoringAppender"/>
+    	</logger>
+
+	<logger name="tudu">
+            <level value="debug"/>
+    	</logger>
+
+	<logger name="org.apache">
+            <level value="warn"/>
+    	</logger>
+
+	<logger name="org.hibernate">
+            <level value="warn"/>
+    	</logger>
+
+	<logger name="org.springframework">
+            <level value="warn"/>
+    	</logger>
+
+	<logger name="net.ehcache">
+            <level value="warn"/>
+    	</logger>
+
+	<root>
+		<priority value="info"></priority>
+		<appender-ref ref="messagesAppender" />
+	</root>
+
+</log4j:configuration>
