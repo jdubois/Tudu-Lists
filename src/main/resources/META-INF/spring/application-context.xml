@@ -13,9 +13,10 @@
                            http://www.springframework.org/schema/aop
                            http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
-    <aop:aspectj-autoproxy/>
-    <tx:annotation-driven/>
-    <context:component-scan base-package="tudu.domain.dao,tudu.security,tudu.service,tudu.web.dwr"/>
+    <import resource="application-context-infrastructure.xml"/>
+    <import resource="application-context-security.xml"/>
+
+    <context:component-scan base-package="tudu.service"/>
 
     <bean id="transactionManager"
           class="org.springframework.orm.jpa.JpaTransactionManager">

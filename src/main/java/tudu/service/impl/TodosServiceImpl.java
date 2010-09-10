@@ -10,39 +10,39 @@ import tudu.domain.TodoList;
 import tudu.domain.User;
 import tudu.domain.comparator.TodoByDueDateComparator;
 import tudu.security.PermissionDeniedException;
-import tudu.service.TodoListsManager;
-import tudu.service.TodosManager;
-import tudu.service.UserManager;
+import tudu.service.TodoListsService;
+import tudu.service.TodosService;
+import tudu.service.UserService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.*;
 
 /**
- * Implementation of the tudu.service.TodosManager interface.
+ * Implementation of the tudu.service.TodosService interface.
  *
  * @author Julien Dubois
  */
 @Service
 @Transactional
-public class TodosManagerImpl implements TodosManager {
+public class TodosServiceImpl implements TodosService {
 
-    private final Log log = LogFactory.getLog(TodosManagerImpl.class);
+    private final Log log = LogFactory.getLog(TodosServiceImpl.class);
 
 
     @PersistenceContext
     private EntityManager em;
 
     @Autowired
-    private TodoListsManager todoListsManager;
+    private TodoListsService todoListsService;
 
     @Autowired
-    private UserManager userManager;
+    private UserService userService;
 
     /**
      * Find a Todo by ID.
      *
-     * @see tudu.service.TodosManager#findTodo(java.lang.String)
+     * @see tudu.service.TodosService#findTodo(java.lang.String)
      */
     @Transactional(readOnly = true)
     public Todo findTodo(final String todoId) {
@@ -51,7 +51,7 @@ public class TodosManagerImpl implements TodosManager {
         }
         Todo todo = em.find(Todo.class, todoId);
         TodoList todoList = todo.getTodoList();
-        User user = userManager.getCurrentUser();
+        User user = userService.getCurrentUser();
         if (!user.getTodoLists().contains(todoList)) {
             if (log.isInfoEnabled()) {
                 log.info("Permission denied when finding Todo ID '" + todoId
@@ -66,11 +66,11 @@ public class TodosManagerImpl implements TodosManager {
     }
 
     /**
-     * @see tudu.service.TodosManager#findUrgentTodos()
+     * @see tudu.service.TodosService#findUrgentTodos()
      */
     @Transactional(readOnly = true)
     public Collection<Todo> findUrgentTodos() {
-        User user = userManager.getCurrentUser();
+        User user = userService.getCurrentUser();
         Calendar urgentCal = Calendar.getInstance();
         urgentCal.add(Calendar.DATE, 4);
         Date urgentDate = urgentCal.getTime();
@@ -89,11 +89,11 @@ public class TodosManagerImpl implements TodosManager {
     }
 
     /**
-     * @see tudu.service.TodosManager#findAssignedTodos()
+     * @see tudu.service.TodosService#findAssignedTodos()
      */
     @Transactional(readOnly = true)
     public Collection<Todo> findAssignedTodos() {
-        User user = userManager.getCurrentUser();
+        User user = userService.getCurrentUser();
         Set<Todo> assignedTodos = new TreeSet<Todo>();
         for (TodoList todoList : user.getTodoLists()) {
             for (Todo todo : todoList.getTodos()) {
@@ -111,37 +111,37 @@ public class TodosManagerImpl implements TodosManager {
     /**
      * Create a new Todo.
      *
-     * @see tudu.service.TodosManager#createTodo(java.lang.String listId,
+     * @see tudu.service.TodosService#createTodo(java.lang.String listId,
      *      tudu.domain.Todo)
      */
     public void createTodo(final String listId, final Todo todo) {
 
         Date now = Calendar.getInstance().getTime();
         todo.setCreationDate(now);
-        TodoList todoList = todoListsManager.findTodoList(listId);
+        TodoList todoList = todoListsService.findTodoList(listId);
         todo.setTodoList(todoList);
         todoList.getTodos().add(todo);
-        todoListsManager.updateTodoList(todoList);
+        todoListsService.updateTodoList(todoList);
     }
 
     /**
      * Delete a Todo.
      *
-     * @see tudu.service.TodosManager#deleteTodo(java.lang.String)
+     * @see tudu.service.TodosService#deleteTodo(java.lang.String)
      */
     public void deleteTodo(final String todoId) {
         Todo todo = this.findTodo(todoId);
         TodoList todoList = todo.getTodoList();
         todoList.getTodos().remove(todo);
         em.remove(todo);
-        todoListsManager.updateTodoList(todoList);
+        todoListsService.updateTodoList(todoList);
     }
 
     /**
-     * @see tudu.service.TodosManager#deleteAllCompletedTodos(java.lang.String)
+     * @see tudu.service.TodosService#deleteAllCompletedTodos(java.lang.String)
      */
     public void deleteAllCompletedTodos(String listId) {
-        TodoList todoList = todoListsManager.findTodoList(listId);
+        TodoList todoList = todoListsService.findTodoList(listId);
         List<Todo> todosToRemove = new ArrayList<Todo>();
         for (Todo todo : todoList.getTodos()) {
             if (todo.isCompleted()) {
@@ -152,28 +152,28 @@ public class TodosManagerImpl implements TodosManager {
         for (Todo todo : todosToRemove) {
             em.remove(todo);
         }
-        todoListsManager.updateTodoList(todoList);
+        todoListsService.updateTodoList(todoList);
     }
 
     /**
-     * @see tudu.service.TodosManager#completeTodo(java.lang.String)
+     * @see tudu.service.TodosService#completeTodo(java.lang.String)
      */
     public Todo completeTodo(String todoId) {
         Todo todo = this.findTodo(todoId);
         todo.setCompleted(true);
         todo.setCompletionDate(Calendar.getInstance().getTime());
-        todoListsManager.updateTodoList(todo.getTodoList());
+        todoListsService.updateTodoList(todo.getTodoList());
         return todo;
     }
 
     /**
-     * @see tudu.service.TodosManager#reopenTodo(java.lang.String)
+     * @see tudu.service.TodosService#reopenTodo(java.lang.String)
      */
     public Todo reopenTodo(String todoId) {
         Todo todo = this.findTodo(todoId);
         todo.setCompleted(false);
         todo.setCompletionDate(null);
-        todoListsManager.updateTodoList(todo.getTodoList());
+        todoListsService.updateTodoList(todo.getTodoList());
         return todo;
     }
 }

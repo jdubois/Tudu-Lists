@@ -7,7 +7,7 @@ import org.springframework.test.util.ReflectionTestUtils;
 import tudu.domain.Role;
 import tudu.domain.RolesEnum;
 import tudu.domain.User;
-import tudu.service.UserManager;
+import tudu.service.UserService;
 
 import static org.easymock.EasyMock.*;
 import static org.junit.Assert.assertEquals;
@@ -18,8 +18,8 @@ public class UserDetailsServiceImplTest {
     @Test
     public void testLoadUserByUsername() {
         UserDetailsServiceImpl authenticationDAO = new UserDetailsServiceImpl();
-        UserManager userManager = EasyMock.createMock(UserManager.class);
-        ReflectionTestUtils.setField(authenticationDAO, "userManager", userManager);
+        UserService userService = EasyMock.createMock(UserService.class);
+        ReflectionTestUtils.setField(authenticationDAO, "userService", userService);
 
         User user = new User();
         user.setLogin("test_user");
@@ -28,11 +28,11 @@ public class UserDetailsServiceImplTest {
         Role userRole = new Role();
         userRole.setRole(RolesEnum.ROLE_USER.toString());
         user.getRoles().add(userRole);
-        expect(userManager.findUser("test_user")).andReturn(user);
+        expect(userService.findUser("test_user")).andReturn(user);
 
-        userManager.updateUser(user);
+        userService.updateUser(user);
 
-        replay(userManager);
+        replay(userService);
 
         UserDetails springSecurityUser = authenticationDAO
                 .loadUserByUsername("test_user");
@@ -44,6 +44,6 @@ public class UserDetailsServiceImplTest {
         assertEquals(RolesEnum.ROLE_USER.toString(),
                 springSecurityUser.getAuthorities().iterator().next().getAuthority());
 
-        verify(userManager);
+        verify(userService);
     }
 }

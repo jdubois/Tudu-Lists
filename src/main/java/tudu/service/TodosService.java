@@ -9,7 +9,7 @@ import java.util.Collection;
  * 
  * @author Julien Dubois
  */
-public interface TodosManager {
+public interface TodosService {
 
     /**
      * Find a Todo by ID.

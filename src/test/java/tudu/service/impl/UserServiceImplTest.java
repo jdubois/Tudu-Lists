@@ -7,11 +7,11 @@ import tudu.service.UserAlreadyExistsException;
 
 import static org.junit.Assert.*;
 
-public class UserManagerImplTest {
+public class UserServiceImplTest {
 
     User user = new User();
 
-    UserManagerImpl userManager = new UserManagerImpl();
+    UserServiceImpl userService = new UserServiceImpl();
 
     @Before
     public void before() {
@@ -24,7 +24,7 @@ public class UserManagerImplTest {
     public void testFindUser() {
         //expect(userDAO.getUser("test_user")).andReturn(user);
 
-        User testUser = userManager.findUser("test_user");
+        User testUser = userService.findUser("test_user");
         assertEquals(testUser, user);
     }
 
@@ -33,7 +33,7 @@ public class UserManagerImplTest {
         //userDAO.updateUser(user);
 
 
-        userManager.updateUser(user);
+        userService.updateUser(user);
     }
 
     @Test
@@ -55,7 +55,7 @@ public class UserManagerImplTest {
 
 
         try {
-            userManager.createUser(user);
+            userService.createUser(user);
             assertTrue(user.isEnabled());
             assertNotNull(user.getCreationDate());
             assertNotNull(user.getLastAccessDate());
@@ -77,7 +77,7 @@ public class UserManagerImplTest {
 
 
         try {
-            userManager.createUser(user);
+            userService.createUser(user);
             fail("A UserAlreadyExistsException should have been thrown.");
         } catch (UserAlreadyExistsException e) {
 

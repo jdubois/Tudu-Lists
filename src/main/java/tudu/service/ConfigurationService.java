@@ -7,7 +7,7 @@ import tudu.domain.Property;
  * 
  * @author Julien Dubois
  */
-public interface ConfigurationManager {
+public interface ConfigurationService {
 
     /**
      * Initialize the database.

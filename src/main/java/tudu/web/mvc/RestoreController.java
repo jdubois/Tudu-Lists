@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.support.StringMultipartFileEditor;
 import org.springframework.web.servlet.ModelAndView;
 import tudu.domain.TodoList;
-import tudu.service.TodoListsManager;
+import tudu.service.TodoListsService;
 
 /**
  * Restore a Todo List.
@@ -19,7 +19,7 @@ import tudu.service.TodoListsManager;
 public class RestoreController {
 
     @Autowired
-    private TodoListsManager todoListsManager;
+    private TodoListsService todoListsService;
 
     @InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -32,7 +32,7 @@ public class RestoreController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView display(@RequestParam String listId) {
         ModelAndView mv = new ModelAndView();
-        TodoList todoList = todoListsManager.findTodoList(listId);
+        TodoList todoList = todoListsService.findTodoList(listId);
         mv.addObject("todoList", todoList);
         RestoreTodoListForm form = new RestoreTodoListForm();
         form.setRestoreChoice("create");
@@ -56,7 +56,7 @@ public class RestoreController {
         }
         RestoreTodoListForm restoreTodoListForm = (RestoreTodoListForm) form;
         try {
-            todoListsManager.restoreTodoList(restoreTodoListForm
+            todoListsService.restoreTodoList(restoreTodoListForm
                     .getRestoreChoice(), restoreTodoListForm.getListId(),
                     restoreTodoListForm.getBackupFile().getInputStream());
 

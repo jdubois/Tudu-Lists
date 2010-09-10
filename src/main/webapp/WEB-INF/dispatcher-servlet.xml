@@ -7,15 +7,7 @@
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 
-    <context:component-scan base-package="tudu.web.mvc"/>
-
-    <bean id="dwrExceptionHandlerAspect"
-          class="tudu.web.dwr.aspectj.DwrExceptionHandlerAspect"/>
-
-    <!--  Struts Menu configuration -->
-    <bean id="menu" class="net.sf.navigator.menu.MenuLoader">
-        <property name="menuConfig" value="/WEB-INF/menu-config.xml"/>
-    </bean>
+    <context:component-scan base-package="tudu.web"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>

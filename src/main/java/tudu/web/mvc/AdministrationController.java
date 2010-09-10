@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import tudu.domain.User;
-import tudu.service.ConfigurationManager;
-import tudu.service.UserManager;
+import tudu.service.ConfigurationService;
+import tudu.service.UserService;
 
 import java.util.List;
 
@@ -23,10 +23,10 @@ import java.util.List;
 public class AdministrationController {
 
     @Autowired
-    private ConfigurationManager configurationManager;
+    private ConfigurationService configurationService;
 
     @Autowired
-    private UserManager userManager;
+    private UserService userService;
 
     /**
      * Show the administration page action.
@@ -43,33 +43,33 @@ public class AdministrationController {
 
         if (page.equals("configuration")) {
             mv.addObject("page", "configuration");
-            String propertyStaticPath = this.configurationManager.getProperty(
+            String propertyStaticPath = this.configurationService.getProperty(
                     "application.static.path").getValue();
 
             model.setPropertyStaticPath(propertyStaticPath);
 
-            String googleAnalyticsKey = configurationManager.getProperty(
+            String googleAnalyticsKey = configurationService.getProperty(
                     "google.analytics.key").getValue();
 
             model.setGoogleAnalyticsKey(googleAnalyticsKey);
 
-            String smtpHost = configurationManager.getProperty("smtp.host")
+            String smtpHost = configurationService.getProperty("smtp.host")
                     .getValue();
             model.setSmtpHost(smtpHost);
 
-            String smtpPort = configurationManager.getProperty("smtp.port")
+            String smtpPort = configurationService.getProperty("smtp.port")
                     .getValue();
             model.setSmtpPort(smtpPort);
 
-            String smtpUser = configurationManager.getProperty("smtp.user")
+            String smtpUser = configurationService.getProperty("smtp.user")
                     .getValue();
             model.setSmtpUser(smtpUser);
 
-            String smtpPassword = configurationManager.getProperty(
+            String smtpPassword = configurationService.getProperty(
                     "smtp.password").getValue();
             model.setSmtpPassword(smtpPassword);
 
-            String smtpFrom = configurationManager.getProperty("smtp.from")
+            String smtpFrom = configurationService.getProperty("smtp.from")
                     .getValue();
             model.setSmtpFrom(smtpFrom);
 
@@ -77,7 +77,7 @@ public class AdministrationController {
         } else if (page.equals("users")) {
             mv.addObject("page", "users");
             model.setSearchLogin("");
-            mv.addObject("numberOfUsers", this.userManager
+            mv.addObject("numberOfUsers", this.userService
                     .getNumberOfUsers());
 
         }
@@ -93,10 +93,10 @@ public class AdministrationController {
     public ModelAndView update(@ModelAttribute AdministrationModel model) {
         ModelAndView mv = new ModelAndView();
         if ("configuration".equals(model.getAction())) {
-            this.configurationManager.updateApplicationProperties(model.getPropertyStaticPath(),
+            this.configurationService.updateApplicationProperties(model.getPropertyStaticPath(),
                     model.getGoogleAnalyticsKey());
 
-            this.configurationManager.updateEmailProperties(model.getSmtpHost(), model.getSmtpPort(),
+            this.configurationService.updateEmailProperties(model.getSmtpHost(), model.getSmtpPort(),
                     model.getSmtpUser(), model.getSmtpPassword(), model.getSmtpFrom());
 
             mv = this.display("configuration");
@@ -104,16 +104,16 @@ public class AdministrationController {
         } else {
             if ("disableUser".equals(model.getAction())) {
                 String login = model.getLogin();
-                this.userManager.disableUser(login);
+                this.userService.disableUser(login);
             }
             if ("enableUser".equals(model.getAction())) {
                 String login = model.getLogin();
-                this.userManager.enableUser(login);
+                this.userService.enableUser(login);
             }
             if (model.getSearchLogin() == null) {
                 model.setSearchLogin("");
             }
-            List<User> users = this.userManager.findUsersByLogin(model.getSearchLogin());
+            List<User> users = this.userService.findUsersByLogin(model.getSearchLogin());
             mv.addObject("users", users);
             mv.addObject("page", "users");
             mv.addObject("administrationModel", model);

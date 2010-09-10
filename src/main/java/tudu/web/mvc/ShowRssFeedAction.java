@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.InternalResourceView;
 import tudu.domain.TodoList;
-import tudu.service.TodoListsManager;
+import tudu.service.TodoListsService;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,14 +24,14 @@ public class ShowRssFeedAction {
     private final Log log = LogFactory.getLog(ShowRssFeedAction.class);
 
     @Autowired
-    private TodoListsManager todoListsManager;
+    private TodoListsService todoListsService;
 
     @RequestMapping("/rss/showRssFeed.action")
     public ModelAndView showRss(@RequestParam String listId, HttpServletRequest request)
             throws Exception {
 
         ModelAndView mv = new ModelAndView();
-        TodoList todoList = todoListsManager.unsecuredFindTodoList(listId);
+        TodoList todoList = todoListsService.unsecuredFindTodoList(listId);
 
         if (todoList.isRssAllowed()) {
             mv.addObject("todoList", todoList);

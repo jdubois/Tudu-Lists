@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.InternalResourceView;
 import tudu.domain.TodoList;
-import tudu.service.TodoListsManager;
+import tudu.service.TodoListsService;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 public class BackupController {
 
     @Autowired
-    private TodoListsManager todoListsManager;
+    private TodoListsService todoListsService;
 
     /**
      * Backup a Todo List.
@@ -30,8 +30,8 @@ public class BackupController {
     public ModelAndView backup(@RequestParam String listId, HttpSession session)
             throws Exception {
 
-        TodoList todoList = todoListsManager.findTodoList(listId);
-        Document doc = todoListsManager.backupTodoList(todoList);
+        TodoList todoList = todoListsService.findTodoList(listId);
+        Document doc = todoListsService.backupTodoList(todoList);
         session.setAttribute("todoListDocument", doc);
         ModelAndView mv = new ModelAndView();
         mv.setView(new InternalResourceView("/secure/servlet/tudu_lists_backup.xml"));

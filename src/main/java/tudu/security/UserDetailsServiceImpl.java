@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tudu.domain.Role;
 import tudu.domain.User;
-import tudu.service.UserManager;
+import tudu.service.UserService;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -32,7 +32,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private final Log log = LogFactory.getLog(UserDetailsServiceImpl.class);
 
     @Autowired
-    private UserManager userManager;
+    private UserService userService;
 
     /**
      * Load a user for Spring Security.
@@ -46,7 +46,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
         User user;
         try {
-            user = userManager.findUser(login);
+            user = userService.findUser(login);
         } catch (ObjectRetrievalFailureException orfe) {
             throw new UsernameNotFoundException("User '" + login
                     + "' could not be found.");

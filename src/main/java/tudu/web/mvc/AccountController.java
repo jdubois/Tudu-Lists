@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import tudu.Constants;
 import tudu.domain.User;
-import tudu.service.UserManager;
+import tudu.service.UserService;
 
 /**
  * Manage the user information.
@@ -22,11 +22,11 @@ import tudu.service.UserManager;
 public class AccountController {
 
     @Autowired
-    private UserManager userManager;
+    private UserService userService;
 
     @ModelAttribute("user")
     public User formBackingObject() {
-        User user = userManager.getCurrentUser();
+        User user = userService.getCurrentUser();
         user.setVerifyPassword(user.getPassword());
         return user;
     }
@@ -63,7 +63,7 @@ public class AccountController {
 
             user.setDateFormat(Constants.DATEFORMAT_US);
         }
-        userManager.updateUser(user);
+        userService.updateUser(user);
         return "my_info";
     }
 }

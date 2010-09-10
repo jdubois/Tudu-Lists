@@ -1,3 +1,4 @@
+<%@ page import="tudu.service.impl.ConfigurationServiceImpl" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" errorPage="/WEB-INF/views/error.jsp" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
@@ -7,7 +8,7 @@
 
 <%
     request.setAttribute("ctx", request.getContextPath());
-    String staticCtx = tudu.service.impl.ConfigurationManagerImpl.staticFilesPath;
+    String staticCtx = ConfigurationServiceImpl.staticContent;
     if (staticCtx.equals("")) {
         request.setAttribute("staticCtx", request.getContextPath());
     } else {

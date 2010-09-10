@@ -9,7 +9,7 @@ import java.util.List;
  * 
  * @author Julien Dubois
  */
-public interface UserManager {
+public interface UserService {
 
     /**
      * Get the number of users.

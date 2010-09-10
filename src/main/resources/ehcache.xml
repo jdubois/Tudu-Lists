@@ -11,8 +11,15 @@
          java.io.tmpdir - Default temp file path -->
     <diskStore path="java.io.tmpdir/tudu/hibernate"/>
 
-    <!-- Object cache -->
+    <!-- Web cache -->
+    <cache name="web-cache"
+           maxElementsInMemory="1000"
+           eternal="false"
+           timeToLiveSeconds="120"
+           overflowToDisk="false">
+    </cache>
 
+    <!-- hibernate cache -->
      <cache name="tudu.domain.User"
         maxElementsInMemory="5000"
         eternal="false"

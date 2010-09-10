@@ -8,8 +8,8 @@ import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.stereotype.Component;
 import tudu.domain.TodoList;
 import tudu.domain.User;
-import tudu.service.TodoListsManager;
-import tudu.service.UserManager;
+import tudu.service.TodoListsService;
+import tudu.service.UserService;
 import tudu.web.dwr.TodoListsDwr;
 import tudu.web.dwr.bean.RemoteTodoList;
 
@@ -17,7 +17,7 @@ import java.util.Collection;
 import java.util.TreeSet;
 
 /**
- * Implementation of the tudu.service.TodoListsManager interface.
+ * Implementation of the tudu.service.TodoListsService interface.
  * 
  * @author Julien Dubois
  */
@@ -27,10 +27,10 @@ public class TodoListsDwrImpl implements TodoListsDwr {
     private final Log log = LogFactory.getLog(TodoListsDwrImpl.class);
 
     @Autowired
-    private TodoListsManager todoListsManager;
+    private TodoListsService todoListsService;
 
     @Autowired
-    private UserManager userManager;
+    private UserService userService;
 
     /**
      * @see tudu.web.dwr.TodoListsDwr#getTodoList(java.lang.String)
@@ -38,7 +38,7 @@ public class TodoListsDwrImpl implements TodoListsDwr {
     public RemoteTodoList getTodoList(String listId) {
         RemoteTodoList remoteTodoList = new RemoteTodoList();
         try {
-            TodoList todoList = todoListsManager.findTodoList(listId);
+            TodoList todoList = todoListsService.findTodoList(listId);
             remoteTodoList.setListId(todoList.getListId());
             String unescapedName = StringEscapeUtils.unescapeHtml(todoList
                     .getName());
@@ -55,8 +55,8 @@ public class TodoListsDwrImpl implements TodoListsDwr {
      */
     public String[] getTodoListUsers(String listId) {
         try {
-            TodoList todoList = todoListsManager.findTodoList(listId);
-            String currentLogin = userManager.getCurrentUser().getLogin();
+            TodoList todoList = todoListsService.findTodoList(listId);
+            String currentLogin = userService.getCurrentUser().getLogin();
             Collection<User> users = todoList.getUsers();
             Collection<String> logins = new TreeSet<String>();
             for (User user : users) {
@@ -77,7 +77,7 @@ public class TodoListsDwrImpl implements TodoListsDwr {
     public String addTodoListUser(String listId, String login) {
         login = login.toLowerCase();
         try {
-            todoListsManager.addTodoListUser(listId, login);
+            todoListsService.addTodoListUser(listId, login);
         } catch (ObjectRetrievalFailureException orfe) {
             return "ObjectRetrievalFailureException";
         }
@@ -90,7 +90,7 @@ public class TodoListsDwrImpl implements TodoListsDwr {
      */
     public void deleteTodoListUser(String listId, String login) {
         login = login.toLowerCase();
-        todoListsManager.deleteTodoListUser(listId, login);
+        todoListsService.deleteTodoListUser(listId, login);
     }
 
     /**
@@ -106,7 +106,7 @@ public class TodoListsDwrImpl implements TodoListsDwr {
         String escapedName = StringEscapeUtils.escapeHtml(name);
         todoList.setName(escapedName);
         todoList.setRssAllowed(rssAllowedBool);
-        todoListsManager.createTodoList(todoList);
+        todoListsService.createTodoList(todoList);
     }
 
     /**
@@ -114,7 +114,7 @@ public class TodoListsDwrImpl implements TodoListsDwr {
      *      java.lang.String, java.lang.String)
      */
     public void editTodoList(String listId, String name, String rssAllowed) {
-        TodoList todoList = todoListsManager.findTodoList(listId);
+        TodoList todoList = todoListsService.findTodoList(listId);
         if (name != null && !name.equals("")) {
             String escapedName = StringEscapeUtils.escapeHtml(name);
             todoList.setName(escapedName);
@@ -126,13 +126,13 @@ public class TodoListsDwrImpl implements TodoListsDwr {
             }
             todoList.setRssAllowed(rssAllowedBool);
         }
-        todoListsManager.updateTodoList(todoList);
+        todoListsService.updateTodoList(todoList);
     }
 
     /**
      * @see tudu.web.dwr.TodoListsDwr#deleteTodoList(java.lang.String)
      */
     public void deleteTodoList(String listId) {
-        todoListsManager.deleteTodoList(listId);
+        todoListsService.deleteTodoList(listId);
     }
 }

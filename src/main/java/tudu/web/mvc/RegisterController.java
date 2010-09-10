@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import tudu.domain.User;
 import tudu.service.UserAlreadyExistsException;
-import tudu.service.UserManager;
+import tudu.service.UserService;
 
 /**
  * Register a new Tudu Lists user.
@@ -23,7 +23,7 @@ import tudu.service.UserManager;
 public class RegisterController {
 
     @Autowired
-    private UserManager userManager;
+    private UserService userService;
 
     @ModelAttribute("user")
     public User formBackingObject() {
@@ -54,7 +54,7 @@ public class RegisterController {
             return "register";
         }
         try {
-            userManager.createUser(user);
+            userService.createUser(user);
         } catch (UserAlreadyExistsException e) {
             result.reject("register.user.already.exists");
             return "register";

@@ -15,10 +15,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import tudu.domain.*;
-import tudu.service.TodoListsManager;
-import tudu.service.TodosManager;
+import tudu.service.TodoListsService;
+import tudu.service.TodosService;
 import tudu.service.UserAlreadyExistsException;
-import tudu.service.UserManager;
+import tudu.service.UserService;
 
 import static org.junit.Assert.*;
 
@@ -27,13 +27,13 @@ import static org.junit.Assert.*;
 public class IntegrationTest {
 
     @Autowired
-    private UserManager userManager;
+    private UserService userService;
 
     @Autowired
-    private TodoListsManager todoListsManager;
+    private TodoListsService todoListsService;
 
     @Autowired
-    private TodosManager todosManager;
+    private TodosService todosService;
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -46,7 +46,7 @@ public class IntegrationTest {
     @Transactional
     public void createUser() {
         try {
-            userManager.findUser("test_user");
+            userService.findUser("test_user");
             fail("User already exists in the database.");
         } catch (ObjectRetrievalFailureException orfe) {
             // User should not already exist in the database.
@@ -57,7 +57,7 @@ public class IntegrationTest {
         user.setFirstName("First name");
         user.setLastName("Last name");
         try {
-            userManager.createUser(user);
+            userService.createUser(user);
             assertTrue(user.isEnabled());
             assertNotNull(user.getCreationDate());
             assertNotNull(user.getLastAccessDate());
@@ -73,7 +73,7 @@ public class IntegrationTest {
         }
 
         try {
-            User userFoundInDatabase = userManager.findUser("test_user");
+            User userFoundInDatabase = userService.findUser("test_user");
             assertEquals("First name", userFoundInDatabase.getFirstName());
             assertEquals("Last name", userFoundInDatabase.getLastName());
         } catch (ObjectRetrievalFailureException orfe) {
@@ -89,16 +89,16 @@ public class IntegrationTest {
         TodoList todoList = new TodoList();
         todoList.setName("test_list");
 
-        assertEquals(1, userManager.getCurrentUser().getTodoLists().size());
+        assertEquals(1, userService.getCurrentUser().getTodoLists().size());
 
-        todoListsManager.createTodoList(todoList);
+        todoListsService.createTodoList(todoList);
 
         assertEquals(1, todoList.getUsers().size());
         assertEquals("test_user", todoList.getUsers().iterator().next()
                 .getLogin());
-        assertEquals(2, userManager.getCurrentUser().getTodoLists().size());
+        assertEquals(2, userService.getCurrentUser().getTodoLists().size());
 
-        TodoList todoListFromDatabase = todoListsManager.findTodoList(todoList
+        TodoList todoListFromDatabase = todoListsService.findTodoList(todoList
                 .getListId());
         assertEquals("test_list", todoListFromDatabase.getName());
     }
@@ -109,14 +109,14 @@ public class IntegrationTest {
         TodoList todoList = new TodoList();
         todoList.setName("test_list");
 
-        assertEquals(1, userManager.getCurrentUser().getTodoLists().size());
-        todoListsManager.createTodoList(todoList);
-        assertEquals(2, userManager.getCurrentUser().getTodoLists().size());
-        todoListsManager.deleteTodoList(todoList.getListId());
-        assertEquals(1, userManager.getCurrentUser().getTodoLists().size());
+        assertEquals(1, userService.getCurrentUser().getTodoLists().size());
+        todoListsService.createTodoList(todoList);
+        assertEquals(2, userService.getCurrentUser().getTodoLists().size());
+        todoListsService.deleteTodoList(todoList.getListId());
+        assertEquals(1, userService.getCurrentUser().getTodoLists().size());
 
         try {
-            todoListsManager.findTodoList(todoList.getListId());
+            todoListsService.findTodoList(todoList.getListId());
             fail("The todo list should have been deleted");
         } catch (ObjectRetrievalFailureException orfe) {
             // The todo list should not exist.
@@ -129,12 +129,12 @@ public class IntegrationTest {
         createAuthenticatedUser();
 
         TodoList todoList = new TodoList();
-        todoListsManager.createTodoList(todoList);
+        todoListsService.createTodoList(todoList);
 
         Todo todo = new Todo();
         todo.setDescription("test_todo");
 
-        todosManager.createTodo(todoList.getListId(), todo);
+        todosService.createTodo(todoList.getListId(), todo);
         assertNotNull(todo.getCreationDate());
         assertEquals(1, todoList.getTodos().size());
     }
@@ -145,13 +145,13 @@ public class IntegrationTest {
         createAuthenticatedUser();
 
         TodoList todoList = new TodoList();
-        todoListsManager.createTodoList(todoList);
+        todoListsService.createTodoList(todoList);
 
         Todo todo = new Todo();
         todo.setDescription("test_todo");
 
-        todosManager.createTodo(todoList.getListId(), todo);
-        todosManager.deleteTodo(todo.getTodoId());
+        todosService.createTodo(todoList.getListId(), todo);
+        todosService.deleteTodo(todo.getTodoId());
         assertEquals(0, todoList.getTodos().size());
     }
 
@@ -163,23 +163,23 @@ public class IntegrationTest {
         user2.setLogin("test_user2");
         user2.setPassword("test_password");
         try {
-            userManager.createUser(user2);
+            userService.createUser(user2);
         } catch (UserAlreadyExistsException e) {
             fail("User already exists in the database.");
         }
         TodoList todoList = new TodoList();
-        todoListsManager.createTodoList(todoList);
-        todoListsManager.addTodoListUser(todoList.getListId(), "test_user2");
+        todoListsService.createTodoList(todoList);
+        todoListsService.addTodoListUser(todoList.getListId(), "test_user2");
         assertEquals(2, todoList.getUsers().size());
         assertEquals(2, user2.getTodoLists().size());
 
         Todo todo = new Todo();
         todo.setDescription("test_todo");
-        todosManager.createTodo(todoList.getListId(), todo);
+        todosService.createTodo(todoList.getListId(), todo);
         assertEquals(1, todoList.getTodos().size());
 
-        todoListsManager.deleteTodoList(todoList.getListId());
-        assertEquals(1, userManager.getCurrentUser().getTodoLists().size());
+        todoListsService.deleteTodoList(todoList.getListId());
+        assertEquals(1, userService.getCurrentUser().getTodoLists().size());
         assertEquals(1, user2.getTodoLists().size());
     }
 
@@ -191,7 +191,7 @@ public class IntegrationTest {
         user.setLogin("test_user");
         user.setPassword("test_password");
         try {
-            userManager.createUser(user);
+            userService.createUser(user);
         } catch (UserAlreadyExistsException e) {
             fail("User already exists in the database.");
         }

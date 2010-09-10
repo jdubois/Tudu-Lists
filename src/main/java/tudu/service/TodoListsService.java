@@ -12,7 +12,7 @@ import java.io.InputStream;
  * 
  * @author Julien Dubois
  */
-public interface TodoListsManager {
+public interface TodoListsService {
 
     /**
      * Create a new Todo List.

@@ -10,9 +10,9 @@ import tudu.domain.Todo;
 import tudu.domain.TodoList;
 import tudu.domain.User;
 import tudu.domain.comparator.*;
-import tudu.service.TodoListsManager;
-import tudu.service.TodosManager;
-import tudu.service.UserManager;
+import tudu.service.TodoListsService;
+import tudu.service.TodosService;
+import tudu.service.UserService;
 import tudu.web.dwr.TodosDwr;
 import tudu.web.dwr.bean.RemoteTodo;
 import tudu.web.dwr.bean.RemoteTodoList;
@@ -24,7 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * Implementation of the tudu.service.TodosManager interface.
+ * Implementation of the tudu.service.TodosService interface.
  * 
  * @author Julien Dubois
  */
@@ -52,19 +52,19 @@ public class TodosDwrImpl implements TodosDwr {
     private final Log log = LogFactory.getLog(TodosDwrImpl.class);
 
     @Autowired
-    private UserManager userManager;
+    private UserService userService;
 
     @Autowired
-    private TodosManager todosManager;
+    private TodosService todosService;
 
     @Autowired
-    private TodoListsManager todoListsManager;
+    private TodoListsService todoListsService;
 
     /**
      * @see tudu.web.dwr.TodosDwr#getCurrentTodoLists(java.util.Date)
      */
     public RemoteTodoList[] getCurrentTodoLists(Date menuDate) {
-        User user = userManager.getCurrentUser();
+        User user = userService.getCurrentUser();
         Collection<TodoList> todoLists = user.getTodoLists();
 
         if (menuDate != null) {
@@ -111,7 +111,7 @@ public class TodosDwrImpl implements TodosDwr {
      * @see tudu.web.dwr.TodosDwr#getTodoById(java.lang.String)
      */
     public RemoteTodo getTodoById(String todoId) {
-        Todo todo = todosManager.findTodo(todoId);
+        Todo todo = todosService.findTodo(todoId);
         RemoteTodo remoteTodo = new RemoteTodo();
         String unescapedDescription = StringEscapeUtils.unescapeHtml(todo
                 .getDescription());
@@ -140,7 +140,7 @@ public class TodosDwrImpl implements TodosDwr {
         HttpServletRequest request = null;
 
         if (listId != null && !listId.equals("")) {
-            TodoList todoList = todoListsManager.findTodoList(listId);
+            TodoList todoList = todoListsService.findTodoList(listId);
             if (tableDate != null && todoList.getLastUpdate().before(tableDate)) {
                 return "";
             }
@@ -253,7 +253,7 @@ public class TodosDwrImpl implements TodosDwr {
         HttpServletRequest request = null;
 
         request.setAttribute("filter", "nextDays");
-        request.setAttribute("todos", todosManager.findUrgentTodos());
+        request.setAttribute("todos", todosService.findUrgentTodos());
         return renderFilter();
     }
 
@@ -261,7 +261,7 @@ public class TodosDwrImpl implements TodosDwr {
         HttpServletRequest request = null;
 
         request.setAttribute("filter", "assignedToMe");
-        request.setAttribute("todos", todosManager.findAssignedTodos());
+        request.setAttribute("todos", todosService.findAssignedTodos());
         return renderFilter();
     }
 
@@ -335,7 +335,7 @@ public class TodosDwrImpl implements TodosDwr {
         inputNotes(todo, notes);
         inputAssignedUser(todo, assignedUserLogin);
 
-        todosManager.createTodo(listId, todo);
+        todosService.createTodo(listId, todo);
         return forceRenderTodos(listId);
     }
 
@@ -343,7 +343,7 @@ public class TodosDwrImpl implements TodosDwr {
      * @see tudu.web.dwr.TodosDwr#reopenTodo(java.lang.String)
      */
     public String reopenTodo(String todoId) {
-        Todo todo = todosManager.reopenTodo(todoId);
+        Todo todo = todosService.reopenTodo(todoId);
         return forceRenderTodos(todo.getTodoList().getListId());
     }
 
@@ -351,7 +351,7 @@ public class TodosDwrImpl implements TodosDwr {
      * @see tudu.web.dwr.TodosDwr#completeTodo(java.lang.String)
      */
     public String completeTodo(String todoId) {
-        Todo todo = todosManager.completeTodo(todoId);
+        Todo todo = todosService.completeTodo(todoId);
         return forceRenderTodos(todo.getTodoList().getListId());
     }
 
@@ -363,7 +363,7 @@ public class TodosDwrImpl implements TodosDwr {
     public String editTodo(String todoId, String description, String priority,
             String dueDate, String notes, String assignedUserLogin) {
 
-        /*Todo todo = todosManager.findTodo(todoId);
+        /*Todo todo = todosService.findTodo(todoId);
         String escapedDescription = StringEscapeUtils.escapeHtml(description);
         todo.setDescription(escapedDescription);
 
@@ -389,7 +389,7 @@ public class TodosDwrImpl implements TodosDwr {
         inputNotes(todo, notes);
         inputAssignedUser(todo, assignedUserLogin);
 
-        todosManager.updateTodo(todo);
+        todosService.updateTodo(todo);
         return forceRenderTodos(todo.getTodoList().getListId());*/
         return "";
     }
@@ -398,10 +398,10 @@ public class TodosDwrImpl implements TodosDwr {
      * @see tudu.web.dwr.TodosDwr#quickEditTodo(java.lang.String, java.lang.String)
      */
     public String quickEditTodo(String todoId, String description) {
-        /*Todo todo = todosManager.findTodo(todoId);
+        /*Todo todo = todosService.findTodo(todoId);
         String escapedDescription = StringEscapeUtils.escapeHtml(description);
         todo.setDescription(escapedDescription);
-        todosManager.updateTodo(todo);
+        todosService.updateTodo(todo);
         return forceRenderTodos(todo.getTodoList().getListId());*/
         return "";
     }
@@ -410,9 +410,9 @@ public class TodosDwrImpl implements TodosDwr {
      * @see tudu.web.dwr.TodosDwr#deleteTodo(java.lang.String)
      */
     public String deleteTodo(String todoId) {
-        Todo todo = todosManager.findTodo(todoId);
+        Todo todo = todosService.findTodo(todoId);
         String listId = todo.getTodoList().getListId();
-        todosManager.deleteTodo(todoId);
+        todosService.deleteTodo(todoId);
         return forceRenderTodos(listId);
     }
 
@@ -420,7 +420,7 @@ public class TodosDwrImpl implements TodosDwr {
      * @see tudu.web.dwr.TodosDwr#deleteAllCompletedTodos(java.lang.String)
      */
     public String deleteAllCompletedTodos(String listId) {
-        todosManager.deleteAllCompletedTodos(listId);
+        todosService.deleteAllCompletedTodos(listId);
         return forceRenderTodos(listId);
     }
 
@@ -453,7 +453,7 @@ public class TodosDwrImpl implements TodosDwr {
         String dateFormat = null; //(String) WebContextFactory.get().getSession().getAttribute("dateFormat");
 
         if (dateFormat == null) {
-            dateFormat = userManager.getCurrentUser().getDateFormat();
+            dateFormat = userService.getCurrentUser().getDateFormat();
             //WebContextFactory.get().getSession().setAttribute("dateFormat", dateFormat);
         }
         return new SimpleDateFormat(dateFormat);
@@ -492,7 +492,7 @@ public class TodosDwrImpl implements TodosDwr {
     private void inputAssignedUser(Todo todo, String assignedUserLogin) {
         if (assignedUserLogin != null && !assignedUserLogin.equals("")) {
             try {
-                User assignedUser = userManager.findUser(assignedUserLogin);
+                User assignedUser = userService.findUser(assignedUserLogin);
                 todo.setAssignedUser(assignedUser);
             } catch (ObjectRetrievalFailureException orfe) {
                 todo.setAssignedUser(null);

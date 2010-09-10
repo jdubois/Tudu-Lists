@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import tudu.Constants;
 import tudu.domain.TodoList;
 import tudu.domain.User;
-import tudu.service.UserManager;
+import tudu.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
@@ -24,7 +24,7 @@ import java.util.TreeSet;
 public class ListsController {
 
     @Autowired
-    private UserManager userManager;
+    private UserService userService;
 
     /**
      * Show the Todos main page.
@@ -32,7 +32,7 @@ public class ListsController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView showTodos(HttpServletRequest request) {
 
-        User user = userManager.getCurrentUser();
+        User user = userService.getCurrentUser();
         Collection<TodoList> todoLists = new TreeSet<TodoList>(user
                 .getTodoLists());
 

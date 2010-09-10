@@ -1,3 +1,4 @@
+<%@ page import="tudu.service.impl.ConfigurationServiceImpl" %>
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -10,7 +11,7 @@
 
 <%
     request.setAttribute("ctx", request.getContextPath());
-    String staticCtx = tudu.service.impl.ConfigurationManagerImpl.staticFilesPath;
+    String staticCtx = ConfigurationServiceImpl.staticContent;
     if (staticCtx.equals("")) {
         request.setAttribute("staticCtx", request.getContextPath());
     } else {
@@ -32,11 +33,11 @@
     <link rel="stylesheet" type="text/css" href="${staticCtx}/css/global.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="${staticCtx}/css/tabs.css"/>
     <link rel="stylesheet" type="text/css" media="all" href="${staticCtx}/css/calendar-blue.css" title="calendar-blue"/>
-    <% if (!tudu.service.impl.ConfigurationManagerImpl.googleAnalyticsKey.equals("")) { %>
+    <% if (!ConfigurationServiceImpl.googleAnalyticsKey.equals("")) { %>
     <script type="text/javascript">
         var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
         document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-        var pageTracker = _gat._getTracker("<%=tudu.service.impl.ConfigurationManagerImpl.googleAnalyticsKey%>");
+        var pageTracker = _gat._getTracker("<%=ConfigurationServiceImpl.googleAnalyticsKey%>");
         pageTracker._initData();
         pageTracker._trackPageview();
         function tracker(ajaxCall) {

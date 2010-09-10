@@ -9,12 +9,12 @@
 
     <context-param>
         <param-name>log4jConfigLocation</param-name>
-        <param-value>classpath*:/log4j.xml</param-value>
+        <param-value>WEB-INF/log4j.xml</param-value>
     </context-param>
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:META-INF/spring/application-config.xml</param-value>
+        <param-value>classpath:META-INF/spring/application-context.xml</param-value>
     </context-param>
 
     <listener>

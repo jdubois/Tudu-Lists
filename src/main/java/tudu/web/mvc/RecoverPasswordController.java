@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import tudu.domain.User;
-import tudu.service.UserManager;
+import tudu.service.UserService;
 
 /**
  * Recover a user's lost password.
@@ -24,7 +24,7 @@ public class RecoverPasswordController {
     private final Log log = LogFactory.getLog(RecoverPasswordController.class);
 
     @Autowired
-    private UserManager userManager;
+    private UserService userService;
 
     @ModelAttribute("user")
     public User formBackingObject() {
@@ -49,7 +49,7 @@ public class RecoverPasswordController {
         mv.setViewName("recover_password");
         String login = user.getLogin().toLowerCase();
         try {
-            user = userManager.findUser(login);
+            user = userService.findUser(login);
         } catch (ObjectRetrievalFailureException orfe) {
             mv.addObject("message", "recover.password.no.user");
             return mv;
@@ -59,7 +59,7 @@ public class RecoverPasswordController {
             return mv;
         }
         try {
-            userManager.sendPassword(user);
+            userService.sendPassword(user);
             mv.addObject("success", "true");
         } catch (RuntimeException e) {
             mv.addObject("message", "recover.password.smtp.error");

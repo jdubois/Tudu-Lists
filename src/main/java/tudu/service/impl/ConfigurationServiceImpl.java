@@ -13,35 +13,35 @@ import tudu.domain.Property;
 import tudu.domain.Role;
 import tudu.domain.RolesEnum;
 import tudu.domain.User;
-import tudu.service.ConfigurationManager;
+import tudu.service.ConfigurationService;
 import tudu.service.UserAlreadyExistsException;
-import tudu.service.UserManager;
+import tudu.service.UserService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.Set;
 
 /**
- * Implementation of the tudu.service.ConfigurationManager interface.
+ * Implementation of the tudu.service.ConfigurationService interface.
  *
  * @author Julien Dubois
  */
 @Service
 @Transactional
-public class ConfigurationManagerImpl implements ConfigurationManager,
+public class ConfigurationServiceImpl implements ConfigurationService,
         ApplicationListener {
 
-    public static String staticFilesPath = "";
+    public static String staticContent = "";
 
     public static String googleAnalyticsKey = "";
 
-    private final Log log = LogFactory.getLog(ConfigurationManagerImpl.class);
+    private final Log log = LogFactory.getLog(ConfigurationServiceImpl.class);
 
     @PersistenceContext
     private EntityManager em;
 
     @Autowired
-    private UserManager userManager;
+    private UserService userService;
 
     /**
      * @see org.springframework.context.ApplicationListener#onApplicationEvent(org.springframework.context.ApplicationEvent)
@@ -55,7 +55,7 @@ public class ConfigurationManagerImpl implements ConfigurationManager,
     }
 
     /**
-     * @see tudu.service.ConfigurationManager#initDatabase()
+     * @see tudu.service.ConfigurationService#initDatabase()
      */
     public void initDatabase() {
         log.warn("Testing Database.");
@@ -100,7 +100,7 @@ public class ConfigurationManagerImpl implements ConfigurationManager,
             adminUser.setLastName("Dmin");
             adminUser.setDateFormat("MM/dd/yyyy");
             try {
-                userManager.createUser(adminUser);
+                userService.createUser(adminUser);
             } catch (UserAlreadyExistsException e) {
                 log.error("Error while creating the admin user :"
                         + " the user already exists.");
@@ -114,7 +114,7 @@ public class ConfigurationManagerImpl implements ConfigurationManager,
             user.setFirstName("");
             user.setDateFormat("MM/dd/yyyy");
             try {
-                userManager.createUser(user);
+                userService.createUser(user);
             } catch (UserAlreadyExistsException e) {
                 log.error("Error while creating the admin user : "
                         + "the user already exists.");
@@ -124,19 +124,19 @@ public class ConfigurationManagerImpl implements ConfigurationManager,
     }
 
     /**
-     * @see tudu.service.ConfigurationManager#initApplicationProperties()
+     * @see tudu.service.ConfigurationService#initApplicationProperties()
      */
     public void initApplicationProperties() {
         Property staticFilesPathProperty = this
                 .getProperty("application.static.path");
 
         if (staticFilesPathProperty != null) {
-            staticFilesPath = staticFilesPathProperty.getValue();
+            staticContent = staticFilesPathProperty.getValue();
 
         } else {
             staticFilesPathProperty = new Property();
             staticFilesPathProperty.setKey("application.static.path");
-            staticFilesPathProperty.setValue(staticFilesPath);
+            staticFilesPathProperty.setValue(staticContent);
             this.setProperty(staticFilesPathProperty);
         }
 
@@ -155,7 +155,7 @@ public class ConfigurationManagerImpl implements ConfigurationManager,
     }
 
     /**
-     * @see tudu.service.ConfigurationManager#getProperty(java.lang.String)
+     * @see tudu.service.ConfigurationService#getProperty(java.lang.String)
      */
     @Transactional(readOnly = true)
     public Property getProperty(String key) {
@@ -163,7 +163,7 @@ public class ConfigurationManagerImpl implements ConfigurationManager,
     }
 
     /**
-     * @see tudu.service.ConfigurationManager#updateEmailProperties(java.lang.String,
+     * @see tudu.service.ConfigurationService#updateEmailProperties(java.lang.String,
      *      java.lang.String, java.lang.String, java.lang.String,
      *      java.lang.String)
      */
@@ -183,7 +183,7 @@ public class ConfigurationManagerImpl implements ConfigurationManager,
     }
 
     /**
-     * @see tudu.service.ConfigurationManager#updateApplicationProperties(java.lang.String,
+     * @see tudu.service.ConfigurationService#updateApplicationProperties(java.lang.String,
      *      java.lang.String)
      */
     public void updateApplicationProperties(String staticPath, String googleKey) {
@@ -191,7 +191,7 @@ public class ConfigurationManagerImpl implements ConfigurationManager,
         pathProperty.setKey("application.static.path");
         pathProperty.setValue(staticPath);
         this.setProperty(pathProperty);
-        staticFilesPath = staticPath;
+        staticContent = staticPath;
 
         Property googleProperty = new Property();
         googleProperty.setKey("google.analytics.key");

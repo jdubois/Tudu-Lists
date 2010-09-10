@@ -7,14 +7,14 @@ import tudu.domain.Property;
 
 import static org.junit.Assert.assertEquals;
 
-public class ConfigurationManagerImplTest {
+public class ConfigurationServiceImplTest {
 
-    ConfigurationManagerImpl configurationManager = new ConfigurationManagerImpl();
+    ConfigurationServiceImpl configurationService = new ConfigurationServiceImpl();
 
     @Before
     public void before() {
         //propertyDAO = createMock(PropertyDAO.class);
-        //ReflectionTestUtils.setField(configurationManager, "propertyDAO", propertyDAO);
+        //ReflectionTestUtils.setField(configurationService, "propertyDAO", propertyDAO);
     }
 
     @After
@@ -30,7 +30,7 @@ public class ConfigurationManagerImplTest {
         //expect(propertyDAO.getProperty("key")).andReturn(property);
 
         //replay(propertyDAO);
-        Property test = configurationManager.getProperty("key");
+        Property test = configurationService.getProperty("key");
         assertEquals("value", test.getValue());
     }
 
@@ -68,7 +68,7 @@ public class ConfigurationManagerImplTest {
         //propertyDAO.updateProperty(fromProperty);
 
         //replay(propertyDAO);
-        configurationManager.updateEmailProperties("host", "port", "user",
+        configurationService.updateEmailProperties("host", "port", "user",
                 "password", "from");
         assertEquals("host", hostProperty.getValue());
         assertEquals("port", portProperty.getValue());

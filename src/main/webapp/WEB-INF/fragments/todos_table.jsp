@@ -1,3 +1,4 @@
+<%@ page import="tudu.service.impl.ConfigurationServiceImpl" %>
 <%@ page language="java" errorPage="/WEB-INF/views/error.jsp" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
@@ -5,7 +6,7 @@
 <%
  request.setAttribute("ctx", request.getContextPath()); 
  request.setAttribute("now", java.util.Calendar.getInstance().getTime());
- String staticCtx = tudu.service.impl.ConfigurationManagerImpl.staticFilesPath;
+ String staticCtx = ConfigurationServiceImpl.staticContent;
  if (staticCtx.equals("")) {
      request.setAttribute("staticCtx", request.getContextPath());
  } else {

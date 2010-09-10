@@ -12,7 +12,7 @@ import tudu.domain.Todo;
 import tudu.domain.TodoList;
 import tudu.domain.User;
 import tudu.security.PermissionDeniedException;
-import tudu.service.UserManager;
+import tudu.service.UserService;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -21,7 +21,7 @@ import java.util.Calendar;
 import static org.easymock.EasyMock.*;
 import static org.junit.Assert.*;
 
-public class TodoListsManagerImplTest {
+public class TodoListsServiceImplTest {
 
     static String todoListBackup = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
             + "<todolist>" + " <title>test list</title>" + " <rss>true</rss>"
@@ -35,9 +35,9 @@ public class TodoListsManagerImplTest {
     TodoList todoList = new TodoList();
     User user = new User();
 
-    UserManager userManager = null;
+    UserService userService = null;
 
-    TodoListsManagerImpl todoListsManager = new TodoListsManagerImpl();
+    TodoListsServiceImpl todoListsService = new TodoListsServiceImpl();
 
     @Before
     public void before() {
@@ -49,28 +49,28 @@ public class TodoListsManagerImplTest {
         user.setFirstName("First name");
         user.setLastName("Last name");
 
-        userManager = createMock(UserManager.class);
+        userService = createMock(UserService.class);
 
-        ReflectionTestUtils.setField(todoListsManager, "userManager", userManager);
+        ReflectionTestUtils.setField(todoListsService, "userService", userService);
     }
 
     @After
     public void after() {
-        verify(userManager);
+        verify(userService);
     }
 
     private void replay() {
-        EasyMock.replay(userManager);
+        EasyMock.replay(userService);
     }
 
     @Test
     public void testCreateTodoList() {
 
-        expect(userManager.getCurrentUser()).andReturn(user);
+        expect(userService.getCurrentUser()).andReturn(user);
 
         replay();
 
-        todoListsManager.createTodoList(todoList);
+        todoListsService.createTodoList(todoList);
 
         assertTrue(user.getTodoLists().contains(todoList));
     }
@@ -82,11 +82,11 @@ public class TodoListsManagerImplTest {
 
         //expect(todoListDAO.getTodoList("001")).andReturn(todoList);
 
-        expect(userManager.getCurrentUser()).andReturn(user);
+        expect(userService.getCurrentUser()).andReturn(user);
 
         replay();
         try {
-            TodoList testTodoList = todoListsManager.findTodoList("001");
+            TodoList testTodoList = todoListsService.findTodoList("001");
             assertEquals(todoList, testTodoList);
         } catch (PermissionDeniedException pde) {
             fail("Permission denied when looking for Todo.");
@@ -97,12 +97,12 @@ public class TodoListsManagerImplTest {
     public void testFailedFindTodoList() {
         //expect(todoListDAO.getTodoList("001")).andReturn(todoList);
 
-        expect(userManager.getCurrentUser()).andReturn(user);
+        expect(userService.getCurrentUser()).andReturn(user);
 
         replay();
 
         try {
-            todoListsManager.findTodoList("001");
+            todoListsService.findTodoList("001");
             fail("A PermissionDeniedException should have been thrown");
         } catch (PermissionDeniedException pde) {
 
@@ -115,7 +115,7 @@ public class TodoListsManagerImplTest {
 
         replay();
 
-        todoListsManager.updateTodoList(todoList);
+        todoListsService.updateTodoList(todoList);
     }
 
     @Test
@@ -123,17 +123,17 @@ public class TodoListsManagerImplTest {
         todoList.getUsers().add(user);
         user.getTodoLists().add(todoList);
 
-        expect(userManager.getCurrentUser()).andReturn(user);
+        expect(userService.getCurrentUser()).andReturn(user);
 
         //expect(todoListDAO.getTodoList("001")).andReturn(todoList);
 
-        userManager.updateUser(user);
+        userService.updateUser(user);
 
         //todoListDAO.removeTodoList("001");
 
         replay();
 
-        todoListsManager.deleteTodoList("001");
+        todoListsService.deleteTodoList("001");
 
         assertFalse(user.getTodoLists().contains(todoList));
     }
@@ -143,19 +143,19 @@ public class TodoListsManagerImplTest {
         todoList.getUsers().add(user);
         user.getTodoLists().add(todoList);
 
-        expect(userManager.getCurrentUser()).andReturn(user);
+        expect(userService.getCurrentUser()).andReturn(user);
 
         //expect(todoListDAO.getTodoList("001")).andReturn(todoList);
 
         User user2 = new User();
         user2.setLogin("another_user");
-        expect(userManager.findUser("another_user")).andReturn(user2);
+        expect(userService.findUser("another_user")).andReturn(user2);
 
         //todoListDAO.updateTodoList(todoList);
 
         replay();
 
-        todoListsManager.addTodoListUser("001", "another_user");
+        todoListsService.addTodoListUser("001", "another_user");
 
         assertTrue(todoList.getUsers().contains(user2));
         assertTrue(user2.getTodoLists().contains(todoList));
@@ -171,17 +171,17 @@ public class TodoListsManagerImplTest {
         user2.getTodoLists().add(todoList);
         todoList.getUsers().add(user2);
 
-        expect(userManager.getCurrentUser()).andReturn(user);
+        expect(userService.getCurrentUser()).andReturn(user);
 
         //expect(todoListDAO.getTodoList("001")).andReturn(todoList);
 
-        expect(userManager.findUser("another_user")).andReturn(user2);
+        expect(userService.findUser("another_user")).andReturn(user2);
 
         //todoListDAO.updateTodoList(todoList);
 
         replay();
 
-        todoListsManager.deleteTodoListUser("001", "another_user");
+        todoListsService.deleteTodoListUser("001", "another_user");
 
         assertFalse(todoList.getUsers().contains(user2));
         assertFalse(user2.getTodoLists().contains(todoList));
@@ -205,7 +205,7 @@ public class TodoListsManagerImplTest {
 
         replay();
 
-        Document doc = todoListsManager.backupTodoList(todoList);
+        Document doc = todoListsService.backupTodoList(todoList);
 
         XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
         String xmlContent = outputter.outputString(doc);
@@ -225,16 +225,16 @@ public class TodoListsManagerImplTest {
         InputStream content = new ByteArrayInputStream(todoListBackup
                 .getBytes());
 
-        expect(userManager.getCurrentUser()).andReturn(user);
+        expect(userService.getCurrentUser()).andReturn(user);
         TodoList todoList = new TodoList();
         //todoListDAO.saveTodoList(todoList);
-        userManager.updateUser(user);
+        userService.updateUser(user);
         Todo todo = new Todo();
         //todoDAO.saveTodo(todo);
 
         replay();
 
-        todoListsManager.restoreTodoList("create", "001", content);
+        todoListsService.restoreTodoList("create", "001", content);
     }
 
     @Test
@@ -251,7 +251,7 @@ public class TodoListsManagerImplTest {
         todoList.getTodos().add(todo);
 
         //expect(todoListDAO.getTodoList("001")).andReturn(todoList);
-        expect(userManager.getCurrentUser()).andReturn(user);
+        expect(userService.getCurrentUser()).andReturn(user);
         //todoDAO.removeTodo("0001");
         //todoListDAO.updateTodoList(todoList);
         Todo createdTodo = new Todo();
@@ -259,7 +259,7 @@ public class TodoListsManagerImplTest {
 
         replay();
 
-        todoListsManager.restoreTodoList("replace", "001", content);
+        todoListsService.restoreTodoList("replace", "001", content);
     }
 
     @Test
@@ -271,7 +271,7 @@ public class TodoListsManagerImplTest {
         user.getTodoLists().add(todoList);
 
         //expect(todoListDAO.getTodoList("001")).andReturn(todoList);
-        expect(userManager.getCurrentUser()).andReturn(user);
+        expect(userService.getCurrentUser()).andReturn(user);
 
         Todo createdTodo = new Todo();
         //todoDAO.saveTodo(createdTodo);
@@ -280,7 +280,7 @@ public class TodoListsManagerImplTest {
 
         replay();
 
-        todoListsManager.restoreTodoList("merge", "001", content);
+        todoListsService.restoreTodoList("merge", "001", content);
 
         assertNotNull(todoList.getLastUpdate());
     }

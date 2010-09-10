@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import tudu.Constants;
 import tudu.domain.*;
 import tudu.service.UserAlreadyExistsException;
-import tudu.service.UserManager;
+import tudu.service.UserService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,15 +22,15 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Implementation of the tudu.service.UserManager interface.
+ * Implementation of the tudu.service.UserService interface.
  *
  * @author Julien Dubois
  */
 @Service
 @Transactional
-public class UserManagerImpl implements UserManager {
+public class UserServiceImpl implements UserService {
 
-    private final Log log = LogFactory.getLog(UserManagerImpl.class);
+    private final Log log = LogFactory.getLog(UserServiceImpl.class);
 
 
     @PersistenceContext
@@ -39,7 +39,7 @@ public class UserManagerImpl implements UserManager {
     /**
      * Get the number of users.
      *
-     * @see tudu.service.UserManager#getNumberOfUsers()
+     * @see tudu.service.UserService#getNumberOfUsers()
      */
     @Transactional(readOnly = true)
     public long getNumberOfUsers() {
@@ -50,7 +50,7 @@ public class UserManagerImpl implements UserManager {
     /**
      * Find a user by login.
      *
-     * @see tudu.service.UserManager#findUser(String)
+     * @see tudu.service.UserService#findUser(String)
      */
     @Transactional(readOnly = true)
     public User findUser(String login) {
@@ -71,7 +71,7 @@ public class UserManagerImpl implements UserManager {
     /**
      * Find all users with a login starting with the "loginStart" string.
      *
-     * @see tudu.service.UserManager#findUsersByLogin(java.lang.String)
+     * @see tudu.service.UserService#findUsersByLogin(java.lang.String)
      */
     @Transactional(readOnly = true)
     public List<User> findUsersByLogin(String loginStart) {
@@ -85,7 +85,7 @@ public class UserManagerImpl implements UserManager {
     /**
      * Find the current Tudu List user.
      *
-     * @see tudu.service.UserManager#getCurrentUser()
+     * @see tudu.service.UserService#getCurrentUser()
      */
     @Transactional(readOnly = true)
     public User getCurrentUser() {
@@ -129,7 +129,7 @@ public class UserManagerImpl implements UserManager {
     /**
      * Create a new user.
      *
-     * @see tudu.service.UserManager#createUser(tudu.domain.User)
+     * @see tudu.service.UserService#createUser(tudu.domain.User)
      */
     public void createUser(User user) throws UserAlreadyExistsException {
         if (log.isDebugEnabled()) {
@@ -172,7 +172,7 @@ public class UserManagerImpl implements UserManager {
     }
 
     /**
-     * @see tudu.service.UserManager#sendPassword(tudu.domain.User)
+     * @see tudu.service.UserService#sendPassword(tudu.domain.User)
      */
     @Transactional(readOnly = true)
     public void sendPassword(User user) {

@@ -2,10 +2,10 @@
 <html>
 	<head>
 		<title></title>
-		<script type="text/javascript">window.location.href='<%=request.getContextPath()%>/welcome.action'</script>
+		<script type="text/javascript">window.location.href='<%=request.getContextPath()%>/tudu/welcome'</script>
 	</head>
 	<body>
 		If you are not redirected automatically, click 
-			<a href="<%=request.getContextPath()%>/welcome.action">here</a>.
+			<a href="<%=request.getContextPath()%>/tudu/welcome">here</a>.
 	</body>
 </html>

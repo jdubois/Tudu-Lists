@@ -14,8 +14,8 @@ import tudu.domain.Todo;
 import tudu.domain.TodoList;
 import tudu.domain.User;
 import tudu.security.PermissionDeniedException;
-import tudu.service.TodoListsManager;
-import tudu.service.UserManager;
+import tudu.service.TodoListsService;
+import tudu.service.UserService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,27 +26,27 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Implementation of the tudu.service.TodoListsManager interface.
+ * Implementation of the tudu.service.TodoListsService interface.
  *
  * @author Julien Dubois
  */
 @Service
 @Transactional
-public class TodoListsManagerImpl implements TodoListsManager {
+public class TodoListsServiceImpl implements TodoListsService {
 
-    private final Log log = LogFactory.getLog(TodoListsManagerImpl.class);
+    private final Log log = LogFactory.getLog(TodoListsServiceImpl.class);
 
 
     @PersistenceContext
     private EntityManager em;
 
     @Autowired
-    private UserManager userManager;
+    private UserService userService;
 
     /**
      * Create a new Todo List.
      *
-     * @see tudu.service.TodoListsManager#createTodoList(tudu.domain.TodoList)
+     * @see tudu.service.TodoListsService#createTodoList(tudu.domain.TodoList)
      */
     public void createTodoList(final TodoList todoList) {
         if (log.isDebugEnabled()) {
@@ -54,14 +54,14 @@ public class TodoListsManagerImpl implements TodoListsManager {
                     + todoList.getName());
         }
         todoList.setLastUpdate(Calendar.getInstance().getTime());
-        User user = userManager.getCurrentUser();
+        User user = userService.getCurrentUser();
         todoList.getUsers().add(user);
         em.persist(todoList);
         user.getTodoLists().add(todoList);
     }
 
     /**
-     * @see tudu.service.TodoListsManager#findTodoList(java.lang.String)
+     * @see tudu.service.TodoListsService#findTodoList(java.lang.String)
      */
     @Transactional(readOnly = true)
     public TodoList findTodoList(String listId) {
@@ -69,7 +69,7 @@ public class TodoListsManagerImpl implements TodoListsManager {
         if (todoList == null) {
             throw new ObjectRetrievalFailureException(TodoList.class, listId);
         }
-        User user = userManager.getCurrentUser();
+        User user = userService.getCurrentUser();
         if (!user.getTodoLists().contains(todoList)) {
             if (log.isInfoEnabled()) {
                 log.info("Permission denied when finding Todo List ID '"
@@ -82,7 +82,7 @@ public class TodoListsManagerImpl implements TodoListsManager {
     }
 
     /**
-     * @see tudu.service.TodoListsManager#unsecuredFindTodoList(java.lang.String)
+     * @see tudu.service.TodoListsService#unsecuredFindTodoList(java.lang.String)
      */
     @Transactional(readOnly = true)
     public TodoList unsecuredFindTodoList(String listId) {
@@ -92,7 +92,7 @@ public class TodoListsManagerImpl implements TodoListsManager {
     /**
      * Updates the Todo List last update date.
      *
-     * @see tudu.service.TodoListsManager#updateTodoList(tudu.domain.TodoList)
+     * @see tudu.service.TodoListsService#updateTodoList(tudu.domain.TodoList)
      */
     public void updateTodoList(final TodoList todoList) {
         todoList.setLastUpdate(Calendar.getInstance().getTime());
@@ -101,7 +101,7 @@ public class TodoListsManagerImpl implements TodoListsManager {
     /**
      * Delete a Todo List.
      *
-     * @see tudu.service.TodoListsManager#deleteTodoList(java.lang.String)
+     * @see tudu.service.TodoListsService#deleteTodoList(java.lang.String)
      */
     public void deleteTodoList(final String listId) {
         TodoList todoList = this.findTodoList(listId);
@@ -115,24 +115,24 @@ public class TodoListsManagerImpl implements TodoListsManager {
     }
 
     /**
-     * @see tudu.service.TodoListsManager#addTodoListUser(java.lang.String,
+     * @see tudu.service.TodoListsService#addTodoListUser(java.lang.String,
      *      java.lang.String)
      */
     public void addTodoListUser(String listId, String login) {
         TodoList todoList = this.findTodoList(listId);
-        User targetUser = userManager.findUser(login);
+        User targetUser = userService.findUser(login);
         todoList.getUsers().add(targetUser);
         targetUser.getTodoLists().add(todoList);
         this.updateTodoList(todoList);
     }
 
     /**
-     * @see tudu.service.TodoListsManager#deleteTodoListUser(java.lang.String,
+     * @see tudu.service.TodoListsService#deleteTodoListUser(java.lang.String,
      *      java.lang.String)
      */
     public void deleteTodoListUser(String listId, String login) {
         TodoList todoList = this.findTodoList(listId);
-        User targetUser = userManager.findUser(login);
+        User targetUser = userService.findUser(login);
         for (Todo todo : todoList.getTodos()) {
             if (todo.getAssignedUser() != null
                     && todo.getAssignedUser().equals(targetUser)) {
@@ -146,7 +146,7 @@ public class TodoListsManagerImpl implements TodoListsManager {
     }
 
     /**
-     * @see tudu.service.TodoListsManager#backupTodoList(tudu.domain.TodoList)
+     * @see tudu.service.TodoListsService#backupTodoList(tudu.domain.TodoList)
      */
     public Document backupTodoList(TodoList todoList) {
         Document doc = new Document();
@@ -197,7 +197,7 @@ public class TodoListsManagerImpl implements TodoListsManager {
     }
 
     /**
-     * @see tudu.service.TodoListsManager#restoreTodoList(java.lang.String,
+     * @see tudu.service.TodoListsService#restoreTodoList(java.lang.String,
      *      java.lang.String, java.io.InputStream)
      */
     public void restoreTodoList(String restoreChoice, String listId,

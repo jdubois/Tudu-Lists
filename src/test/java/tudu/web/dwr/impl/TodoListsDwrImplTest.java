@@ -6,8 +6,8 @@ import org.junit.Test;
 import org.springframework.test.util.ReflectionTestUtils;
 import tudu.domain.TodoList;
 import tudu.domain.User;
-import tudu.service.TodoListsManager;
-import tudu.service.UserManager;
+import tudu.service.TodoListsService;
+import tudu.service.UserService;
 
 import static org.easymock.EasyMock.*;
 import static org.junit.Assert.assertEquals;
@@ -16,8 +16,8 @@ public class TodoListsDwrImplTest {
 
     TodoList todoList = new TodoList();
 
-    TodoListsManager todoListsManager = null;
-    UserManager userManager = null;
+    TodoListsService todoListsService = null;
+    UserService userService = null;
 
     TodoListsDwrImpl todoListsDwr = new TodoListsDwrImpl();
 
@@ -27,28 +27,28 @@ public class TodoListsDwrImplTest {
         todoList.setName("Description");
         todoList.setRssAllowed(false);
 
-        todoListsManager = createMock(TodoListsManager.class);
+        todoListsService = createMock(TodoListsService.class);
 
-        userManager = createMock(UserManager.class);
+        userService = createMock(UserService.class);
 
-        ReflectionTestUtils.setField(todoListsDwr, "todoListsManager", todoListsManager);
-        ReflectionTestUtils.setField(todoListsDwr, "userManager", userManager);
+        ReflectionTestUtils.setField(todoListsDwr, "todoListsService", todoListsService);
+        ReflectionTestUtils.setField(todoListsDwr, "userService", userService);
     }
 
     @After
     public void after() {
-        verify(todoListsManager);
-        verify(userManager);
+        verify(todoListsService);
+        verify(userService);
     }
 
     private void replay_() {
-        replay(todoListsManager);
-        replay(userManager);
+        replay(todoListsService);
+        replay(userService);
     }
 
     @Test
     public void testGetTodoListName() {
-        expect(todoListsManager.findTodoList("001")).andReturn(todoList);
+        expect(todoListsService.findTodoList("001")).andReturn(todoList);
 
         replay_();
 
@@ -59,7 +59,7 @@ public class TodoListsDwrImplTest {
     @Test
     public void testGetTodoListRss() {
         todoList.setRssAllowed(true);
-        expect(todoListsManager.findTodoList("001")).andReturn(todoList);
+        expect(todoListsService.findTodoList("001")).andReturn(todoList);
 
         replay_();
 
@@ -70,7 +70,7 @@ public class TodoListsDwrImplTest {
     @Test
     public void testGetTodoListRss2() {
         todoList.setRssAllowed(false);
-        expect(todoListsManager.findTodoList("001")).andReturn(todoList);
+        expect(todoListsService.findTodoList("001")).andReturn(todoList);
 
         replay_();
 
@@ -82,7 +82,7 @@ public class TodoListsDwrImplTest {
     public void testGetTodoListUsers() {
         User user = new User();
         user.setLogin("test_user");
-        expect(userManager.getCurrentUser()).andReturn(user);
+        expect(userService.getCurrentUser()).andReturn(user);
 
         todoList.getUsers().add(user);
 
@@ -98,7 +98,7 @@ public class TodoListsDwrImplTest {
         user3.setLogin("CCC");
         todoList.getUsers().add(user3);
 
-        expect(todoListsManager.findTodoList("001")).andReturn(todoList);
+        expect(todoListsService.findTodoList("001")).andReturn(todoList);
 
         replay_();
 
@@ -112,7 +112,7 @@ public class TodoListsDwrImplTest {
 
     @Test
     public void testAddTodoListUser() {
-        todoListsManager.addTodoListUser("001", "test_user");
+        todoListsService.addTodoListUser("001", "test_user");
 
         replay_();
 
@@ -121,7 +121,7 @@ public class TodoListsDwrImplTest {
 
     @Test
     public void testDeleteTodoListUser() {
-        todoListsManager.deleteTodoListUser("001", "test_user");
+        todoListsService.deleteTodoListUser("001", "test_user");
 
         replay_();
 
@@ -130,8 +130,8 @@ public class TodoListsDwrImplTest {
 
     @Test
     public void testEditTodoList() {
-        expect(todoListsManager.findTodoList("001")).andReturn(todoList);
-        todoListsManager.updateTodoList(todoList);
+        expect(todoListsService.findTodoList("001")).andReturn(todoList);
+        todoListsService.updateTodoList(todoList);
 
         replay_();
 

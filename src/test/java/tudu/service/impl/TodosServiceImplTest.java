@@ -9,23 +9,23 @@ import tudu.domain.Todo;
 import tudu.domain.TodoList;
 import tudu.domain.User;
 import tudu.security.PermissionDeniedException;
-import tudu.service.TodoListsManager;
-import tudu.service.UserManager;
+import tudu.service.TodoListsService;
+import tudu.service.UserService;
 
 import static org.easymock.EasyMock.*;
 import static org.junit.Assert.*;
 
-public class TodosManagerImplTest {
+public class TodosServiceImplTest {
 
     Todo todo = new Todo();
     TodoList todoList = new TodoList();
     User user = new User();
 
     //TodoDAO todoDAO = null;
-    TodoListsManager todoListsManager = null;
-    UserManager userManager = null;
+    TodoListsService todoListsService = null;
+    UserService userService = null;
 
-    TodosManagerImpl todosManager = new TodosManagerImpl();
+    TodosServiceImpl todosService = new TodosServiceImpl();
 
     @Before
     public void setUp() {
@@ -43,25 +43,25 @@ public class TodosManagerImplTest {
         user.setLastName("Last name");
 
         //todoDAO = createMock(TodoDAO.class);
-        todoListsManager = createMock(TodoListsManager.class);
-        userManager = createMock(UserManager.class);
+        todoListsService = createMock(TodoListsService.class);
+        userService = createMock(UserService.class);
 
-        //ReflectionTestUtils.setField(todosManager, "todoDAO", todoDAO);
-        ReflectionTestUtils.setField(todosManager, "todoListsManager", todoListsManager);
-        ReflectionTestUtils.setField(todosManager, "userManager", userManager);
+        //ReflectionTestUtils.setField(todosService, "todoDAO", todoDAO);
+        ReflectionTestUtils.setField(todosService, "todoListsService", todoListsService);
+        ReflectionTestUtils.setField(todosService, "userService", userService);
     }
 
     @After
     public void tearDown() {
         //verify(todoDAO);
-        verify(todoListsManager);
-        verify(userManager);
+        verify(todoListsService);
+        verify(userService);
     }
 
     private void replay() {
         //EasyMock.replay(todoDAO);
-        EasyMock.replay(todoListsManager);
-        EasyMock.replay(userManager);
+        EasyMock.replay(todoListsService);
+        EasyMock.replay(userService);
     }
 
     @Test
@@ -70,12 +70,12 @@ public class TodosManagerImplTest {
         //expect(todoDAO.getTodo("0001")).andReturn(todo);
 
         user.getTodoLists().add(todoList);
-        expect(userManager.getCurrentUser()).andReturn(user);
+        expect(userService.getCurrentUser()).andReturn(user);
 
         replay();
 
         try {
-            Todo testTodo = todosManager.findTodo("0001");
+            Todo testTodo = todosService.findTodo("0001");
             assertEquals(todo, testTodo);
         } catch (PermissionDeniedException pde) {
             fail("Permission denied when looking for Todo.");
@@ -86,12 +86,12 @@ public class TodosManagerImplTest {
     public void testFailedFindTodo() {
         //expect(todoDAO.getTodo("0001")).andReturn(todo);
 
-        expect(userManager.getCurrentUser()).andReturn(user);
+        expect(userService.getCurrentUser()).andReturn(user);
 
         replay();
 
         try {
-            todosManager.findTodo("0001");
+            todosService.findTodo("0001");
             fail("A PermissionDeniedException should have been thrown");
         } catch (PermissionDeniedException pde) {
 
@@ -100,15 +100,15 @@ public class TodosManagerImplTest {
 
     @Test
     public void testCreateTodo() {
-        expect(todoListsManager.findTodoList("001")).andReturn(todoList);
+        expect(todoListsService.findTodoList("001")).andReturn(todoList);
 
         //todoDAO.saveTodo(todo);
 
-        todoListsManager.updateTodoList(todoList);
+        todoListsService.updateTodoList(todoList);
 
         replay();
 
-        todosManager.createTodo("001", todo);
+        todosService.createTodo("001", todo);
 
         assertNotNull(todo.getCreationDate());
         assertEquals(todoList, todo.getTodoList());
@@ -118,12 +118,12 @@ public class TodosManagerImplTest {
     @Test
     public void testUpdateTodo() {
         //todoDAO.updateTodo(todo);
-        todoListsManager.updateTodoList(todo.getTodoList());
+        todoListsService.updateTodoList(todo.getTodoList());
 
         replay();
 
         todo.setCompleted(true);
-        //todosManager.updateTodo(todo);
+        //todosService.updateTodo(todo);
         assertTrue(todo.isCompleted());
     }
 
@@ -134,14 +134,14 @@ public class TodosManagerImplTest {
         //expect(todoDAO.getTodo("0001")).andReturn(todo);
 
         user.getTodoLists().add(todoList);
-        expect(userManager.getCurrentUser()).andReturn(user);
+        expect(userService.getCurrentUser()).andReturn(user);
 
         //todoDAO.removeTodo("0001");
-        todoListsManager.updateTodoList(todo.getTodoList());
+        todoListsService.updateTodoList(todo.getTodoList());
 
         replay();
 
-        todosManager.deleteTodo("0001");
+        todosService.deleteTodo("0001");
 
         assertFalse(todoList.getTodos().contains(todo));
     }
@@ -153,13 +153,13 @@ public class TodosManagerImplTest {
         //expect(todoDAO.getTodo("0001")).andReturn(todo);
 
         user.getTodoLists().add(todoList);
-        expect(userManager.getCurrentUser()).andReturn(user);
+        expect(userService.getCurrentUser()).andReturn(user);
 
-        todoListsManager.updateTodoList(todo.getTodoList());
+        todoListsService.updateTodoList(todo.getTodoList());
 
         replay();
 
-        Todo todo = todosManager.completeTodo("0001");
+        Todo todo = todosService.completeTodo("0001");
 
         assertTrue(todo.isCompleted());
         assertNotNull(todo.getCompletionDate());
@@ -172,13 +172,13 @@ public class TodosManagerImplTest {
         //expect(todoDAO.getTodo("0001")).andReturn(todo);
 
         user.getTodoLists().add(todoList);
-        expect(userManager.getCurrentUser()).andReturn(user);
+        expect(userService.getCurrentUser()).andReturn(user);
 
-        todoListsManager.updateTodoList(todo.getTodoList());
+        todoListsService.updateTodoList(todo.getTodoList());
 
         replay();
 
-        Todo todo = todosManager.reopenTodo("0001");
+        Todo todo = todosService.reopenTodo("0001");
 
         assertFalse(todo.isCompleted());
         assertNull(todo.getCompletionDate());

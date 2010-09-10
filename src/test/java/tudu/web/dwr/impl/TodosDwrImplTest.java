@@ -7,8 +7,8 @@ import org.springframework.test.util.ReflectionTestUtils;
 import tudu.domain.Todo;
 import tudu.domain.TodoList;
 import tudu.domain.User;
-import tudu.service.TodosManager;
-import tudu.service.UserManager;
+import tudu.service.TodosService;
+import tudu.service.UserService;
 import tudu.web.dwr.bean.RemoteTodo;
 import tudu.web.dwr.bean.RemoteTodoList;
 
@@ -22,8 +22,8 @@ public class TodosDwrImplTest {
     Todo todo = new Todo();
     User user = new User();
 
-    TodosManager todosManager = null;
-    UserManager userManager = null;
+    TodosService todosService = null;
+    UserService userService = null;
 
     TodosDwrImpl todosDwrImpl = new TodosDwrImplTestable();
 
@@ -47,24 +47,24 @@ public class TodosDwrImplTest {
         user.setFirstName("First name");
         user.setLastName("Last name");
 
-        userManager = createMock(UserManager.class);
+        userService = createMock(UserService.class);
 
-        todosManager = createMock(TodosManager.class);
+        todosService = createMock(TodosService.class);
 
-        ReflectionTestUtils.setField(todosDwrImpl, "todosManager", todosManager);
-        ReflectionTestUtils.setField(todosDwrImpl, "userManager", userManager);
+        ReflectionTestUtils.setField(todosDwrImpl, "todosService", todosService);
+        ReflectionTestUtils.setField(todosDwrImpl, "userService", userService);
 
     }
 
     @After
     public void after() {
-        verify(todosManager);
-        verify(userManager);
+        verify(todosService);
+        verify(userService);
     }
 
     private void replay_() {
-        replay(todosManager);
-        replay(userManager);
+        replay(todosService);
+        replay(userService);
     }
 
     @Test
@@ -101,7 +101,7 @@ public class TodosDwrImplTest {
         todoList4.setName("CCC");
         user.getTodoLists().add(todoList4);
 
-        expect(userManager.getCurrentUser()).andReturn(user);
+        expect(userService.getCurrentUser()).andReturn(user);
 
         replay_();
 
@@ -122,7 +122,7 @@ public class TodosDwrImplTest {
     }
 
     public void testGetTodoById() {
-        expect(todosManager.findTodo("0001")).andReturn(todo);
+        expect(todosService.findTodo("0001")).andReturn(todo);
 
         replay_();
 
@@ -133,7 +133,7 @@ public class TodosDwrImplTest {
     }
 
     public void testReopenTodo() {
-        expect(todosManager.reopenTodo("001")).andReturn(todo);
+        expect(todosService.reopenTodo("001")).andReturn(todo);
 
         replay_();
 
@@ -141,7 +141,7 @@ public class TodosDwrImplTest {
     }
 
     public void testCompleteTodo() {
-        expect(todosManager.completeTodo("001")).andReturn(todo);
+        expect(todosService.completeTodo("001")).andReturn(todo);
 
         replay_();
 
@@ -149,9 +149,9 @@ public class TodosDwrImplTest {
     }
 
     public void testEditTodo() {
-        expect(todosManager.findTodo("001")).andReturn(todo);
+        expect(todosService.findTodo("001")).andReturn(todo);
 
-        //todosManager.updateTodo(todo);
+        //todosService.updateTodo(todo);
 
         replay_();
 
@@ -171,9 +171,9 @@ public class TodosDwrImplTest {
     }
 
     public void testEditTodoWithErrors() {
-        expect(todosManager.findTodo("001")).andReturn(todo);
+        expect(todosService.findTodo("001")).andReturn(todo);
 
-        //todosManager.updateTodo(todo);
+        //todosService.updateTodo(todo);
 
         replay_();
 
@@ -215,9 +215,9 @@ public class TodosDwrImplTest {
     }
 
     public void testDeleteTodo() {
-        expect(todosManager.findTodo("001")).andReturn(todo);
+        expect(todosService.findTodo("001")).andReturn(todo);
 
-        todosManager.deleteTodo("001");
+        todosService.deleteTodo("001");
 
         replay_();
 
