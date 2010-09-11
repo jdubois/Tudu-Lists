@@ -6,11 +6,12 @@
     request.setAttribute("staticContent", staticContent);
     request.setAttribute("googleAnalytics", googleAnalytics);
 %>
-<div id="about"><a href="${context}/">Accueil</a> | <a href="${context}/about/contact">Contactez Responcia.net</a> | <a href="${context}/about/mentions_legales">Mentions l&eacute;gales</a> | <a href="${context}/about/conditions_generales_d_utilisation">Conditions g&eacute;n&eacute;rales d'utilisation</a> | <a href="http://www.responcia.fr/blog">Blog de Responcia</a> | <a href="http://www.responcia.fr">&copy; Responcia SARL</a></div>
+<div id="about"><a href="${context}/">Accueil</a> | <a href="${context}/about/mentions_legales">Mentions l&eacute;gales</a> | <a href="${context}/about/conditions_generales_d_utilisation">Conditions g&eacute;n&eacute;rales d'utilisation</a> | <a href="http://www.responcia.fr/blog">Blog de Responcia</a> | <a href="http://www.responcia.fr">&copy; Responcia SARL</a></div>
 <script type="text/javascript">
     var context = "${context}";
 </script>
-<script type="text/javascript" src="${staticContent}/jquery/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="${staticContent}/jquery/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="${staticContent}/jquery/jquery-ui/jquery-ui.1.8.custom.min.js"></script>
 <script type="text/javascript" src="${staticContent}/tudu.js"></script>
 
 <c:if test="${googleAnalytics ne ''}">

@@ -2,27 +2,15 @@
  * Main Tudu Lists CSS file. Author : Julien Dubois
  * Change this file in order to customize the look and feel of the application.
  */
-
 body {
     background: #ffffff;
     font-family: Verdana, Helvetica, Arial;
-    font-size: 80%;
-    margin: 10px;
+    font-size: 100%;
+    margin: 0px;
     padding: 0px;
 }
 	
 p { 
-	text-align: justify;
-	padding: 5px 30px 5px 30px;
-	color: #786A47;
-	line-height: 1.5em;
-}
-
-li { 
-	text-align: justify;
-	padding: 0px 30px 5px 30px;
-	color: #786A47;
-	line-height: 1.5em;
 }
 	
 a {
@@ -48,6 +36,89 @@ textarea {
 
 select {
 	background: #EEEEFF;
+}
+
+#header {
+    background-color: #666666;
+    font-size: 18px;
+    color: #ffffff;
+    padding: 0px 10px 5px 10px;
+}
+
+#header a {
+    color: #ffffff;
+}
+
+
+#content {
+    position: relative;
+    padding: 0px;
+    border: 0px;
+    margin: auto;
+    min-height: 500px;
+    width: 95%;
+    z-index: 0;
+}
+
+#about {
+    position: static;
+    bottom: 0px;
+    padding: 0px 10px 0px 10px;
+    background: #666666;;
+    height: 50px;
+}
+#about a {
+    color: #ffffff;
+}
+
+#message {
+    display: none;
+    position: relative;
+    top: -10px;
+    padding: 0px 10px 0px 10px;
+    cursor: pointer;
+}
+
+#error {
+    display: none;
+    position: relative;
+    top: -10px;
+    padding: 0px 10px 0px 10px;
+    cursor: pointer;
+}
+.icon {
+    border: none;
+    height: 16px;
+    width: 16px;
+}
+a.button {
+    background: transparent url("images/bg_button_a.gif") no-repeat scroll top right;
+    color: #444;
+    display: block;
+    float: left;
+    font: normal 12px arial, sans-serif;
+    height: 24px;
+    margin-right: 6px;
+    padding-right: 18px; /* sliding doors padding */
+    text-decoration: none;
+}
+
+a.button span {
+    background: transparent url("images/bg_button_span.gif") no-repeat;
+    display: block;
+    line-height: 14px;
+    padding: 5px 0 5px 18px;
+}
+
+a.button:active {
+    background-position: bottom right;
+    color: #000;
+    outline: none; /* hide dotted outline in Firefox */
+}
+
+a.button:active span {
+    background-position: bottom left;
+    padding: 6px 0 4px 18px; /* push text down 1px */
 }
 
 /* Main table */
@@ -164,16 +235,6 @@ table.list th.sorted_asc {
 #username {
     font-size: 12px;
     text-align: right;
-}
-
-#content {
-    background: #ffffff;
-    border: 1px solid #cccccc;
-    width: 95%;
-    border-top: 0;
-    clear: both;
-    margin: 0px;
-    padding: 15px;
 }
 
 #sourceforge {

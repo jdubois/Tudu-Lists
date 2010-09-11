@@ -126,6 +126,7 @@ public class ConfigurationServiceImpl implements ConfigurationService,
     /**
      * @see tudu.service.ConfigurationService#initApplicationProperties()
      */
+    @Transactional(readOnly = true)
     public void initApplicationProperties() {
         Property staticFilesPathProperty = this
                 .getProperty("application.static.path");
@@ -134,10 +135,7 @@ public class ConfigurationServiceImpl implements ConfigurationService,
             staticContent = staticFilesPathProperty.getValue();
 
         } else {
-            staticFilesPathProperty = new Property();
-            staticFilesPathProperty.setKey("application.static.path");
-            staticFilesPathProperty.setValue(staticContent);
-            this.setProperty(staticFilesPathProperty);
+            staticContent = "/tudu/static";
         }
 
         Property googleAnalyticsKeyProperty = this
@@ -145,12 +143,6 @@ public class ConfigurationServiceImpl implements ConfigurationService,
 
         if (googleAnalyticsKeyProperty != null) {
             googleAnalyticsKey = googleAnalyticsKeyProperty.getValue();
-
-        } else {
-            googleAnalyticsKeyProperty = new Property();
-            googleAnalyticsKeyProperty.setKey("google.analytics.key");
-            googleAnalyticsKeyProperty.setValue(googleAnalyticsKey);
-            this.setProperty(googleAnalyticsKeyProperty);
         }
     }
 

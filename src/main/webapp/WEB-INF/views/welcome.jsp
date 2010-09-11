@@ -8,31 +8,36 @@
     <jsp:include page="../fragments/header_head.jsp"/>
 </head>
 <body id="main">
-<div id="banner"></div>
 <div id="container">
     <jsp:include page="../fragments/header_body.jsp"/>
     <div id="content">
         <h2><fmt:message key="login.welcome"/></h2>
-        <table style="width:700px;">
+        <table>
             <tr>
-                <td style="width:400px; vertical-align: top;">
+                <td style="width:67%; vertical-align: top; border-left: #666666 solid thick; padding-right: 20px">
                     <p><fmt:message key="login.description.1"/></p>
                     <p><fmt:message key="login.description.2"/></p>
-                    <div>
-                        <ul>
-                            <li><fmt:message key="login.advantages.1"/></li>
-                            <li><fmt:message key="login.advantages.2"/></li>
-                            <li><fmt:message key="login.advantages.3"/></li>
-                            <li>
-                                <fmt:message key="login.advantages.4.1"/>
-                                <a href="/register"><fmt:message key="login.advantages.4.link"/></a>
-                                <fmt:message key="login.advantages.4.2"/>
-                            </li>
-                            <li><fmt:message key="login.advantages.5"/></li>
-                        </ul>
+                    <div style="padding-left: 20px">
+                        <p>
+                            <img src="${staticContent}/images/world.png" class="icon" alt="Web"/>&nbsp;&nbsp;<fmt:message key="login.advantages.1"/>
+                        </p>
+                        <p>
+                            <img src="${staticContent}/images/group.png" class="icon" alt="Web"/>&nbsp;&nbsp;<fmt:message key="login.advantages.2"/>
+                        </p>
+                        <p>
+                            <img src="${staticContent}/images/feed.png" class="icon" alt="Web"/>&nbsp;&nbsp;<fmt:message key="login.advantages.3"/>
+                        </p>
+                        <p>
+                            <img src="${staticContent}/images/cart.png" class="icon" alt="Web"/>&nbsp;&nbsp;<fmt:message key="login.advantages.4.1"/>
+                            <a href="${context}/register"><fmt:message key="login.advantages.4.link"/></a>
+                            <fmt:message key="login.advantages.4.2"/>
+                        </p>
+                        <p>
+                            <img src="${staticContent}/images/page_white_wrench.png" class="icon" alt="Web"/>&nbsp;&nbsp;<fmt:message key="login.advantages.5"/>
+                        </p>
                     </div>
                 </td>
-                <td style="width:300px; text-align:center; vertical-align: top;">
+                <td style="width:33%; vertical-align: top; border-left: #666666 solid thick;">
                     <h3><fmt:message key="login.title"/></h3>
                     <c:if test="${not empty param.login_error}">
                         <div class="error">
@@ -66,9 +71,11 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th colspan="2">
-                                    <input type="submit" value="<fmt:message key="login.submit"/>"/>
-                                    <input type="reset" value="<fmt:message key="login.reset"/>"/>
+                                <th colspan="2" style="padding-left: 40px;">
+                                    <a class="button" href="javascript:submitCompleteForm();"
+                                        onclick="this.blur();"><span><fmt:message key="login.submit"/></span></a>
+                                    <a class="button" href="javascript:submitCompleteForm();"
+                                        onclick="this.blur();"><span><fmt:message key="login.reset"/></span></a>
                                 </th>
                             </tr>
                         </table>
