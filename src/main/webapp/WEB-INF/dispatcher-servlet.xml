@@ -10,7 +10,7 @@
     <context:property-placeholder
             location="classpath:/META-INF/spring/infrastructure/prod.properties,
                       classpath*:infrastructure.properties"/>
-    
+
     <context:component-scan base-package="tudu.web"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -22,5 +22,22 @@
           class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basename" value="WEB-INF/messages"/>
         <property name="cacheSeconds" value="${resourcebundle.cache}"/>
+    </bean>
+
+    <bean id="localeChangeInterceptor"
+          class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+        <property name="paramName" value="lang"/>
+    </bean>
+
+    <bean id="localeResolver"
+          class="org.springframework.web.servlet.i18n.CookieLocaleResolver"/>
+
+    <bean id="handlerMapping"
+          class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+        <property name="interceptors">
+            <list>
+                <ref bean="localeChangeInterceptor"/>
+            </list>
+        </property>
     </bean>
 </beans>

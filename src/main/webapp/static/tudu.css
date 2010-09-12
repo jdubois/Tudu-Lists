@@ -83,21 +83,22 @@ select {
 }
 
 #about {
+    background-color: #e4e3e3;
     position: relative;
-    width: 946px;
+    width: 956px;
     margin: auto;
     bottom: -20px;
-    height: 20px;
+    height: 60px;
 }
 
 #about a {
-    color: #666666;
-    padding: 5px;
+    color: #336600;
     background: none;
 }
 
 #about a:hover {
-    color: #6560ab;
+    background-color: #336600;
+    color: #ffffff;
 }
 
 #message {
