@@ -15,8 +15,6 @@
 		<properties>
 			<property name="hibernate.cache.provider_class"
 				value="net.sf.ehcache.hibernate.EhCacheProvider" />
-			<property name="net.sf.ehcache.configurationResourceName"
-				value="/META-INF/ehcache.xml" />
 		</properties>
 	</persistence-unit>
 </persistence>

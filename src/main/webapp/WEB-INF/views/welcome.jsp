@@ -7,14 +7,14 @@
     <title>Tudu Lists</title>
     <jsp:include page="../fragments/header_head.jsp"/>
 </head>
-<body id="main">
+<body id="main"><div id="banner"></div>
 <div id="container">
     <jsp:include page="../fragments/header_body.jsp"/>
     <div id="content">
         <h2><fmt:message key="login.welcome"/></h2>
         <table>
             <tr>
-                <td style="width:67%; vertical-align: top; border-left: #666666 solid thick; padding-right: 20px">
+                <td style="width:67%; vertical-align: top; border-left: #336600 solid thick; padding-right: 20px">
                     <p><fmt:message key="login.description.1"/></p>
                     <p><fmt:message key="login.description.2"/></p>
                     <div style="padding-left: 20px">
@@ -37,7 +37,7 @@
                         </p>
                     </div>
                 </td>
-                <td style="width:33%; vertical-align: top; border-left: #666666 solid thick;">
+                <td style="width:33%; vertical-align: top; border-left: #336600 solid thick;">
                     <h3><fmt:message key="login.title"/></h3>
                     <c:if test="${not empty param.login_error}">
                         <div class="error">

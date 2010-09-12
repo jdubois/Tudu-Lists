@@ -3,13 +3,13 @@
  * Change this file in order to customize the look and feel of the application.
  */
 body {
-    background: #ffffff;
-    font-family: Verdana, Helvetica, Arial;
-    font-size: 100%;
+    background: #ffffff url(images/background.png) top center repeat-y;
     margin: 0px;
     padding: 0px;
+    font-family: Arial,Liberation Sans,DejaVu Sans,sans-serif;
+    font-size: 12px;
 }
-	
+
 p { 
 }
 	
@@ -38,37 +38,65 @@ select {
 	background: #EEEEFF;
 }
 
+#banner {
+    position: relative;
+    top: 0px;
+    padding: 0px;
+    margin: auto;
+    background: url(images/banner.png) top center no-repeat;
+    z-index: 0;
+    height: 64px;
+}
 #header {
-    background-color: #666666;
-    font-size: 18px;
-    color: #ffffff;
-    padding: 0px 10px 5px 10px;
+    background: #336600;
+    height: 30px;
+    margin-top: 5px;
 }
 
 #header a {
     color: #ffffff;
+    font-size: 16px;
+    text-decoration: none;
+    background: none;
+}
+#header a:hover {
+    text-decoration: underline;
 }
 
-
-#content {
+#container {
     position: relative;
+    top: -62px;
     padding: 0px;
     border: 0px;
     margin: auto;
     min-height: 500px;
-    width: 95%;
+    width: 956px;
+    background: #ffffff;
     z-index: 0;
 }
 
-#about {
-    position: static;
-    bottom: 0px;
-    padding: 0px 10px 0px 10px;
-    background: #666666;;
-    height: 50px;
+#content {
+    position: relative;
+    top: 0px;
+    padding: 10px;
+    min-height: 650px;
 }
+
+#about {
+    position: relative;
+    width: 946px;
+    margin: auto;
+    bottom: -20px;
+    height: 20px;
+}
+
 #about a {
-    color: #ffffff;
+    color: #666666;
+    padding: 5px;
+}
+
+#about a:hover {
+    color: #6560ab;
 }
 
 #message {

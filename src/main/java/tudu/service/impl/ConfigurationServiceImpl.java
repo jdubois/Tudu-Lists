@@ -3,9 +3,6 @@ package tudu.service.impl;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationEvent;
-import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +14,7 @@ import tudu.service.ConfigurationService;
 import tudu.service.UserAlreadyExistsException;
 import tudu.service.UserService;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.Set;
@@ -28,8 +26,7 @@ import java.util.Set;
  */
 @Service
 @Transactional
-public class ConfigurationServiceImpl implements ConfigurationService,
-        ApplicationListener {
+public class ConfigurationServiceImpl implements ConfigurationService {
 
     public static String staticContent = "";
 
@@ -43,15 +40,11 @@ public class ConfigurationServiceImpl implements ConfigurationService,
     @Autowired
     private UserService userService;
 
-    /**
-     * @see org.springframework.context.ApplicationListener#onApplicationEvent(org.springframework.context.ApplicationEvent)
-     */
-    public void onApplicationEvent(ApplicationEvent event) {
-        if (event instanceof ContextRefreshedEvent) {
-            log.warn("Spring context is started : " + event.toString());
-            this.initDatabase();
-            this.initApplicationProperties();
-        }
+    @PostConstruct
+    public void init() {
+        log.warn("Initializing Tudu Lists");
+        this.initDatabase();
+        this.initApplicationProperties();
     }
 
     /**

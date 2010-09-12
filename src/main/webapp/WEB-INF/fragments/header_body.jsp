@@ -14,6 +14,8 @@
         <img src="${staticContent}/images/user_suit.png" class="icon" alt="User"/> <a
             href="${baseUrl}/account">${userName}</a>
     </sec:authorize>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="http://www.responcia.fr"><img src="${staticContent}/images/logo_sw.png" class="icon" alt=""/> Responcia</a>
     &nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;
     <a href="${context}/help"><img src="${staticContent}/images/help.png" class="icon" alt=""/> Aide</a>
 </div>        
