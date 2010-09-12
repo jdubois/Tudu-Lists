@@ -4,7 +4,6 @@
     String staticContent = ConfigurationServiceImpl.staticContent;
     request.setAttribute("staticContent", staticContent);
     request.setAttribute("context", request.getContextPath());
-    request.setAttribute("page", request.getPathInfo());
 %>
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
 <meta name="author" content="Julien Dubois"/>

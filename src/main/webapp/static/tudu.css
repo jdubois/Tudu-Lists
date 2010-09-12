@@ -166,12 +166,12 @@ table.list td {
 }
 
 table.list th {
-    background-color: #ccccff;
+    background-color: #336600;
+    color: #ffffff;
     padding: 2px;
     padding-left: 3px;
     border-bottom: 1px solid black;
     text-align: center;
-    color: black;
 }
 
 table.list tr.even {

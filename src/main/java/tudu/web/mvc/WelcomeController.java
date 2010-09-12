@@ -25,7 +25,6 @@ public class WelcomeController {
         if (request.isUserInRole(RolesEnum.ROLE_USER.toString())) {
             return "redirect:/lists";
         }
-        request.setAttribute("pageDescription", "Welcome");
         return "welcome";
     }
 

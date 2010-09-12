@@ -29,7 +29,7 @@
                         </p>
                         <p>
                             <img src="${staticContent}/images/cart.png" class="icon" alt="Web"/>&nbsp;&nbsp;<fmt:message key="login.advantages.4.1"/>
-                            <a href="${context}/register"><fmt:message key="login.advantages.4.link"/></a>
+                            <a href="${context}/tudu/register"><fmt:message key="login.advantages.4.link"/></a>
                             <fmt:message key="login.advantages.4.2"/>
                         </p>
                         <p>
@@ -82,7 +82,7 @@
                     </form>
                     <p>
                         <fmt:message key="login.register.1"/>
-                        <a href="/register"><fmt:message key="login.register.link"/></a><fmt:message
+                        <a href="${context}/tudu/register"><fmt:message key="login.register.link"/></a><fmt:message
                             key="login.register.2"/>
                     </p>
 
