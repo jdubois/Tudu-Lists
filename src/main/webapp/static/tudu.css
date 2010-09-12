@@ -93,6 +93,7 @@ select {
 #about a {
     color: #666666;
     padding: 5px;
+    background: none;
 }
 
 #about a:hover {

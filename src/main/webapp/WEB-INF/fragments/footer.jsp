@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="tudu.service.impl.ConfigurationServiceImpl" %>
 <%
     String staticContent = ConfigurationServiceImpl.staticContent;
@@ -6,7 +7,7 @@
     request.setAttribute("staticContent", staticContent);
     request.setAttribute("googleAnalytics", googleAnalytics);
 %>
-<div id="about"><a href="${context}/">Accueil</a> | <a href="${context}/about/mentions_legales">Mentions l&eacute;gales</a> | <a href="${context}/about/conditions_generales_d_utilisation">Conditions g&eacute;n&eacute;rales d'utilisation</a> | <a href="http://www.responcia.fr/blog">Blog de Responcia</a> | <a href="http://www.responcia.fr">&copy; Responcia SARL</a></div>
+<div id="about"><a href="${context}/"><fmt:message key="footer.accueuil"/></a> | <a href="http://github.com/jdubois/Tudu-Lists/issues"><fmt:message key="footer.bug"/></a> | <a href="http://github.com/jdubois/Tudu-Lists"><fmt:message key="footer.dev"/></a> | <a href="${context}/about/mentions_legales"><fmt:message key="footer.legal"/></a> | <a href="${context}/about/conditions_generales_d_utilisation"><fmt:message key="footer.cgu"/></a> | <a href="http://www.responcia.fr/blog"><fmt:message key="footer.blog"/></a> | <a href="http://www.responcia.fr"><fmt:message key="footer.responcia"/></a></div>
 <script type="text/javascript">
     var context = "${context}";
 </script>
