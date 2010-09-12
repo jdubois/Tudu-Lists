@@ -11,7 +11,7 @@
 <div id="container">
     <jsp:include page="../fragments/header_body.jsp"/>
     <div id="content">
-        <h2><fmt:message key="login.welcome"/></h2>
+        <h1><fmt:message key="login.welcome"/></h1>
         <table>
             <tr>
                 <td style="width:67%; vertical-align: top; border-left: #336600 solid thick; padding-right: 20px">
@@ -74,7 +74,7 @@
                                 <th colspan="2" style="padding-left: 40px;">
                                     <a class="button" href="javascript:submitCompleteForm();"
                                         onclick="this.blur();"><span><fmt:message key="login.submit"/></span></a>
-                                    <a class="button" href="javascript:submitCompleteForm();"
+                                    <a class="button" href="javascript:cancelForm();"
                                         onclick="this.blur();"><span><fmt:message key="login.reset"/></span></a>
                                 </th>
                             </tr>

@@ -14,6 +14,7 @@
     <jsp:include page="../fragments/header_body.jsp"/>
     <div id="content" style="width:500px; padding-left: 200px">
         <h1><fmt:message key="register.title"/></h1>
+
         <div>
             <ul>
                 <li>
@@ -97,11 +98,20 @@
                         <form:errors path="verifyPassword"/>
                     </td>
                 </tr>
+                <tr>
+                    <td colspan="3" style="padding-left: 150px;">
+                        <br/>
+                        <a class="button" href="javascript:submitCompleteForm();"
+                           onclick="this.blur();"><span><fmt:message key="form.submit"/></span></a>
+                        <a class="button" href="javascript:cancelForm();"
+                           onclick="this.blur();"><span><fmt:message key="form.reset"/></span></a>
+                        <br/><br/>
+                    </td>
+                </tr>
                 </tbody>
             </table>
             <br/>
             <br/>
-            <input type="submit" value="<fmt:message key="form.submit"/>"/>
         </form:form>
     </div>
     <jsp:include page="../fragments/footer.jsp"/>
