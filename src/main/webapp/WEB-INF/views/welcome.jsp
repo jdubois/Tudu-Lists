@@ -72,9 +72,9 @@
                             </tr>
                             <tr>
                                 <th colspan="2" style="padding-left: 40px;">
-                                    <a class="button" href="javascript:submitCompleteForm();"
+                                    <a class="button" href="javascript:submitForm();"
                                         onclick="this.blur();"><span><fmt:message key="login.submit"/></span></a>
-                                    <a class="button" href="javascript:cancelForm();"
+                                    <a class="button" href="javascript:resetForm();"
                                         onclick="this.blur();"><span><fmt:message key="login.reset"/></span></a>
                                 </th>
                             </tr>

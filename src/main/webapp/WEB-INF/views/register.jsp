@@ -101,9 +101,9 @@
                 <tr>
                     <td colspan="3" style="padding-left: 150px;">
                         <br/>
-                        <a class="button" href="javascript:submitCompleteForm();"
+                        <a class="button" href="javascript:submitForm();"
                            onclick="this.blur();"><span><fmt:message key="form.submit"/></span></a>
-                        <a class="button" href="javascript:cancelForm();"
+                        <a class="button" href="javascript:resetForm();"
                            onclick="this.blur();"><span><fmt:message key="form.reset"/></span></a>
                         <br/><br/>
                     </td>
