@@ -69,7 +69,7 @@ select {
     padding: 0px;
     border: 0px;
     margin: auto;
-    min-height: 500px;
+    min-height: 400px;
     width: 956px;
     background: #ffffff;
     z-index: 0;
@@ -79,7 +79,7 @@ select {
     position: relative;
     top: 0px;
     padding: 10px;
-    min-height: 650px;
+    min-height: 450px;
 }
 
 #about {
