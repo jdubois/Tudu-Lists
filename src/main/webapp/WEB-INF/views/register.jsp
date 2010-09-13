@@ -41,7 +41,7 @@
                         <form:input path="login" size="20" maxlength="50"/>
                     </td>
                     <td>
-                        <form:errors path="login"/>
+                        <form:errors path="login" />
                     </td>
                 </tr>
                 <tr class="even">

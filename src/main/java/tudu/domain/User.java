@@ -4,6 +4,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
@@ -28,15 +29,20 @@ public class User implements Serializable, Comparable<User> {
     private static final long serialVersionUID = 4048798961366546485L;
 
     @Id
+    @Min(1)
     private String login;
 
+    @Min(5)
     private String password;
 
     @Transient
+    @Min(5)
     private String verifyPassword;
 
+    @Min(1)
     private String firstName;
 
+    @Min(1)
     private String lastName;
 
     private String email;

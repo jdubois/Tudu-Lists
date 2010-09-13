@@ -5,12 +5,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Page non trouv&eacute;e</title>
-    <jsp:include page="../WEB-INF/fragments/header_head.jsp"/>
+    <jsp:include page="../fragments/header_head.jsp"/>
 </head>
 <body id="main">
 <div id="banner"></div>
 <div id="container">
-    <jsp:include page="../WEB-INF/fragments/header_body.jsp"/>
+    <jsp:include page="../fragments/header_body.jsp"/>
     <div id="content">
         <h1>Page non trouv&eacute;e!</h1>
         <p style="text-align: center;">
@@ -20,7 +20,7 @@
             [ <a href="${context}/">Retour &agrave; la page principale de Responcia</a> ]
         </p>
     </div>
-    <jsp:include page="../WEB-INF/fragments/footer.jsp"/>
+    <jsp:include page="../fragments/footer.jsp"/>
 </div>
 </body>
 </html>

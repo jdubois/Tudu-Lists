@@ -17,4 +17,7 @@
     <import resource="application-context-security.xml"/>
 
     <context:component-scan base-package="tudu.service"/>
+
+    <tx:annotation-driven/>
+
 </beans>

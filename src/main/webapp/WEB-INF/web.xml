@@ -105,11 +105,11 @@
     </welcome-file-list>
     <error-page>
 		<exception-type>java.lang.Exception</exception-type>
-		<location>/error/500.jsp</location>
+		<location>/tudu/500</location>
 	</error-page>
     <error-page>
 		<error-code>404</error-code>
-		<location>/error/404.jsp</location>
+		<location>/tudu/404</location>
 	</error-page>
 
 </web-app>

@@ -3,9 +3,6 @@ package tudu.web.mvc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,9 +10,11 @@ import tudu.domain.User;
 import tudu.service.UserAlreadyExistsException;
 import tudu.service.UserService;
 
+import javax.validation.Valid;
+
 /**
  * Register a new Tudu Lists user.
- * 
+ *
  * @author Julien Dubois
  */
 @Controller
@@ -24,16 +23,6 @@ public class RegisterController {
 
     @Autowired
     private UserService userService;
-
-    @ModelAttribute("user")
-    public User formBackingObject() {
-        return new User();
-    }
-
-    @InitBinder
-	public void initBinder(WebDataBinder binder) {
-		binder.setRequiredFields(new String[]{"login", "firstName", "lastName", "password", "verifyPassword"});
-	}
 
     /**
      * Show the "register a new user" page.
@@ -49,7 +38,7 @@ public class RegisterController {
      * Register a new user.
      */
     @RequestMapping(method = RequestMethod.POST)
-    public String register(@ModelAttribute User user, BindingResult result) {
+    public String register(@Valid User user, BindingResult result) {
         if (result.hasErrors()) {
             return "register";
         }

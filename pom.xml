@@ -8,7 +8,7 @@
     <name>Tudu Lists Web application</name>
     <properties>
         <wtpversion>1.5</wtpversion>
-        <spring.version>3.0.3.RELEASE</spring.version>
+        <spring.version>3.0.4.RELEASE</spring.version>
         <spring.security.version>3.0.2.RELEASE</spring.security.version>
     </properties>
     <dependencies>
@@ -111,6 +111,12 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>3.4.0.GA</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>4.0.2.GA</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
