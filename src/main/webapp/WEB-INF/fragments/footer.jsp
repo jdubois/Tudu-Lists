@@ -13,7 +13,7 @@ Language: <a href="${currentPage}?lang=en">English</a> | <a href="${currentPage}
 <script type="text/javascript">
     var context = "${context}";
 </script>
-<script type="text/javascript" src="${staticContent}/jquery/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="${staticContent}/jquery/jquery-1.6.4.js"></script>
 <script type="text/javascript" src="${staticContent}/jquery/jquery-ui/jquery-ui-1.8.custom.min.js"></script>
 <script type="text/javascript" src="${staticContent}/tudu.js"></script>
 
