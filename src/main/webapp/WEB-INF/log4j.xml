@@ -6,7 +6,7 @@
 		class="org.apache.log4j.RollingFileAppender">
 		<param name="File" value="messages.log" />
 		<param name="maxFileSize" value="1000KB" />
-		<param name="maxBackupIndex" value="20" />
+		<param name="maxBackupIndex" value="2" />
 		<param name="threshold" value="info" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern"
@@ -17,6 +17,8 @@
 	<appender name="monitoringAppender"
 		class="org.apache.log4j.DailyRollingFileAppender">
 		<param name="File" value="requests.log" />
+        <param name="maxFileSize" value="1000KB" />
+		<param name="maxBackupIndex" value="2" />
 		<param name="Threshold" value="DEBUG"/>
 		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
 		<layout class="org.apache.log4j.PatternLayout">
