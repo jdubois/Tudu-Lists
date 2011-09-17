@@ -121,10 +121,10 @@ public class TodosServiceImpl implements TodosService {
      *      tudu.domain.Todo)
      */
     public void createTodo(final String listId, final Todo todo) {
+        em.persist(todo);
         Date now = Calendar.getInstance().getTime();
         todo.setCreationDate(now);
         TodoList todoList = todoListsService.findTodoList(listId);
-        em.persist(todo);
         todo.setTodoList(todoList);
         todoList.getTodos().add(todo);
         todoListsService.updateTodoList(todoList);
