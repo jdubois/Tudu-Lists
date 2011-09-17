@@ -124,10 +124,10 @@ public class TodosServiceImpl implements TodosService {
         Date now = Calendar.getInstance().getTime();
         todo.setCreationDate(now);
         TodoList todoList = todoListsService.findTodoList(listId);
+        em.persist(todo);
         todo.setTodoList(todoList);
         todoList.getTodos().add(todo);
         todoListsService.updateTodoList(todoList);
-        em.persist(todo);
         if (log.isDebugEnabled()) {
             log.debug("Created Todo ID=" + todo.getTodoId());
         }
