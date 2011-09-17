@@ -14,6 +14,7 @@ import tudu.domain.User;
 import tudu.security.PermissionDeniedException;
 import tudu.service.UserService;
 
+import javax.persistence.EntityManager;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Calendar;
@@ -35,6 +36,7 @@ public class TodoListsServiceImplTest {
     TodoList todoList = new TodoList();
     User user = new User();
 
+    EntityManager em = null;
     UserService userService = null;
 
     TodoListsServiceImpl todoListsService = new TodoListsServiceImpl();
@@ -49,24 +51,28 @@ public class TodoListsServiceImplTest {
         user.setFirstName("First name");
         user.setLastName("Last name");
 
+        em = createMock(EntityManager.class);
         userService = createMock(UserService.class);
 
+        ReflectionTestUtils.setField(todoListsService, "em", em);
         ReflectionTestUtils.setField(todoListsService, "userService", userService);
     }
 
     @After
     public void after() {
+        verify(em);
         verify(userService);
     }
 
     private void replay() {
+        EasyMock.replay(em);
         EasyMock.replay(userService);
     }
 
     @Test
     public void testCreateTodoList() {
-
         expect(userService.getCurrentUser()).andReturn(user);
+        em.persist(todoList);
 
         replay();
 
@@ -79,9 +85,7 @@ public class TodoListsServiceImplTest {
     public void testFindTodoList() {
         todoList.getUsers().add(user);
         user.getTodoLists().add(todoList);
-
-        //expect(todoListDAO.getTodoList("001")).andReturn(todoList);
-
+        expect(em.find(TodoList.class, "001")).andReturn(todoList);
         expect(userService.getCurrentUser()).andReturn(user);
 
         replay();
@@ -95,8 +99,7 @@ public class TodoListsServiceImplTest {
 
     @Test
     public void testFailedFindTodoList() {
-        //expect(todoListDAO.getTodoList("001")).andReturn(todoList);
-
+        expect(em.find(TodoList.class, "001")).andReturn(todoList);
         expect(userService.getCurrentUser()).andReturn(user);
 
         replay();
@@ -111,7 +114,6 @@ public class TodoListsServiceImplTest {
 
     @Test
     public void testUpdateTodoList() {
-        //todoListDAO.updateTodoList(todoList);
 
         replay();
 
@@ -122,14 +124,9 @@ public class TodoListsServiceImplTest {
     public void testDeleteTodoList() {
         todoList.getUsers().add(user);
         user.getTodoLists().add(todoList);
-
         expect(userService.getCurrentUser()).andReturn(user);
-
-        //expect(todoListDAO.getTodoList("001")).andReturn(todoList);
-
-        userService.updateUser(user);
-
-        //todoListDAO.removeTodoList("001");
+        expect(em.find(TodoList.class, "001")).andReturn(todoList);
+        em.remove(todoList);
 
         replay();
 
@@ -142,16 +139,11 @@ public class TodoListsServiceImplTest {
     public void testAddTodoListUser() {
         todoList.getUsers().add(user);
         user.getTodoLists().add(todoList);
-
         expect(userService.getCurrentUser()).andReturn(user);
-
-        //expect(todoListDAO.getTodoList("001")).andReturn(todoList);
-
+        expect(em.find(TodoList.class, "001")).andReturn(todoList);
         User user2 = new User();
         user2.setLogin("another_user");
         expect(userService.findUser("another_user")).andReturn(user2);
-
-        //todoListDAO.updateTodoList(todoList);
 
         replay();
 
@@ -165,19 +157,13 @@ public class TodoListsServiceImplTest {
     public void testDeleteTodoListUser() {
         todoList.getUsers().add(user);
         user.getTodoLists().add(todoList);
-
         User user2 = new User();
         user2.setLogin("another_user");
         user2.getTodoLists().add(todoList);
         todoList.getUsers().add(user2);
-
         expect(userService.getCurrentUser()).andReturn(user);
-
-        //expect(todoListDAO.getTodoList("001")).andReturn(todoList);
-
+        expect(em.find(TodoList.class, "001")).andReturn(todoList);
         expect(userService.findUser("another_user")).andReturn(user2);
-
-        //todoListDAO.updateTodoList(todoList);
 
         replay();
 
@@ -227,10 +213,9 @@ public class TodoListsServiceImplTest {
 
         expect(userService.getCurrentUser()).andReturn(user);
         TodoList todoList = new TodoList();
-        //todoListDAO.saveTodoList(todoList);
-        userService.updateUser(user);
+        em.persist(todoList);
         Todo todo = new Todo();
-        //todoDAO.saveTodo(todo);
+        em.persist(todo);
 
         replay();
 
@@ -244,18 +229,15 @@ public class TodoListsServiceImplTest {
 
         todoList.getUsers().add(user);
         user.getTodoLists().add(todoList);
-
         Todo todo = new Todo();
         todo.setTodoId("0001");
         todo.setTodoList(todoList);
         todoList.getTodos().add(todo);
-
-        //expect(todoListDAO.getTodoList("001")).andReturn(todoList);
+        expect(em.find(TodoList.class, "001")).andReturn(todoList);
         expect(userService.getCurrentUser()).andReturn(user);
-        //todoDAO.removeTodo("0001");
-        //todoListDAO.updateTodoList(todoList);
+        em.remove(todo);
         Todo createdTodo = new Todo();
-        //todoDAO.saveTodo(createdTodo);
+        em.persist(createdTodo);
 
         replay();
 
@@ -269,14 +251,10 @@ public class TodoListsServiceImplTest {
 
         todoList.getUsers().add(user);
         user.getTodoLists().add(todoList);
-
-        //expect(todoListDAO.getTodoList("001")).andReturn(todoList);
+        expect(em.find(TodoList.class, "001")).andReturn(todoList);
         expect(userService.getCurrentUser()).andReturn(user);
-
         Todo createdTodo = new Todo();
-        //todoDAO.saveTodo(createdTodo);
-
-        //todoListDAO.updateTodoList(todoList);
+        em.persist(createdTodo);
 
         replay();
 

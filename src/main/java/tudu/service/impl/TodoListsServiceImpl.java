@@ -109,9 +109,9 @@ public class TodoListsServiceImpl implements TodoListsService {
             user.getTodoLists().remove(todoList);
         }
         for (Todo todo : todoList.getTodos()) {
-            em.remove(todo.getTodoId());
+            em.remove(todo);
         }
-        em.remove(listId);
+        em.remove(todoList);
     }
 
     /**

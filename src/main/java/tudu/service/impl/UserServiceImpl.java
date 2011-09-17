@@ -103,7 +103,6 @@ public class UserServiceImpl implements UserService {
         if (log.isDebugEnabled()) {
             log.debug("Updating user '" + user.getLogin() + "'.");
         }
-        em.merge(user);
     }
 
     /**
@@ -149,7 +148,7 @@ public class UserServiceImpl implements UserService {
         user.setCreationDate(now);
         user.setLastAccessDate(now);
         user.setDateFormat(Constants.DATEFORMAT_US);
-        Role role = em.find(Role.class, RolesEnum.ROLE_USER.toString());
+        Role role = em.find(Role.class, RolesEnum.ROLE_USER.name());
         user.getRoles().add(role);
         em.persist(user);
 
@@ -168,7 +167,9 @@ public class UserServiceImpl implements UserService {
         welcomeTodo.setTodoList(todoList);
         todoList.getTodos().add(welcomeTodo);
         em.persist(welcomeTodo);
-        em.persist(todoList);
+        if (log.isDebugEnabled()) {
+            log.debug("User '" + user.getLogin() + "' successfully created.");
+        }
     }
 
     /**

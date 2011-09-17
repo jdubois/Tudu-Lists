@@ -2,10 +2,14 @@ package tudu.service.impl;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.BeanInitializationException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionCallbackWithoutResult;
+import org.springframework.transaction.support.TransactionTemplate;
 import tudu.domain.Property;
 import tudu.domain.Role;
 import tudu.domain.RolesEnum;
@@ -17,6 +21,9 @@ import tudu.service.UserService;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.validation.Constraint;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 import java.util.Set;
 
 /**
@@ -40,11 +47,36 @@ public class ConfigurationServiceImpl implements ConfigurationService {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private PlatformTransactionManager transactionManager;
+
     @PostConstruct
     public void init() {
         log.warn("Initializing Tudu Lists");
-        this.initDatabase();
-        this.initApplicationProperties();
+        TransactionTemplate transactionTemplate = new TransactionTemplate(transactionManager);
+        transactionTemplate.execute(new TransactionCallbackWithoutResult() {
+            public void doInTransactionWithoutResult(TransactionStatus status) {
+                try {
+                    initDatabase();
+                    initApplicationProperties();
+                } catch (Exception e) {
+                    log.fatal("Could not intialize the database: " + e.getMessage());
+                    if (e instanceof ConstraintViolationException) {
+                        Set<ConstraintViolation<?>> violations = ((ConstraintViolationException) e)
+                                .getConstraintViolations();
+
+                        for (ConstraintViolation violation : violations) {
+                            log.warn("Constraint violation while initializing the database: "
+                                    + violation.getPropertyPath().toString()
+                                    + " - "
+                                    + violation.getMessage());
+                        }
+                    }
+                    status.setRollbackOnly();
+                    throw new BeanInitializationException("Could not intialize the database.", e);
+                }
+            }
+        });
     }
 
     /**
@@ -52,9 +84,10 @@ public class ConfigurationServiceImpl implements ConfigurationService {
      */
     public void initDatabase() {
         log.warn("Testing Database.");
-        try {
-            em.find(Role.class, RolesEnum.ROLE_USER.name());
-        } catch (ObjectRetrievalFailureException erfe) {
+        Role role = em.find(Role.class, RolesEnum.ROLE_USER.name());
+        if (role != null) {
+            log.info("Database is already populated.");
+        } else {
             log.warn("Database is empty : populating with default values.");
 
             log.warn("Populating HSQLDB database.");
@@ -86,11 +119,14 @@ public class ConfigurationServiceImpl implements ConfigurationService {
             adminRole.setRole(RolesEnum.ROLE_ADMIN.name());
             em.persist(adminRole);
 
+            em.flush();
+
             User adminUser = new User();
             adminUser.setLogin("admin");
-            adminUser.setPassword("admin");
-            adminUser.setFirstName("Albert");
-            adminUser.setLastName("Dmin");
+            adminUser.setPassword("password");
+            adminUser.setVerifyPassword("password");
+            adminUser.setFirstName("Admin");
+            adminUser.setLastName("User");
             adminUser.setDateFormat("MM/dd/yyyy");
             try {
                 userService.createUser(adminUser);
@@ -101,10 +137,14 @@ public class ConfigurationServiceImpl implements ConfigurationService {
             Set<Role> roles = adminUser.getRoles();
             roles.add(adminRole);
 
+            em.flush();
+
             User user = new User();
             user.setLogin("user");
-            user.setPassword("user");
-            user.setFirstName("");
+            user.setPassword("password");
+            user.setVerifyPassword("password");
+            user.setFirstName("Default");
+            user.setLastName("User");
             user.setDateFormat("MM/dd/yyyy");
             try {
                 userService.createUser(user);
@@ -112,6 +152,7 @@ public class ConfigurationServiceImpl implements ConfigurationService {
                 log.error("Error while creating the admin user : "
                         + "the user already exists.");
             }
+            em.flush();
         }
 
     }

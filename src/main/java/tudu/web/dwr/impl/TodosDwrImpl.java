@@ -412,7 +412,7 @@ public class TodosDwrImpl implements TodosDwr {
     public String deleteTodo(String todoId) {
         Todo todo = todosService.findTodo(todoId);
         String listId = todo.getTodoList().getListId();
-        todosService.deleteTodo(todoId);
+        todosService.deleteTodo(todo);
         return forceRenderTodos(listId);
     }
 

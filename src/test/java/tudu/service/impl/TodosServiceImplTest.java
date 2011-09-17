@@ -12,6 +12,8 @@ import tudu.security.PermissionDeniedException;
 import tudu.service.TodoListsService;
 import tudu.service.UserService;
 
+import javax.persistence.EntityManager;
+
 import static org.easymock.EasyMock.*;
 import static org.junit.Assert.*;
 
@@ -21,9 +23,9 @@ public class TodosServiceImplTest {
     TodoList todoList = new TodoList();
     User user = new User();
 
-    //TodoDAO todoDAO = null;
     TodoListsService todoListsService = null;
     UserService userService = null;
+    EntityManager em = null;
 
     TodosServiceImpl todosService = new TodosServiceImpl();
 
@@ -42,24 +44,24 @@ public class TodosServiceImplTest {
         user.setFirstName("First name");
         user.setLastName("Last name");
 
-        //todoDAO = createMock(TodoDAO.class);
+        em = createMock(EntityManager.class);
         todoListsService = createMock(TodoListsService.class);
         userService = createMock(UserService.class);
 
-        //ReflectionTestUtils.setField(todosService, "todoDAO", todoDAO);
+        ReflectionTestUtils.setField(todosService, "em", em);
         ReflectionTestUtils.setField(todosService, "todoListsService", todoListsService);
         ReflectionTestUtils.setField(todosService, "userService", userService);
     }
 
     @After
     public void tearDown() {
-        //verify(todoDAO);
+        verify(em);
         verify(todoListsService);
         verify(userService);
     }
 
     private void replay() {
-        //EasyMock.replay(todoDAO);
+        EasyMock.replay(em);
         EasyMock.replay(todoListsService);
         EasyMock.replay(userService);
     }
@@ -67,8 +69,7 @@ public class TodosServiceImplTest {
     @Test
     public void testFindTodo() {
         todo.setTodoList(todoList);
-        //expect(todoDAO.getTodo("0001")).andReturn(todo);
-
+        expect(em.find(Todo.class, "0001")).andReturn(todo);
         user.getTodoLists().add(todoList);
         expect(userService.getCurrentUser()).andReturn(user);
 
@@ -84,8 +85,7 @@ public class TodosServiceImplTest {
 
     @Test
     public void testFailedFindTodo() {
-        //expect(todoDAO.getTodo("0001")).andReturn(todo);
-
+        expect(em.find(Todo.class, "0001")).andReturn(todo);
         expect(userService.getCurrentUser()).andReturn(user);
 
         replay();
@@ -101,10 +101,8 @@ public class TodosServiceImplTest {
     @Test
     public void testCreateTodo() {
         expect(todoListsService.findTodoList("001")).andReturn(todoList);
-
-        //todoDAO.saveTodo(todo);
-
         todoListsService.updateTodoList(todoList);
+        em.persist(todo);
 
         replay();
 
@@ -117,13 +115,12 @@ public class TodosServiceImplTest {
 
     @Test
     public void testUpdateTodo() {
-        //todoDAO.updateTodo(todo);
         todoListsService.updateTodoList(todo.getTodoList());
 
         replay();
 
         todo.setCompleted(true);
-        //todosService.updateTodo(todo);
+        todosService.updateTodo(todo);
         assertTrue(todo.isCompleted());
     }
 
@@ -131,17 +128,13 @@ public class TodosServiceImplTest {
     public void testDeleteTodo() {
         todo.setTodoList(todoList);
         todoList.getTodos().add(todo);
-        //expect(todoDAO.getTodo("0001")).andReturn(todo);
-
         user.getTodoLists().add(todoList);
-        expect(userService.getCurrentUser()).andReturn(user);
-
-        //todoDAO.removeTodo("0001");
+        em.remove(todo);
         todoListsService.updateTodoList(todo.getTodoList());
 
         replay();
 
-        todosService.deleteTodo("0001");
+        todosService.deleteTodo(todo);
 
         assertFalse(todoList.getTodos().contains(todo));
     }
@@ -150,7 +143,7 @@ public class TodosServiceImplTest {
     public void testCompleteTodo() {
         todo.setTodoList(todoList);
         todoList.getTodos().add(todo);
-        //expect(todoDAO.getTodo("0001")).andReturn(todo);
+        expect(em.find(Todo.class, "0001")).andReturn(todo);
 
         user.getTodoLists().add(todoList);
         expect(userService.getCurrentUser()).andReturn(user);
@@ -169,7 +162,7 @@ public class TodosServiceImplTest {
     public void testReopenTodo() {
         todo.setTodoList(todoList);
         todoList.getTodos().add(todo);
-        //expect(todoDAO.getTodo("0001")).andReturn(todo);
+        expect(em.find(Todo.class, "0001")).andReturn(todo);
 
         user.getTodoLists().add(todoList);
         expect(userService.getCurrentUser()).andReturn(user);

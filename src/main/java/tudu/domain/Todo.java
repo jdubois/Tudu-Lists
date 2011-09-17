@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  * A Todo.
- * 
+ *
  * @author Julien Dubois
  */
 @Entity
@@ -164,24 +164,27 @@ public class Todo implements Serializable, Comparable<Todo> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Todo)) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-        final Todo todo = (Todo) o;
+        Todo todo = (Todo) o;
 
-        if (todoId != null ? !todoId.equals(todo.todoId) : todo.todoId != null) {
-            return false;
-        }
+        if (todoId != null ? !todoId.equals(todo.todoId) : todo.todoId != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return (todoId != null ? todoId.hashCode() : 0);
+        return todoId != null ? todoId.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Todo{" +
+                "todoId='" + todoId + '\'' +
+                ", todoList=" + todoList.getListId() +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

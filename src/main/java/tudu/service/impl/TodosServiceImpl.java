@@ -29,7 +29,6 @@ public class TodosServiceImpl implements TodosService {
 
     private final Log log = LogFactory.getLog(TodosServiceImpl.class);
 
-
     @PersistenceContext
     private EntityManager em;
 
@@ -50,6 +49,13 @@ public class TodosServiceImpl implements TodosService {
             log.debug("Finding Todo with ID " + todoId);
         }
         Todo todo = em.find(Todo.class, todoId);
+        if (todo == null) {
+            if (log.isInfoEnabled()) {
+                log.info("Todo ID '" + todoId
+                        + "' does not exist!");
+            }
+            return null;
+        }
         TodoList todoList = todo.getTodoList();
         User user = userService.getCurrentUser();
         if (!user.getTodoLists().contains(todoList)) {
@@ -115,26 +121,34 @@ public class TodosServiceImpl implements TodosService {
      *      tudu.domain.Todo)
      */
     public void createTodo(final String listId, final Todo todo) {
-
         Date now = Calendar.getInstance().getTime();
         todo.setCreationDate(now);
         TodoList todoList = todoListsService.findTodoList(listId);
         todo.setTodoList(todoList);
         todoList.getTodos().add(todo);
         todoListsService.updateTodoList(todoList);
+        em.persist(todo);
+        if (log.isDebugEnabled()) {
+            log.debug("Created Todo ID=" + todo.getTodoId());
+        }
     }
 
-    /**
-     * Delete a Todo.
-     *
-     * @see tudu.service.TodosService#deleteTodo(java.lang.String)
-     */
-    public void deleteTodo(final String todoId) {
-        Todo todo = this.findTodo(todoId);
+    public void deleteTodo(final Todo todo) {
         TodoList todoList = todo.getTodoList();
-        todoList.getTodos().remove(todo);
+        Set<Todo> todos = todoList.getTodos();
+        if (todos.contains(todo)) {
+            todos.remove(todo);
+            todoListsService.updateTodoList(todoList);
+            if (log.isDebugEnabled()) {
+                log.debug("Removed Todo ID=" + todo.getTodoId() + " - list size="
+                        + todoList.getTodos().size());
+            }
+        } else {
+            log.warn("Todo " + todo.getTodoId() + " should have been in List "
+                    + todoList.getListId());
+
+        }
         em.remove(todo);
-        todoListsService.updateTodoList(todoList);
     }
 
     /**
@@ -175,5 +189,9 @@ public class TodosServiceImpl implements TodosService {
         todo.setCompletionDate(null);
         todoListsService.updateTodoList(todo.getTodoList());
         return todo;
+    }
+
+    public void updateTodo(Todo todo) {
+        todoListsService.updateTodoList(todo.getTodoList());
     }
 }

@@ -7,11 +7,11 @@
     <packaging>war</packaging>
     <name>Tudu Lists Web application</name>
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <wtpversion>1.5</wtpversion>
-        <spring.version>3.0.5.RELEASE</spring.version>
-        <spring.security.version>3.0.2.RELEASE</spring.security.version>
-        <hibernate.version>3.5.6-Final</hibernate.version>
-        <hibernate-validator.version>4.2.0.Final</hibernate-validator.version>
+        <spring.version>3.0.6.RELEASE</spring.version>
+        <spring.security.version>3.0.7.RELEASE</spring.security.version>
+        <hibernate.version>3.6.7.Final</hibernate.version>
     </properties>
     <dependencies>
         <dependency>
@@ -26,10 +26,9 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.2.143</version>
-            <scope>compile</scope>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.2.4</version>
         </dependency>
         <dependency>
             <groupId>javax.mail</groupId>
@@ -57,19 +56,19 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.5</version>
+            <version>4.9</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.12</version>
+            <version>5.1.17</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>net.sf.ehcache</groupId>
             <artifactId>ehcache-core</artifactId>
-            <version>2.2.0</version>
+            <version>2.4.3</version>
         </dependency>
         <dependency>
             <groupId>net.sf.ehcache</groupId>
@@ -79,18 +78,18 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
-            <version>1.6.8</version>
+            <version>1.6.11</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
-            <version>1.5.0</version>
+            <version>1.8.5</version>
         </dependency>
         <dependency>
             <groupId>org.easymock</groupId>
             <artifactId>easymock</artifactId>
-            <version>2.0</version>
+            <version>3.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -102,7 +101,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>4.1.0.Final</version>
+            <version>4.2.0.Final</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -194,10 +193,9 @@
             <version>${spring.security.version}</version>
         </dependency>
         <dependency>
-            <groupId>rome</groupId>
+            <groupId>net.java.dev.rome</groupId>
             <artifactId>rome</artifactId>
-            <version>0.9</version>
-            <scope>compile</scope>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>taglibs</groupId>

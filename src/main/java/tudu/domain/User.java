@@ -4,7 +4,8 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.Email;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
@@ -29,22 +30,22 @@ public class User implements Serializable, Comparable<User> {
     private static final long serialVersionUID = 4048798961366546485L;
 
     @Id
-    @Min(1)
+    @Size(min = 1, max = 50)
     private String login;
 
-    @Min(5)
+    @Size(min = 5, max = 50)
     private String password;
 
     @Transient
-    @Min(5)
     private String verifyPassword;
 
-    @Min(1)
+    @Size(min = 1, max = 100)
     private String firstName;
 
-    @Min(1)
+    @Size(min = 1, max = 100)
     private String lastName;
 
+    @Size(min = 0, max = 150)
     private String email;
 
     private Date creationDate;
@@ -182,5 +183,14 @@ public class User implements Serializable, Comparable<User> {
 
     public int compareTo(User that) {
         return this.getLogin().compareTo(that.getLogin());
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "login='" + login + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }

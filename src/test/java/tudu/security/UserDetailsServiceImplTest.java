@@ -17,9 +17,9 @@ public class UserDetailsServiceImplTest {
 
     @Test
     public void testLoadUserByUsername() {
-        UserDetailsServiceImpl authenticationDAO = new UserDetailsServiceImpl();
+        UserDetailsServiceImpl userDetailService = new UserDetailsServiceImpl();
         UserService userService = EasyMock.createMock(UserService.class);
-        ReflectionTestUtils.setField(authenticationDAO, "userService", userService);
+        ReflectionTestUtils.setField(userDetailService, "userService", userService);
 
         User user = new User();
         user.setLogin("test_user");
@@ -30,11 +30,9 @@ public class UserDetailsServiceImplTest {
         user.getRoles().add(userRole);
         expect(userService.findUser("test_user")).andReturn(user);
 
-        userService.updateUser(user);
-
         replay(userService);
 
-        UserDetails springSecurityUser = authenticationDAO
+        UserDetails springSecurityUser = userDetailService
                 .loadUserByUsername("test_user");
 
         assertEquals(user.getLogin(), springSecurityUser.getUsername());

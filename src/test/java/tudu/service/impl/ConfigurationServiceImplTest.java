@@ -1,25 +1,36 @@
 package tudu.service.impl;
 
+import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.test.util.ReflectionTestUtils;
 import tudu.domain.Property;
 
+import javax.persistence.EntityManager;
+
 import static org.junit.Assert.assertEquals;
+import static org.easymock.EasyMock.*;
 
 public class ConfigurationServiceImplTest {
 
     ConfigurationServiceImpl configurationService = new ConfigurationServiceImpl();
 
+    EntityManager em;
+
     @Before
     public void before() {
-        //propertyDAO = createMock(PropertyDAO.class);
-        //ReflectionTestUtils.setField(configurationService, "propertyDAO", propertyDAO);
+        em = createMock(EntityManager.class);
+        ReflectionTestUtils.setField(configurationService, "em", em);
     }
 
     @After
     public void after() {
-        //verify(propertyDAO);
+        verify(em);
+    }
+
+    private void replay() {
+        EasyMock.replay(em);
     }
 
     @Test
@@ -27,9 +38,9 @@ public class ConfigurationServiceImplTest {
         Property property = new Property();
         property.setKey("key");
         property.setValue("value");
-        //expect(propertyDAO.getProperty("key")).andReturn(property);
+        expect(em.find(Property.class, "key")).andReturn(property);
 
-        //replay(propertyDAO);
+        replay();
         Property test = configurationService.getProperty("key");
         assertEquals("value", test.getValue());
     }
@@ -39,35 +50,30 @@ public class ConfigurationServiceImplTest {
         Property hostProperty = new Property();
         hostProperty.setKey("smtp.host");
         hostProperty.setValue("value");
-        //expect(propertyDAO.getProperty("smtp.host")).andReturn(hostProperty);
-        //propertyDAO.updateProperty(hostProperty);
+        expect(em.find(Property.class, "smtp.host")).andReturn(hostProperty);
 
         Property portProperty = new Property();
         portProperty.setKey("smtp.port");
         portProperty.setValue("value");
-        //expect(propertyDAO.getProperty("smtp.port")).andReturn(portProperty);
-        //propertyDAO.updateProperty(portProperty);
+        expect(em.find(Property.class, "smtp.port")).andReturn(portProperty);
 
         Property userProperty = new Property();
         userProperty.setKey("smtp.user");
         userProperty.setValue("value");
-        //expect(propertyDAO.getProperty("smtp.user")).andReturn(userProperty);
-        //propertyDAO.updateProperty(userProperty);
+        expect(em.find(Property.class, "smtp.user")).andReturn(userProperty);
 
         Property passwordProperty = new Property();
         passwordProperty.setKey("smtp.password");
         passwordProperty.setValue("value");
-        //expect(propertyDAO.getProperty("smtp.password")).andReturn(
-        //        passwordProperty);
-        //propertyDAO.updateProperty(passwordProperty);
+        expect(em.find(Property.class, "smtp.password")).andReturn(passwordProperty);
 
         Property fromProperty = new Property();
         fromProperty.setKey("smtp.host");
         fromProperty.setValue("value");
-        //expect(propertyDAO.getProperty("smtp.from")).andReturn(fromProperty);
-        //propertyDAO.updateProperty(fromProperty);
+        expect(em.find(Property.class, "smtp.from")).andReturn(fromProperty);
 
-        //replay(propertyDAO);
+        replay();
+
         configurationService.updateEmailProperties("host", "port", "user",
                 "password", "from");
         assertEquals("host", hostProperty.getValue());

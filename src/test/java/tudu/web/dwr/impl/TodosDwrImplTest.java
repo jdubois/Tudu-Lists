@@ -217,7 +217,7 @@ public class TodosDwrImplTest {
     public void testDeleteTodo() {
         expect(todosService.findTodo("001")).andReturn(todo);
 
-        todosService.deleteTodo("001");
+        todosService.deleteTodo(todo);
 
         replay_();
 

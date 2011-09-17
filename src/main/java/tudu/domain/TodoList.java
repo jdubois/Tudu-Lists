@@ -122,4 +122,15 @@ public class TodoList implements Serializable, Comparable<TodoList> {
     public int hashCode() {
         return (listId != null ? listId.hashCode() : 0);
     }
+
+    @Override
+    public String toString() {
+        return "TodoList{" +
+                "listId='" + listId + '\'' +
+                ", name='" + name + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                ", todos=" + todos +
+                ", users=" + users +
+                '}';
+    }
 }

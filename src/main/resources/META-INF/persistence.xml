@@ -13,8 +13,8 @@
 		<class>tudu.domain.TodoList</class>
 		<class>tudu.domain.User</class>
 		<properties>
-			<property name="hibernate.cache.provider_class"
-				value="net.sf.ehcache.hibernate.EhCacheProvider" />
+			<property name="hibernate.cache.region.factory_class"
+                      value="net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory"/>
 		</properties>
 	</persistence-unit>
 </persistence>

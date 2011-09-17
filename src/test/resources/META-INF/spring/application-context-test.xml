@@ -14,11 +14,10 @@
                            http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
     <context:property-placeholder
-            location="classpath:/META-INF/spring/infrastructure/prod.properties,
-                      classpath*:infrastructure.properties"/>
+            location="classpath:/META-INF/spring/infrastructure/test.properties"/>
 
-    <import resource="application-context-infrastructure.xml"/>
-    <import resource="application-context-security.xml"/>
+    <import resource="classpath:/META-INF/spring/application-context-infrastructure.xml"/>
+    <import resource="classpath:/META-INF/spring/application-context-security.xml"/>
 
     <context:component-scan base-package="tudu.service"/>
 

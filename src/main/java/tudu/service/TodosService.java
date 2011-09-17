@@ -47,10 +47,9 @@ public interface TodosService {
     /**
      * Delete a Todo.
      * 
-     * @param todoId
-     *            The ID of the Todo to delete
+     * @param todo The Todo to delete
      */
-    void deleteTodo(String todoId);
+    void deleteTodo(Todo todo);
 
     /**
      * Delete all the completed Todos of a given list.
@@ -75,4 +74,11 @@ public interface TodosService {
      *            The ID of the todo
      */
     Todo reopenTodo(String todoId);
+
+    /**
+     * Updates a todo
+     *
+     * @param todo The todo to update
+     */
+    void updateTodo(Todo todo);
 }

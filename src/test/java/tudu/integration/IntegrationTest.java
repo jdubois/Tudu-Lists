@@ -1,5 +1,7 @@
 package tudu.integration;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +25,10 @@ import tudu.service.UserService;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath*:/META-INF/spring/*.xml"})
+@ContextConfiguration(locations={"classpath*:/META-INF/spring/application-context-test.xml"})
 public class IntegrationTest {
+
+    private final Log log = LogFactory.getLog(IntegrationTest.class);
 
     @Autowired
     private UserService userService;
@@ -56,6 +60,8 @@ public class IntegrationTest {
         user.setLogin("test_user");
         user.setFirstName("First name");
         user.setLastName("Last name");
+        user.setPassword("password");
+        user.setVerifyPassword("password");
         try {
             userService.createUser(user);
             assertTrue(user.isEnabled());
@@ -103,6 +109,8 @@ public class IntegrationTest {
         assertEquals("test_list", todoListFromDatabase.getName());
     }
 
+    @Test
+    @Transactional
     public void testDeleteTodoList() {
         createAuthenticatedUser();
 
@@ -145,14 +153,20 @@ public class IntegrationTest {
         createAuthenticatedUser();
 
         TodoList todoList = new TodoList();
+        todoList.setName("My List");
         todoListsService.createTodoList(todoList);
+        assertEquals(0, todoList.getTodos().size());
 
         Todo todo = new Todo();
         todo.setDescription("test_todo");
-
         todosService.createTodo(todoList.getListId(), todo);
-        todosService.deleteTodo(todo.getTodoId());
-        assertEquals(0, todoList.getTodos().size());
+        assertNotNull(todosService.findTodo(todo.getTodoId()));
+        assertEquals(1, todoList.getTodos().size());
+
+        todosService.deleteTodo(todo);
+        TodoList todoList2 = todoListsService.findTodoList(todoList.getListId());
+        assertNull(todosService.findTodo(todo.getTodoId()));
+        assertEquals(0, todoList2.getTodos().size());
     }
 
     @Test
@@ -190,6 +204,8 @@ public class IntegrationTest {
         User user = new User();
         user.setLogin("test_user");
         user.setPassword("test_password");
+        user.setFirstName("Test");
+        user.setLastName("User");
         try {
             userService.createUser(user);
         } catch (UserAlreadyExistsException e) {
