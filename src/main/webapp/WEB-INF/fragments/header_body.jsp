@@ -10,7 +10,7 @@
         <img src="${staticContent}/images/user_suit.png" class="icon" alt="User"/> <a
             href="${baseUrl}/account">${userName}</a>
     </sec:authorize>
-    <a href="http://www.responcia.fr" style="padding-left: 400px;"><img src="${staticContent}/images/logo_sw.png" class="icon" alt=""/> Responcia</a>
+    <a href="http://www.julien-dubois.com" style="padding-left: 400px;"><img src="${staticContent}/images/logo_sw.png" class="icon" alt=""/> Julien Dubois</a>
 </div>        
 <div id="message" class="ui-widget" onclick="hideMessage();">
     <div class="ui-state-highlight ui-corner-all" style="margin-top: 25px; padding:10px">

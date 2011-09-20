@@ -1,30 +1,19 @@
-<%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" isErrorPage="true"%>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page language="java" errorPage="/WEB-INF/views/error.jsp" pageEncoding="UTF-8"
+         contentType="text/html; charset=utf-8" %>
+<html>
 <head>
-    <title>Erreur technique!</title>
+    <title>Tudu Lists</title>
     <jsp:include page="../fragments/header_head.jsp"/>
 </head>
 <body id="main">
 <div id="banner"></div>
 <div id="container">
     <jsp:include page="../fragments/header_body.jsp"/>
-    <div id="content">
-        <%
-            if (exception != null) {
-                exception.printStackTrace();
-            }
-        %>
-        <h1>Une erreur s'est produite</h1>
-        <p style="text-align: center;">
-            L'&eacute;quipe technique de Responcia a &eacute;t&eacute; pr&eacute;venue et va r&eacute;soudre
-            ce probl&egrave;me le plus rapidement possible.
-            <br/>
-            <br/>
-            [ <a href="${context}/">Retour &agrave; la page principale de Responcia</a> ]
-        </p>
+    <div id="content" style="width:500px; padding-left: 200px">
+        <h1><fmt:message key="500.title"/></h1>
     </div>
     <jsp:include page="../fragments/footer.jsp"/>
 </div>
