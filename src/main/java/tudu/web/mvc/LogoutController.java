@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Enumeration;
 
 /**
- * The Log out action.
+ * The Log out controller.
  * 
  * @author Julien Dubois
  */

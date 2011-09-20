@@ -8,7 +8,7 @@
     request.setAttribute("googleAnalytics", googleAnalytics);
     request.setAttribute("currentPage", request.getPathInfo());
 %>
-<div id="about"><a href="${context}/"><fmt:message key="footer.home"/></a> | <a href="http://github.com/jdubois/Tudu-Lists/issues"><fmt:message key="footer.bug"/></a> | <a href="http://github.com/jdubois/Tudu-Lists"><fmt:message key="footer.dev"/></a> | <a href="${context}/about/mentions_legales"><fmt:message key="footer.legal"/></a> | <a href="${context}/about/conditions_generales_d_utilisation"><fmt:message key="footer.cgu"/></a> | <a href="http://www.julien-dubois.com"><fmt:message key="footer.copyright"/></a><br/>
+<div id="about"><a href="${context}/tudu/welcome"><fmt:message key="footer.home"/></a> | <a href="http://github.com/jdubois/Tudu-Lists/issues"><fmt:message key="footer.bug"/></a> | <a href="http://github.com/jdubois/Tudu-Lists"><fmt:message key="footer.dev"/></a> | <a href="${context}/tudu/license"><fmt:message key="footer.license"/></a> | <a href="http://www.julien-dubois.com"><fmt:message key="footer.copyright"/></a> |
 Language: <a href="${currentPage}?lang=en">English</a> | <a href="${currentPage}?lang=fr">Fran&ccedil;ais</a></div>
 <script type="text/javascript">
     var context = "${context}";

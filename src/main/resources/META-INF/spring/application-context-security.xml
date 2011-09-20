@@ -18,6 +18,7 @@
         <intercept-url pattern="/welcome" filters="none"/>
         <intercept-url pattern="/register" filters="none"/>
         <intercept-url pattern="/recoverPassword" filters="none"/>
+        <intercept-url pattern="/license" filters="none"/>
 
         <intercept-url pattern="/lists" access="ROLE_USER"/>
         <intercept-url pattern="/account" access="ROLE_USER"/>

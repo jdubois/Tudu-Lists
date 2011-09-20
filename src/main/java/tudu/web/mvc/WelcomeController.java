@@ -8,7 +8,7 @@ import tudu.domain.RolesEnum;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * The Welcome action.
+ * The Welcome controller.
  * 
  * @author Julien Dubois
  */

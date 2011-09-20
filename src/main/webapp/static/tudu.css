@@ -85,10 +85,11 @@ select {
 #about {
     background-color: #e4e3e3;
     position: relative;
+    padding-left: 1px;
     width: 956px;
     margin: auto;
     bottom: -20px;
-    height: 60px;
+    height: 30px;
 }
 
 #about a {

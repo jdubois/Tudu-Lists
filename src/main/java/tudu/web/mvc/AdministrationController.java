@@ -14,7 +14,7 @@ import tudu.service.UserService;
 import java.util.List;
 
 /**
- * Application administration actions.
+ * Application administration controler.
  * 
  * @author Julien Dubois
  */

@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <div id="header">
-    <b><a href="${context}">Tudu Lists</a></b>
+    <b><a href="${context}/tudu/welcome">Tudu Lists</a></b>
     &nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;
     <sec:authorize ifNotGranted="ROLE_USER"><a href="${context}"><fmt:message key="header.user"/></a></sec:authorize>
     <sec:authorize ifAnyGranted="ROLE_USER">
