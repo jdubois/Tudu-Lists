@@ -1,8 +1,13 @@
 package tudu.web.mvc;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import tudu.domain.RolesEnum;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,16 +21,22 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/welcome")
 public class WelcomeController {
 
+    private final Log log = LogFactory.getLog(WelcomeController.class);
+
     /**
      * Welcome action.
      */
     @RequestMapping(method = RequestMethod.GET)
-    public String welcome(HttpServletRequest request) {
+    public ModelAndView welcome(HttpServletRequest request,
+                          @RequestParam(required = false) String authentication) {
 
-        if (request.isUserInRole(RolesEnum.ROLE_USER.toString())) {
-            return "redirect:/lists";
+        ModelAndView mv = new ModelAndView();
+        if (request.isUserInRole(RolesEnum.ROLE_USER.name())) {
+            mv.setViewName("redirect:/lists");
+        } else {
+            mv.addObject("authentication", authentication);
+            mv.setViewName("welcome");
         }
-        return "welcome";
+        return mv;
     }
-
 }

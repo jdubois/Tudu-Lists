@@ -60,7 +60,7 @@ public class User implements Serializable, Comparable<User> {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<Role> roles = new HashSet<Role>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<TodoList> todoLists = new HashSet<TodoList>();
 

@@ -16,7 +16,9 @@ Language: <a href="${currentPage}?lang=en">English</a> | <a href="${currentPage}
 <script type="text/javascript" src="${staticContent}/jquery/jquery-1.6.4.js"></script>
 <script type="text/javascript" src="${staticContent}/jquery/jquery-ui/jquery-ui-1.8.custom.min.js"></script>
 <script type="text/javascript" src="${staticContent}/tudu.js"></script>
+<c:if test="${errors ne null}">
 
+</c:if>
 <c:if test="${googleAnalytics ne ''}">
     <script type="text/javascript">
         var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

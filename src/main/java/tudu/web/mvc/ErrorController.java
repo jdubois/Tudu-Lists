@@ -18,7 +18,7 @@ public class ErrorController {
     @RequestMapping("/404")
     public String pageNotFound(HttpServletRequest request) {
         if (log.isInfoEnabled()) {
-            log.info("404 error when accessing page: " + request.getPathInfo());
+            log.info("404 error!");
         }
         return "404";
     }

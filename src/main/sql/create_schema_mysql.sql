@@ -67,7 +67,8 @@ CREATE TABLE `tuser` (
   PRIMARY KEY  (`login`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `tuser` (`login`,`password`,`enabled`,`firstName`,`lastName`,`email`,`dateFormat`,`creationDate`,`lastAccessDate`) VALUES ("admin","admin","1","","","","MM/dd/yyyy","2000-01-01 00:00:00","2000-01-01 00:00:00");
+INSERT INTO `tuser` (`login`,`password`,`enabled`,`firstName`,`lastName`,`email`,`dateFormat`,`creationDate`,`lastAccessDate`) VALUES ("admin","password","1","Admin","User","","MM/dd/yyyy","2000-01-01 00:00:00","2000-01-01 00:00:00");
+INSERT INTO `tuser` (`login`,`password`,`enabled`,`firstName`,`lastName`,`email`,`dateFormat`,`creationDate`,`lastAccessDate`) VALUES ("user","password","1","Default","User","","MM/dd/yyyy","2000-01-01 00:00:00","2000-01-01 00:00:00");
 
 CREATE TABLE `tuser_role` (
   `tuser_login` varchar(50) NOT NULL default '',

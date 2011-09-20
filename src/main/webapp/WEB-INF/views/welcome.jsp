@@ -45,7 +45,7 @@
                         </div>
                         <br/>
                     </c:if>
-                    <form action="j_spring_security_check" method="post">
+                    <form action="${context}/tudu/login" method="POST">
                         <table border="0" cellspacing="2" cellpadding="3">
                             <tr>
                                 <th style="text-align: left"><fmt:message key="login.login"/></th>
@@ -97,5 +97,10 @@
     </div>
     <jsp:include page="../fragments/footer.jsp"/>
 </div>
+<c:if test="${authentication eq 'failure'}">
+    <script type="text/javascript">
+        showError("<fmt:message key="authentication.failure"/>");
+    </script>
+</c:if>
 </body>
 </html>
