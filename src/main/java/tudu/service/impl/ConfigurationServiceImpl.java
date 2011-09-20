@@ -169,7 +169,7 @@ public class ConfigurationServiceImpl implements ConfigurationService {
             staticContent = staticFilesPathProperty.getValue();
 
         } else {
-            staticContent = "/tudu/static";
+            staticContent = "/static";
         }
 
         Property googleAnalyticsKeyProperty = this
