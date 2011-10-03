@@ -37,6 +37,7 @@ public class User implements Serializable, Comparable<User> {
     private String password;
 
     @Transient
+    @Size(min = 5, max = 50)
     private String verifyPassword;
 
     @Size(min = 1, max = 60)
@@ -46,6 +47,7 @@ public class User implements Serializable, Comparable<User> {
     private String lastName;
 
     @Size(min = 0, max = 150)
+    @Email
     private String email;
 
     private Date creationDate;

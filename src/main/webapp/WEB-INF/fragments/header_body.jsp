@@ -6,7 +6,7 @@
 <div id="container">
     <table width="100%">
         <tr>
-            <td style="width: 152px"><a href="https://github.com/jdubois/Tudu-Lists"><img
+            <td style="width: 152px"><a href="${context}/tudu/welcome"><img
                     src="${staticContent}/images/tudu_logo.png" alt="Tudu Lists" width="150" height="30"/></a></td>
             <% if (request.getRemoteUser() != null) { %>
             <td>

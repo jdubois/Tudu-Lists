@@ -42,10 +42,14 @@ public class RegisterController {
         if (result.hasErrors()) {
             return "register";
         }
+        if (!user.getPassword().equals(user.getVerifyPassword())) {
+            result.rejectValue("verifyPassword", "user.info.password.not.matching");
+            return "register";
+        }
         try {
             userService.createUser(user);
         } catch (UserAlreadyExistsException e) {
-            result.reject("register.user.already.exists");
+            result.rejectValue("login", "register.user.already.exists");
             return "register";
         }
         return "register_ok";

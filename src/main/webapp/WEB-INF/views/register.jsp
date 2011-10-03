@@ -3,19 +3,17 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" errorPage="/WEB-INF/views/error.jsp" pageEncoding="UTF-8"
          contentType="text/html; charset=utf-8" %>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <title>Tudu Lists</title>
     <jsp:include page="../fragments/header_head.jsp"/>
 </head>
-<body id="main">
-<div id="banner"></div>
-<div id="container">
+<body id="main"><div id="banner"></div>
     <jsp:include page="../fragments/header_body.jsp"/>
-    <div id="content" style="width:600px; padding-left: 220px">
         <h1><fmt:message key="register.title"/></h1>
-
-        <div>
+        <div style="width:600px">
             <ul>
                 <li>
                     <fmt:message key="register.info.1"/>
@@ -26,7 +24,7 @@
             </ul>
         </div>
         <form:form commandName="user">
-            <table class="list" style="width:600px">
+            <table class="list" style="width:700px">
                 <tr>
                     <th colspan="3">
                         <fmt:message key="register.subtitle"/>
@@ -34,14 +32,14 @@
                 </tr>
                 <tbody>
                 <tr class="odd">
-                    <td>
+                    <td style="width: 250px">
                         <fmt:message key="user.info.login"/> *
                     </td>
                     <td>
                         <form:input path="login" size="20" maxlength="50"/>
                     </td>
                     <td>
-                        <form:errors path="login" cssClass="errors"/>
+                        <form:errors path="login" cssClass="errors" htmlEscape="false"/>
                     </td>
                 </tr>
                 <tr class="even">
@@ -96,11 +94,11 @@
                         <form:password path="verifyPassword" size="15" maxlength="32"/>
                     </td>
                     <td>
-                        <form:errors path="verifyPassword" cssClass="errors"/>
+                        <form:errors path="verifyPassword" cssClass="errors" htmlEscape="false"/>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3" style="padding-left: 150px;">
+                    <td colspan="3" style="padding-left: 250px;">
                         <br/>
                         <a class="button" href="javascript:submitForm();"
                            onclick="this.blur();"><span><fmt:message key="form.submit"/></span></a>
@@ -116,6 +114,5 @@
         </form:form>
     </div>
     <jsp:include page="../fragments/footer.jsp"/>
-</div>
 </body>
 </html>
