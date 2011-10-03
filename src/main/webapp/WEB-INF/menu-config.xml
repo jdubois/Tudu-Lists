@@ -8,19 +8,19 @@
     <Menus>
         <Menu 	name="Welcome"
 				title="menu.welcome"
-				description="Welcome Menu"
+				description="Welcome"
 				page="/welcome"/>
 	    <Menu 	name="Register"
 				title="menu.register"
-				description="Register Menu"
+				description="Registration"
 				page="/register"/>
         <Menu 	name="Info"
 				title="menu.info"
-				description="Login Menu"
+				description="My account"
 				page="/secure/myInfo"/>
 		<Menu 	name="Todos"
 				title="menu.todos"
-				description="Todos Menu"
+				description="My Todos"
 				page="/secure/showTodos"/>
 		<Menu 	name="Administration"
 				title="menu.administration"
@@ -28,7 +28,7 @@
 				page="/secure/admin/administration"/>
 		<Menu 	name="Logout"
 				title="menu.logout"
-				description="Log out Menu"
+				description="Log out"
 				page="/logout"/>
      </Menus>
 </MenuConfig>
