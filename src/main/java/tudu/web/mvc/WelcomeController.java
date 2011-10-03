@@ -32,7 +32,7 @@ public class WelcomeController {
 
         ModelAndView mv = new ModelAndView();
         if (request.isUserInRole(RolesEnum.ROLE_USER.name())) {
-            mv.setViewName("redirect:/lists");
+            mv.setViewName("redirect:/tudu/lists");
         } else {
             mv.addObject("authentication", authentication);
             mv.setViewName("welcome");
