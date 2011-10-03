@@ -171,8 +171,6 @@ table.list th.sorted_asc {
     background: #ffffff;
     border: 1px solid #cccccc;
     width: 95%;
-    border-top: 0;
-    clear: both;
     margin: 0px;
     padding: 15px;
 }
@@ -255,8 +253,6 @@ a.button:active span {
 
 .menuList {
     border-bottom: 1px solid #cccccc;
-    margin: 0;
-    padding-bottom: 19px;
     padding-left: 10px;
 }
 
