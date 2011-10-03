@@ -2,24 +2,35 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<div id="header">
-    <b><a href="${context}/tudu/welcome">Tudu Lists</a></b>
-    &nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;
-    <sec:authorize ifNotGranted="ROLE_USER"><a href="${context}"><fmt:message key="header.user"/></a></sec:authorize>
-    <sec:authorize ifAnyGranted="ROLE_USER">
-        <img src="${staticContent}/images/user_suit.png" class="icon" alt="User"/> <a
-            href="${baseUrl}/account">${userName}</a>
-    </sec:authorize>
-</div>        
-<div id="message" class="ui-widget" onclick="hideMessage();">
-    <div class="ui-state-highlight ui-corner-all" style="margin-top: 25px; padding:10px">
-        <p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
-            <span id="message-text"></span></p>
-    </div>
-</div>
-<div id="error" class="ui-widget" onclick="hideError();">
-    <div class="ui-state-error ui-corner-all" style="margin-top: 25px; padding: 10px">
-        <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
-            <span id="error-text"></span></p>
-    </div>
-</div>
+<%@ taglib uri="http://struts-menu.sf.net/tag" prefix="menu" %>
+<div id="container">
+<table width="100%"><tr><td style="width: 152px"><a href="https://github.com/jdubois/Tudu-Lists"><img src="${staticContent}/images/tudu_logo.png" alt="Tudu Lists" width="150" height="30"/></a></td><td>
+<menu:useMenuDisplayer 	name="TabbedMenu"
+  						bundle="org.apache.struts.action.MESSAGE">
+
+  <menu:displayMenu name="Info"/>
+  <menu:displayMenu name="Todos"/>
+  <%
+   if (request.isUserInRole("ROLE_ADMIN")) {
+  %>
+   <menu:displayMenu name="Administration"/>
+  <%
+   }
+  %>
+  <menu:displayMenu name="Logout"/>
+</menu:useMenuDisplayer>
+ </td></tr></table>
+ <table id="page">
+  <tr>
+   <td>
+    <div id="title">Tudu Lists v. <%=tudu.Constants.VERSION%></div>
+   </td>
+   <td>
+    <% if (request.getRemoteUser() != null) { %>
+     <div id="username"><img src="${staticContent}/images/user_suit.png"/> <%=request.getRemoteUser()%></div>
+    <% } %>
+   </td>
+  </tr>
+  <tr>
+   <td align="center" colspan="2">
+    <div id="content">

@@ -39,10 +39,10 @@ public class User implements Serializable, Comparable<User> {
     @Transient
     private String verifyPassword;
 
-    @Size(min = 1, max = 100)
+    @Size(min = 1, max = 60)
     private String firstName;
 
-    @Size(min = 1, max = 100)
+    @Size(min = 1, max = 60)
     private String lastName;
 
     @Size(min = 0, max = 150)

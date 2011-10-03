@@ -198,6 +198,22 @@
             <version>1.0.0</version>
         </dependency>
         <dependency>
+			<groupId>struts-menu</groupId>
+			<artifactId>struts-menu</artifactId>
+			<version>2.4.3</version>
+			<scope>runtime</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>velocity</groupId>
+					<artifactId>velocity</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>velocity-tools</groupId>
+					<artifactId>velocity-tools</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+        <dependency>
             <groupId>taglibs</groupId>
             <artifactId>standard</artifactId>
             <version>1.1.2</version>

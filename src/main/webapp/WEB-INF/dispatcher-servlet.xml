@@ -45,4 +45,8 @@
             </list>
         </property>
     </bean>
+
+    <bean id="menu" class="net.sf.navigator.menu.MenuLoader">
+        <property name="menuConfig" value="/WEB-INF/menu-config.xml"/>
+    </bean>
 </beans>

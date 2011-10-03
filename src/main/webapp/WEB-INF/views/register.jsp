@@ -12,7 +12,7 @@
 <div id="banner"></div>
 <div id="container">
     <jsp:include page="../fragments/header_body.jsp"/>
-    <div id="content" style="width:500px; padding-left: 200px">
+    <div id="content" style="width:600px; padding-left: 220px">
         <h1><fmt:message key="register.title"/></h1>
 
         <div>
@@ -26,7 +26,7 @@
             </ul>
         </div>
         <form:form commandName="user">
-            <table class="list" style="width:450px">
+            <table class="list" style="width:600px">
                 <tr>
                     <th colspan="3">
                         <fmt:message key="register.subtitle"/>
@@ -41,7 +41,7 @@
                         <form:input path="login" size="20" maxlength="50"/>
                     </td>
                     <td>
-                        <form:errors path="login" />
+                        <form:errors path="login" cssClass="errors"/>
                     </td>
                 </tr>
                 <tr class="even">
@@ -49,10 +49,10 @@
                         <fmt:message key="user.info.first.name"/> *
                     </td>
                     <td>
-                        <form:input path="firstName" size="15" maxlength="60"/>
+                        <form:input path="firstName" size="15" maxlength="100"/>
                     </td>
                     <td>
-                        <form:errors path="firstName"/>
+                        <form:errors path="firstName" cssClass="errors"/>
                     </td>
                 </tr>
                 <tr class="odd">
@@ -60,10 +60,10 @@
                         <fmt:message key="user.info.last.name"/> *
                     </td>
                     <td>
-                        <form:input path="lastName" size="15" maxlength="60"/>
+                        <form:input path="lastName" size="15" maxlength="100"/>
                     </td>
                     <td>
-                        <form:errors path="lastName"/>
+                        <form:errors path="lastName" cssClass="errors"/>
                     </td>
                 </tr>
                 <tr class="even">
@@ -74,6 +74,7 @@
                         <form:input path="email" size="25" maxlength="100"/>
                     </td>
                     <td>
+                        <form:errors path="email" cssClass="errors"/>
                     </td>
                 </tr>
                 <tr class="odd">
@@ -84,7 +85,7 @@
                         <form:password path="password" size="15" maxlength="32"/>
                     </td>
                     <td>
-                        <form:errors path="password"/>
+                        <form:errors path="password" cssClass="errors"/>
                     </td>
                 </tr>
                 <tr class="even">
@@ -95,7 +96,7 @@
                         <form:password path="verifyPassword" size="15" maxlength="32"/>
                     </td>
                     <td>
-                        <form:errors path="verifyPassword"/>
+                        <form:errors path="verifyPassword" cssClass="errors"/>
                     </td>
                 </tr>
                 <tr>

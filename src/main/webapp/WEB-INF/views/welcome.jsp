@@ -2,19 +2,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" errorPage="/WEB-INF/views/error.jsp" pageEncoding="UTF-8"
          contentType="text/html; charset=utf-8" %>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <title>Tudu Lists</title>
     <jsp:include page="../fragments/header_head.jsp"/>
 </head>
 <body id="main"><div id="banner"></div>
-<div id="container">
     <jsp:include page="../fragments/header_body.jsp"/>
-    <div id="content">
         <h1><fmt:message key="login.welcome"/></h1>
         <table>
             <tr>
-                <td style="width:67%; vertical-align: top; border-left: #336600 solid thick; padding-right: 20px">
+                <td style="width:67%; vertical-align: top; padding-right: 20px">
                     <p><fmt:message key="login.description.1"/></p>
                     <p><fmt:message key="login.description.2"/></p>
                     <div style="padding-left: 20px">
@@ -37,7 +37,7 @@
                         </p>
                     </div>
                 </td>
-                <td style="width:33%; vertical-align: top; border-left: #336600 solid thick;">
+                <td style="width:33%; vertical-align: top; border-left: #cccccc solid 1px;">
                     <h3><fmt:message key="login.title"/></h3>
                     <c:if test="${not empty param.login_error}">
                         <div class="error">
@@ -45,7 +45,7 @@
                         </div>
                         <br/>
                     </c:if>
-                    <form action="${context}/tudu/login" method="POST">
+                    <form action="${context}/tudu/login" method="post">
                         <table border="0" cellspacing="2" cellpadding="3">
                             <tr>
                                 <th style="text-align: left"><fmt:message key="login.login"/></th>
@@ -66,7 +66,7 @@
                                 <td colspan="2">
                                     <p>
                                         <fmt:message key="login.auto.login"/>
-                                        <input type="checkbox" name="_spring_security_remember_me">
+                                        <input type="checkbox" name="_spring_security_remember_me"/>
                                     </p>
                                 </td>
                             </tr>
@@ -85,7 +85,6 @@
                         <a href="${context}/tudu/register"><fmt:message key="login.register.link"/></a><fmt:message
                             key="login.register.2"/>
                     </p>
-
                     <p>
                         <fmt:message key="login.forgotten.password.1"/>
                         <a href="recoverPassword.action"><fmt:message key="login.forgotten.password.link"/></a>
@@ -94,9 +93,7 @@
                 </td>
             </tr>
         </table>
-    </div>
     <jsp:include page="../fragments/footer.jsp"/>
-</div>
 <c:if test="${authentication eq 'failure'}">
     <script type="text/javascript">
         showError("<fmt:message key="authentication.failure"/>");

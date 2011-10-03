@@ -1,6 +1,5 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="html" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" errorPage="/WEB-INF/views/error.jsp" pageEncoding="UTF-8"
          contentType="text/html; charset=utf-8" %>
@@ -16,13 +15,6 @@
     <div id="content" style="width:500px; padding-left: 250px">
         <h1><fmt:message key="recover.password.title"/></h1>
         <form:form commandName="user">
-            <c:if test="${success eq 'true'}">
-                <span class="success"><fmt:message key="recover.password.success"/></span>
-            </c:if>
-            <c:if test="${message ne null}">
-                <span class="error"><fmt:message key="${message}"/></span>
-            </c:if>
-
             <table class="list" style="width:350px">
                 <tr>
                     <th colspan="2">
@@ -54,6 +46,11 @@
         </form:form>
     </div>
     <jsp:include page="../fragments/footer.jsp"/>
+    <c:if test="${success eq 'true'}">
+        <script type="text/javascript">
+            showInfo("<fmt:message key="recover.password.success"/>");"
+        </script>
+    </c:if>
 </div>
 </body>
 </html>

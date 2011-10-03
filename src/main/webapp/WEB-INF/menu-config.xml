@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MenuConfig>
+    <Displayers>
+        <Displayer 	name="TabbedMenu"
+  					type="net.sf.navigator.displayer.TabbedMenuDisplayer"
+                    bundle="org.apache.struts.action.MESSAGE"/>
+    </Displayers>
+    <Menus>
+        <Menu 	name="Welcome"
+				title="menu.welcome"
+				description="Welcome Menu"
+				page="/welcome"/>
+	    <Menu 	name="Register"
+				title="menu.register"
+				description="Register Menu"
+				page="/register"/>
+        <Menu 	name="Info"
+				title="menu.info"
+				description="Login Menu"
+				page="/secure/myInfo"/>
+		<Menu 	name="Todos"
+				title="menu.todos"
+				description="Todos Menu"
+				page="/secure/showTodos"/>
+		<Menu 	name="Administration"
+				title="menu.administration"
+				description="Administration"
+				page="/secure/admin/administration"/>
+		<Menu 	name="Logout"
+				title="menu.logout"
+				description="Log out Menu"
+				page="/logout"/>
+     </Menus>
+</MenuConfig>

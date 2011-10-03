@@ -2,20 +2,32 @@
  * Main Tudu Lists CSS file. Author : Julien Dubois
  * Change this file in order to customize the look and feel of the application.
  */
+
 body {
-    background: #ffffff url(images/background.png) top center repeat-y;
-    margin: 0px;
+    background: #ffffff;
+    font-family: Verdana, Helvetica, Arial;
+    font-size: 80%;
+    margin: 10px;
     padding: 0px;
-    font-family: Arial,Liberation Sans,DejaVu Sans,sans-serif;
-    font-size: 12px;
 }
 
-p { 
+p {
+	text-align: justify;
+	padding: 5px 30px 5px 30px;
+	color: #786A47;
+	line-height: 1.5em;
 }
-	
+
+li {
+	text-align: justify;
+	padding: 0px 30px 5px 30px;
+	color: #786A47;
+	line-height: 1.5em;
+}
+
 a {
 	text-decoration: none;
-	background: transparent url(images/dot.gif) repeat-x left bottom;
+	background: transparent url(../images/dot.gif) repeat-x left bottom;
 }
 
 a:link ,a:visited {
@@ -38,120 +50,6 @@ select {
 	background: #EEEEFF;
 }
 
-#banner {
-    position: relative;
-    top: 0px;
-    padding: 0px;
-    margin: auto;
-    background: url(images/banner.png) top center no-repeat;
-    z-index: 0;
-    height: 64px;
-}
-#header {
-    background: #336600;
-    height: 30px;
-    margin-top: 5px;
-}
-
-#header a {
-    color: #ffffff;
-    font-size: 16px;
-    text-decoration: none;
-    background: none;
-}
-#header a:hover {
-    text-decoration: underline;
-}
-
-#container {
-    position: relative;
-    top: -62px;
-    padding: 0px;
-    border: 0px;
-    margin: auto;
-    min-height: 400px;
-    width: 956px;
-    background: #ffffff;
-    z-index: 0;
-}
-
-#content {
-    position: relative;
-    top: 0px;
-    padding: 10px;
-    min-height: 450px;
-}
-
-#about {
-    background-color: #e4e3e3;
-    position: relative;
-    left: 1px;
-    width: 956px;
-    margin: auto;
-    bottom: -20px;
-    height: 30px;
-}
-
-#about a {
-    color: #336600;
-    background: none;
-}
-
-#about a:hover {
-    background-color: #336600;
-    color: #ffffff;
-}
-
-#message {
-    display: none;
-    position: relative;
-    top: -10px;
-    padding: 0px 10px 0px 10px;
-    cursor: pointer;
-}
-
-#error {
-    display: none;
-    position: relative;
-    top: -10px;
-    padding: 0px 10px 0px 10px;
-    cursor: pointer;
-}
-.icon {
-    border: none;
-    height: 16px;
-    width: 16px;
-}
-a.button {
-    background: transparent url("images/bg_button_a.gif") no-repeat scroll top right;
-    color: #444;
-    display: block;
-    float: left;
-    font: normal 12px arial, sans-serif;
-    height: 24px;
-    margin-right: 6px;
-    padding-right: 18px; /* sliding doors padding */
-    text-decoration: none;
-}
-
-a.button span {
-    background: transparent url("images/bg_button_span.gif") no-repeat;
-    display: block;
-    line-height: 14px;
-    padding: 5px 0 5px 18px;
-}
-
-a.button:active {
-    background-position: bottom right;
-    color: #000;
-    outline: none; /* hide dotted outline in Firefox */
-}
-
-a.button:active span {
-    background-position: bottom left;
-    padding: 6px 0 4px 18px; /* push text down 1px */
-}
-
 /* Main table */
 
 table.list {
@@ -168,12 +66,12 @@ table.list td {
 }
 
 table.list th {
-    background-color: #336600;
-    color: #ffffff;
+    background-color: #8080FF;
     padding: 2px;
     padding-left: 3px;
     border-bottom: 1px solid black;
     text-align: center;
+    color: black;
 }
 
 table.list tr.even {
@@ -198,34 +96,34 @@ table.list tr.hidden {
 
 table.list th.sortable {
 	cursor: pointer;
-	background-image: url(images/arrow_off.png);
+	background-image: url(../images/arrow_off.png);
 	background-repeat: no-repeat;
 	background-position: center right;
 }
 
 table.list th.sorted {
 	cursor: pointer;
-	background-image: url(images/arrow_down.png);
+	background-image: url(../images/arrow_down.png);
 	background-repeat: no-repeat;
 	background-position: center right;
 }
 
 table.list th.sorted_asc {
 	cursor: pointer;
-	background-image: url(images/arrow_up.png);
+	background-image: url(../images/arrow_up.png);
 	background-repeat: no-repeat;
 	background-position: center right;
 }
 
 /* DHTML box for add/edit forms */
 
-.box, .box_body, .box_head, .box_head h2 { 
-	background: transparent url(images/box.png) no-repeat bottom right;
+.box, .box_body, .box_head, .box_head h2 {
+	background: transparent url(../images/box.png) no-repeat bottom right;
 }
 
-.box { 
+.box {
 	width: 600px;
-	padding-right: 15px; /* the gap on the right edge of the image (not content padding) */ 
+	padding-right: 15px; /* the gap on the right edge of the image (not content padding) */
 	margin: 20px auto; /* use to position the box */
 	z-index: 10;
 	position: absolute;
@@ -233,7 +131,7 @@ table.list th.sorted_asc {
 	left: 230px;
 }
 
-.box_head { 
+.box_head {
 	background-position: top right;
 	margin-right: -15px; /* pull the right image over on top of border */
 	padding-right: 40px; /* right-image-gap + right-inside padding */
@@ -241,15 +139,15 @@ table.list th.sorted_asc {
 
 .box_head h2 {
 	background-position: top left;
-	margin: 0; /* reset main site styles*/ 
+	margin: 0; /* reset main site styles*/
 	border: 0; /* ditto */
-	padding: 25px 0 15px 40px; /* padding-left = image gap + interior padding ... no padding-right */ 
+	padding: 25px 0 15px 40px; /* padding-left = image gap + interior padding ... no padding-right */
 	height: auto !important; height: 1%; /* IE Holly Hack */
 }
 
-.box_body { 
-	background-position: bottom left; 
-	margin-right: 25px; /* interior-padding right */ 
+.box_body {
+	background-position: bottom left;
+	margin-right: 25px; /* interior-padding right */
 	padding: 15px 0 15px 40px; /* mirror .cssbox_head right/left */
 }
 
@@ -257,6 +155,7 @@ table.list th.sorted_asc {
 
 #page {
     width: 95%;
+    margin: auto;
 }
 
 #title {
@@ -268,7 +167,19 @@ table.list th.sorted_asc {
     text-align: right;
 }
 
-#sourceforge {
+#content {
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    width: 95%;
+    border-top: 0;
+    clear: both;
+    margin: 0px;
+    padding: 15px;
+}
+
+#about {
+    font-size: 10px;
+    text-align: left;
 }
 
 #bug {
@@ -303,5 +214,120 @@ table.list th.sorted_asc {
 	font-size: 80%;
 }
 
+// Styles for the input buttons
+
+.clear { /* generic container (i.e. div) for floating buttons */
+    overflow: hidden;
+    width: 100%;
+}
+
+a.button {
+    background: transparent url("images/bg_button_a.gif") no-repeat scroll top right;
+    color: #444;
+    display: block;
+    float: left;
+    font: normal 12px arial, sans-serif;
+    height: 24px;
+    margin-right: 6px;
+    padding-right: 18px; /* sliding doors padding */
+    text-decoration: none;
+}
+
+a.button span {
+    background: transparent url("images/bg_button_span.gif") no-repeat;
+    display: block;
+    line-height: 14px;
+    padding: 5px 0 5px 18px;
+}
+
+a.button:active {
+    background-position: bottom right;
+    color: #000;
+    outline: none; /* hide dotted outline in Firefox */
+}
+
+a.button:active span {
+    background-position: bottom left;
+    padding: 6px 0 4px 18px; /* push text down 1px */
+}
+
+// Styles for the menu
+
+.menuList {
+    border-bottom: 1px solid #cccccc;
+    margin: 0;
+    padding-bottom: 19px;
+    padding-left: 10px;
+}
+
+.menuList a:link, .menuList a:visited	{
+    background: #e8ebf0;
+    border: 1px solid #cccccc;
+    color: #666666;
+    float: left;
+    font-size: small;
+    font-weight: normal;
+    line-height: 14px;
+    margin-right: 8px;
+    padding: 2px 10px 2px 10px;
+    text-decoration: none;
+}
+
+.menuList a:link.active, .menuList a:visited.active	{
+    background: #ffffff;
+    border-bottom: 1px solid #ffffff;
+    color: #000000;
+}
+
+.menuList a:hover	{
+    color: #ff0000;
+}
+
+.menuList li.selected a {
+    background: #ffffff !important;
+    border-bottom: 1px solid #ffffff !important;
+    color: #000000 !important;
+    font-weight: bold !important;
+}
+
+.menuList li.selected ul.submenu {
+    display: block;
+    position: absolute;
+    margin: 25px 0 0 -10px;
+}
+
+.menuList li.selected ul.submenu a {
+    background: #ffffff;
+    border: none;
+    border-left: 1px solid #cccccc;
+    color: #999999 !important;
+    font-size: .98em;
+    font-weight: bold;
+    line-height: 12px;
+    margin-right: 4px;
+    padding: 2px 10px 2px 10px;
+    text-decoration: none;
+}
+
+.menuList li.selected ul.submenu a.selected {
+    background: transparent;
+    color: #000 !important;
+}
+
+.menuList ul a:hover, .menuList ul.submenu a:hover {
+    color: #ff0000 !important;
+}
+
+.menuList ul, .menuList li	{
+    display: inline;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menuList ul.submenu {
+    display: none;
+    width: 90%;
+}
 
 
