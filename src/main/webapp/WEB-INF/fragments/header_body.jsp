@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib uri="http://struts-menu.sf.net/tag" prefix="menu" %>
+<%@ taglib uri="http://struts-menu.sf.net/tag-el" prefix="menu" %>
 <div id="container">
 <table width="100%"><tr><td style="width: 152px"><a href="https://github.com/jdubois/Tudu-Lists"><img src="${staticContent}/images/tudu_logo.png" alt="Tudu Lists" width="150" height="30"/></a></td><td>
 <menu:useMenuDisplayer 	name="TabbedMenu"
