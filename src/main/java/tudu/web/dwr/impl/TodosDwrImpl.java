@@ -3,6 +3,7 @@ package tudu.web.dwr.impl;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.directwebremoting.WebContextFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ObjectRetrievalFailureException;
 import tudu.domain.Todo;
@@ -16,8 +17,10 @@ import tudu.web.dwr.TodosDwr;
 import tudu.web.dwr.bean.RemoteTodo;
 import tudu.web.dwr.bean.RemoteTodoList;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -135,7 +138,8 @@ public class TodosDwrImpl implements TodosDwr {
      * @see tudu.web.dwr.TodosDwr#renderTodos(java.lang.String, java.util.Date)
      */
     public String renderTodos(String listId, Date tableDate) {
-        HttpServletRequest request = null;
+        HttpServletRequest request = WebContextFactory.get()
+                .getHttpServletRequest();
 
         if (listId != null && !listId.equals("")) {
             TodoList todoList = todoListsService.findTodoList(listId);
@@ -241,14 +245,24 @@ public class TodosDwrImpl implements TodosDwr {
         } else {
             return "";
         }
-        return "/WEB-INF/fragments/todos_table.jsp";
+        try {
+            return WebContextFactory.get().forwardToString(
+                    "/WEB-INF/fragments/todos_table.jsp");
+        } catch (ServletException e) {
+            log.error("ServletException : " + e);
+            return "";
+        } catch (IOException ioe) {
+            log.error("IOException : " + ioe);
+            return "";
+        }
     }
 
     /**
      * @see tudu.web.dwr.TodosDwr#renderNextDays()
      */
     public String renderNextDays() {
-        HttpServletRequest request = null;
+        HttpServletRequest request = WebContextFactory.get()
+                .getHttpServletRequest();
 
         request.setAttribute("filter", "nextDays");
         request.setAttribute("todos", todosService.findUrgentTodos());
@@ -256,7 +270,8 @@ public class TodosDwrImpl implements TodosDwr {
     }
 
     public String renderAssignedToMe() {
-        HttpServletRequest request = null;
+        HttpServletRequest request = WebContextFactory.get()
+                .getHttpServletRequest();
 
         request.setAttribute("filter", "assignedToMe");
         request.setAttribute("todos", todosService.findAssignedTodos());
@@ -267,7 +282,16 @@ public class TodosDwrImpl implements TodosDwr {
      * Render the filtered data.
      */
     private String renderFilter() {
-        return "/WEB-INF/fragments/todos_table_filter.jsp";
+        try {
+            return WebContextFactory.get().forwardToString(
+                    "/WEB-INF/fragments/todos_table_filter.jsp");
+        } catch (ServletException e) {
+            log.error("ServletException : " + e);
+            return "";
+        } catch (IOException ioe) {
+            log.error("IOException : " + ioe);
+            return "";
+        }
     }
 
     /**

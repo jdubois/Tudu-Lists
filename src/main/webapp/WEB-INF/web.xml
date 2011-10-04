@@ -17,6 +17,14 @@
         <param-value>classpath:META-INF/spring/application-context.xml</param-value>
     </context-param>
 
+    <!-- Define the basename for a resource bundle for I18N -->
+	<context-param>
+		<param-name>
+			javax.servlet.jsp.jstl.fmt.localizationContext
+		</param-name>
+		<param-value>messages</param-value>
+	</context-param>
+
     <listener>
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
     </listener>

@@ -1,16 +1,16 @@
 <%@ page import="tudu.service.impl.ConfigurationServiceImpl" %>
 <%@ page language="java" errorPage="/WEB-INF/views/error.jsp" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
-<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
  request.setAttribute("ctx", request.getContextPath()); 
  request.setAttribute("now", java.util.Calendar.getInstance().getTime());
- String staticCtx = ConfigurationServiceImpl.staticContent;
- if (staticCtx.equals("")) {
-     request.setAttribute("staticCtx", request.getContextPath());
+ String staticContent = ConfigurationServiceImpl.staticContent;
+ if (staticContent.equals("")) {
+     request.setAttribute("staticContent", request.getContextPath());
  } else {
-     request.setAttribute("staticCtx", staticCtx);
+     request.setAttribute("staticContent", staticContent);
  }
  %>
 <c:set var="row" value="0"/>
@@ -85,10 +85,10 @@
     <td class="${tdStyle}" onclick="showQuickEditTodo('${todo.todoId}')">
      <div id="show-${todo.todoId}" >
 	  <c:if test="${not (todo.completed) and (todo.dueDate.time le now.time)}">
-       <img src="${staticCtx}/images/date_warning.png" width="16" height="16" alt="!"/>
+       <img src="${staticContent}/images/date_warning.png" width="16" height="16" alt="!"/>
       </c:if>
 	  ${todo.description}
-      <c:if test="${todo.hasNotes}">&nbsp;<img src="${staticCtx}/images/note.png" alt=""/></c:if>
+      <c:if test="${todo.hasNotes}">&nbsp;<img src="${staticContent}/images/note.png" alt=""/></c:if>
      </div>
      <div id="edit-${todo.todoId}" style="display: none"><input id="edit-in-${todo.todoId}" type="text" size="50" value="${todo.description}" onblur="quickEditTodo('${todo.todoId}',this.value);"/></div>
     </td>
@@ -108,8 +108,8 @@
             onClick="${method}('${todo.todoId}')" ${checked}>
     </td>
     <td class="${tdStyle}" style="text-align: center">
-     <a href="javascript:showEditTodo('${todo.todoId}')"><img src="${staticCtx}/images/pencil.png" border="0"/></a> 
-     <a href="javascript:deleteTodo('${todo.todoId}')"><img src="${staticCtx}/images/bin_closed.png" border="0"/></a>
+     <a href="javascript:showEditTodo('${todo.todoId}')"><img src="${staticContent}/images/pencil.png" border="0"/></a> 
+     <a href="javascript:deleteTodo('${todo.todoId}')"><img src="${staticContent}/images/bin_closed.png" border="0"/></a>
     </td>
    </tr>
   </c:forEach>
@@ -131,12 +131,12 @@
 <c:if test="${not empty todoList}">
  <c:if test="${todoList.rssAllowed eq true}">
   <a href="${ctx}/rss/showRssFeed.action?listId=${todoList.listId}">
-   <img width="30" height="14" alt="RSS" src="${staticCtx}/images/rss.gif" border="0"/>
+   <img width="30" height="14" alt="RSS" src="${staticContent}/images/rss.gif" border="0"/>
   </a>
   <link rel="alternate" title="RSS feed" href="${ctx}/rss/showRssFeed.action?listId=${todoList.listId}" TYPE="application/rss+xml">
   | 
  </c:if>
- <a href="${ctx}/secure/backupTodoList.action?listId=${todoList.listId}">Backup <img width="9" height="10" alt="Backup" src="${ctx}/images/asc.gif" border="0"/></a> | 
- <a href="${ctx}/secure/restoreTodoList.action?listId=${todoList.listId}">Restore <img width="9" height="10" alt="Restore" src="${ctx}/images/desc.gif" border="0"/></a>
+ <a href="${ctx}/tudu/backup?listId=${todoList.listId}">Backup <img width="9" height="10" alt="Backup" src="${staticContent}/images/asc.gif" border="0"/></a> |
+ <a href="${ctx}/tudu/restore?listId=${todoList.listId}">Restore <img width="9" height="10" alt="Restore" src="${staticContent}/images/desc.gif" border="0"/></a>
 </c:if>
  
