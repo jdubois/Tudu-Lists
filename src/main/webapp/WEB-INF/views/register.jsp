@@ -39,7 +39,7 @@
                         <form:input path="login" size="20" maxlength="50"/>
                     </td>
                     <td>
-                        <form:errors path="login" cssClass="errors" htmlEscape="false"/>
+                        <form:errors path="login" cssClass="error" htmlEscape="false"/>
                     </td>
                 </tr>
                 <tr class="even">
@@ -50,7 +50,7 @@
                         <form:input path="firstName" size="15" maxlength="100"/>
                     </td>
                     <td>
-                        <form:errors path="firstName" cssClass="errors"/>
+                        <form:errors path="firstName" cssClass="error"/>
                     </td>
                 </tr>
                 <tr class="odd">
@@ -61,7 +61,7 @@
                         <form:input path="lastName" size="15" maxlength="100"/>
                     </td>
                     <td>
-                        <form:errors path="lastName" cssClass="errors"/>
+                        <form:errors path="lastName" cssClass="error"/>
                     </td>
                 </tr>
                 <tr class="even">
@@ -72,7 +72,7 @@
                         <form:input path="email" size="25" maxlength="100"/>
                     </td>
                     <td>
-                        <form:errors path="email" cssClass="errors"/>
+                        <form:errors path="email" cssClass="error"/>
                     </td>
                 </tr>
                 <tr class="odd">
@@ -83,7 +83,7 @@
                         <form:password path="password" size="15" maxlength="32"/>
                     </td>
                     <td>
-                        <form:errors path="password" cssClass="errors"/>
+                        <form:errors path="password" cssClass="error"/>
                     </td>
                 </tr>
                 <tr class="even">
@@ -94,7 +94,7 @@
                         <form:password path="verifyPassword" size="15" maxlength="32"/>
                     </td>
                     <td>
-                        <form:errors path="verifyPassword" cssClass="errors" htmlEscape="false"/>
+                        <form:errors path="verifyPassword" cssClass="error" htmlEscape="false"/>
                     </td>
                 </tr>
                 <tr>

@@ -46,6 +46,9 @@
                         <br/>
                     </c:if>
                     <form action="${context}/tudu/login" method="post">
+                        <c:if test="${authentication eq 'failure'}">
+                            <div class="error"><fmt:message key="authentication.failure"/></div>
+                        </c:if>
                         <table border="0" cellspacing="2" cellpadding="3">
                             <tr>
                                 <th style="text-align: left"><fmt:message key="login.login"/></th>
@@ -94,10 +97,5 @@
             </tr>
         </table>
     <jsp:include page="../fragments/footer.jsp"/>
-<c:if test="${authentication eq 'failure'}">
-    <script type="text/javascript">
-        showError("<fmt:message key="authentication.failure"/>");
-    </script>
-</c:if>
 </body>
 </html>

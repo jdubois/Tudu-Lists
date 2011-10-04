@@ -30,7 +30,7 @@
                 <form:input path="login" size="20" maxlength="50"/>
             </td>
             <td>
-                <form:errors path="login" cssClass="errors" htmlEscape="false"/>
+                <form:errors path="login" cssClass="error" htmlEscape="false"/>
             </td>
         </tr>
         <tr>
