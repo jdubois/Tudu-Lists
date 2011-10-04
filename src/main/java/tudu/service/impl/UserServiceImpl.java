@@ -103,6 +103,7 @@ public class UserServiceImpl implements UserService {
         if (log.isDebugEnabled()) {
             log.debug("Updating user '" + user.getLogin() + "'.");
         }
+        em.merge(user);
     }
 
     /**

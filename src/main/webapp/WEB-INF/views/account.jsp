@@ -13,60 +13,38 @@
 <body id="main">
 <div id="banner"></div>
 <jsp:include page="../fragments/header_body.jsp"/>
-<h1><fmt:message key="register.title"/></h1>
-
-<div style="width:600px">
-    <ul>
-        <li>
-            <fmt:message key="register.info.1"/>
-        </li>
-        <li>
-            <fmt:message key="register.info.2"/>
-        </li>
-    </ul>
-</div>
+<h3><fmt:message key="user.info.title"/></h3>
 <form:form commandName="user">
-    <table class="list" style="width:700px">
+    <table class="list" style="width:600px">
         <tr>
             <th colspan="3">
-                <fmt:message key="register.subtitle"/>
+                <fmt:message key="user.info.subtitle"/>
             </th>
         </tr>
         <tbody>
         <tr class="odd">
-            <td style="width: 250px">
-                <fmt:message key="user.info.login"/> *
+            <td style="width: 200px;">
+                <fmt:message key="user.info.first.name"/>
             </td>
             <td>
-                <form:input path="login" size="20" maxlength="50"/>
-            </td>
-            <td>
-                <form:errors path="login" cssClass="error" htmlEscape="false"/>
-            </td>
-        </tr>
-        <tr class="even">
-            <td>
-                <fmt:message key="user.info.first.name"/> *
-            </td>
-            <td>
-                <form:input path="firstName" size="15" maxlength="100"/>
+                <form:input path="firstName" size="15" maxlength="60"/>
             </td>
             <td>
                 <form:errors path="firstName" cssClass="error"/>
             </td>
         </tr>
-        <tr class="odd">
+        <tr class="even">
             <td>
-                <fmt:message key="user.info.last.name"/> *
+                <fmt:message key="user.info.last.name"/>
             </td>
             <td>
-                <form:input path="lastName" size="15" maxlength="100"/>
+                <form:input path="lastName" size="15" maxlength="60"/>
             </td>
             <td>
                 <form:errors path="lastName" cssClass="error"/>
             </td>
         </tr>
-        <tr class="even">
+        <tr class="odd">
             <td>
                 <fmt:message key="user.info.email"/>
             </td>
@@ -77,9 +55,23 @@
                 <form:errors path="email" cssClass="error"/>
             </td>
         </tr>
+        <tr class="even">
+            <td>
+                <fmt:message key="user.info.date.format"/>
+            </td>
+            <td>
+                <form:select path="dateFormat">
+                    <form:option value="MM/dd/yyyy">mm/dd/yyyy</form:option>
+                    <form:option value="MM/dd/yy">mm/dd/yy</form:option>
+                    <form:option value="dd/MM/yyyy">dd/mm/yyyy</form:option>
+                    <form:option value="dd/MM/yy">dd/mm/yy</form:option>
+                </form:select>
+            </td>
+            <td></td>
+        </tr>
         <tr class="odd">
             <td>
-                <fmt:message key="user.info.password"/> *
+                <fmt:message key="user.info.password"/>
             </td>
             <td>
                 <form:password path="password" size="15" maxlength="32"/>
@@ -90,13 +82,13 @@
         </tr>
         <tr class="even">
             <td>
-                <fmt:message key="user.info.verifypassword"/> *
+                <fmt:message key="user.info.verifypassword"/>
             </td>
             <td>
                 <form:password path="verifyPassword" size="15" maxlength="32"/>
             </td>
             <td>
-                <form:errors path="verifyPassword" cssClass="error" htmlEscape="false"/>
+                <form:errors path="verifyPassword" cssClass="error"/>
             </td>
         </tr>
         <tr>
@@ -104,15 +96,11 @@
                 <br/>
                 <a class="button" href="javascript:submitForm();"
                    onclick="this.blur();"><span><fmt:message key="form.submit"/></span></a>
-                <a class="button" href="javascript:resetForm();"
-                   onclick="this.blur();"><span><fmt:message key="form.reset"/></span></a>
                 <br/><br/>
             </td>
         </tr>
         </tbody>
     </table>
-    <br/>
-    <br/>
 </form:form>
 <jsp:include page="../fragments/footer.jsp"/>
 </body>

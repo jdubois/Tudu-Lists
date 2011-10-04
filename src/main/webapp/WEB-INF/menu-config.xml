@@ -10,14 +10,10 @@
 				title="menu.welcome"
 				description="Welcome"
 				page="/welcome"/>
-	    <Menu 	name="Register"
-				title="menu.register"
-				description="Registration"
-				page="/register"/>
         <Menu 	name="Info"
 				title="menu.info"
 				description="My account"
-				page="/secure/myInfo"/>
+				page="/tudu/account"/>
 		<Menu 	name="Todos"
 				title="menu.todos"
 				description="My Todos"
@@ -29,6 +25,6 @@
 		<Menu 	name="Logout"
 				title="menu.logout"
 				description="Log out"
-				page="/logout"/>
+				page="/tudu/logout"/>
      </Menus>
 </MenuConfig>

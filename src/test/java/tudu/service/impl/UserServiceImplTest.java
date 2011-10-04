@@ -55,8 +55,9 @@ public class UserServiceImplTest {
 
     @Test
     public void testUpdateUser() {
-        userService.updateUser(user);
+        expect(em.merge(user)).andReturn(null);
         replay();
+        userService.updateUser(user);
     }
 
     @Test

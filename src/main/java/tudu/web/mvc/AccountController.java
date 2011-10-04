@@ -3,14 +3,14 @@ package tudu.web.mvc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import tudu.Constants;
 import tudu.domain.User;
 import tudu.service.UserService;
+
+import javax.validation.Valid;
 
 /**
  * Manage the user information.
@@ -36,16 +36,20 @@ public class AccountController {
      */
     @RequestMapping(method = RequestMethod.GET)
     public String display() {
-        return "my_info";
+        return "account";
     }
 
     /**
      * Update user information.
      */
     @RequestMapping(method = RequestMethod.POST)
-    public String update(@ModelAttribute User user, BindingResult result) {
+    public String update(@Valid User user, BindingResult result) {
         if (result.hasErrors()) {
-            return "my_info";
+            return "account";
+        }
+        if (!user.getPassword().equals(user.getVerifyPassword())) {
+            result.rejectValue("verifyPassword", "user.info.password.not.matching");
+            return "account";
         }
 
         // If the user hacked the drop-down list, defaults to US date format
@@ -58,6 +62,6 @@ public class AccountController {
             user.setDateFormat(Constants.DATEFORMAT_US);
         }
         userService.updateUser(user);
-        return "my_info";
+        return "account";
     }
 }
