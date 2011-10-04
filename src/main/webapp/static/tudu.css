@@ -27,7 +27,7 @@ li {
 
 a {
 	text-decoration: none;
-	background: transparent url(../images/dot.gif) repeat-x left bottom;
+	background: transparent url(../static/images/dot.gif) repeat-x left bottom;
 }
 
 a:link ,a:visited {

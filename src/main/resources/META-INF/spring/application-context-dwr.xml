@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.directwebremoting.org/schema/spring-dwr
+                           http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <context:annotation-config/>
+
+    <dwr:configuration>
+        <dwr:convert type="bean" class="tudu.web.dwr.bean.RemoteTodoList"/>
+        <dwr:convert type="bean" class="tudu.web.dwr.bean.RemoteTodo"/>
+    </dwr:configuration>
+
+    <bean id="todoListsDwr" class="tudu.web.dwr.impl.TodoListsDwrImpl">
+        <dwr:remote javascript="todo_lists">
+        </dwr:remote>
+    </bean>
+
+    <bean id="todosDwr" class="tudu.web.dwr.impl.TodosDwrImpl">
+        <dwr:remote javascript="todos">
+        </dwr:remote>
+    </bean>
+</beans>

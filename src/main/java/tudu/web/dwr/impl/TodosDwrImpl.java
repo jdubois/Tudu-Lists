@@ -5,7 +5,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ObjectRetrievalFailureException;
-import org.springframework.stereotype.Component;
 import tudu.domain.Todo;
 import tudu.domain.TodoList;
 import tudu.domain.User;
@@ -28,7 +27,6 @@ import java.util.*;
  * 
  * @author Julien Dubois
  */
-@Component("todosDwr")
 public class TodosDwrImpl implements TodosDwr {
 
     private static final String TODO_LIST_SORT_BY = "TODO_LIST_SORT_BY";

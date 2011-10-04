@@ -1,27 +1,24 @@
 <%@ page import="tudu.service.impl.ConfigurationServiceImpl" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ page language="java" errorPage="/WEB-INF/views/error.jsp" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
-<html>
-<head>New user registration</head>
-<body>
-
-<%
-    request.setAttribute("ctx", request.getContextPath());
-    String staticCtx = ConfigurationServiceImpl.staticContent;
-    if (staticCtx.equals("")) {
-        request.setAttribute("staticCtx", request.getContextPath());
-    } else {
-        request.setAttribute("staticCtx", staticCtx);
-    }
-%>
-
-<script type='text/javascript' src='${staticCtx}/scripts/calendar.js'></script>
-<script type='text/javascript' src='${staticCtx}/scripts/calendar-en.js'></script>
-<script type='text/javascript' src='${staticCtx}/scripts/calendar-setup.js'></script>
-
-<script type='text/javascript' src='${ctx}/secure/dwr/interface/todos.js'></script>
-<script type='text/javascript' src='${ctx}/secure/dwr/interface/todo_lists.js'></script>
+<%@ page language="java" errorPage="/WEB-INF/views/error.jsp" pageEncoding="UTF-8"
+         contentType="text/html; charset=utf-8" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <title>Tudu Lists</title>
+    <jsp:include page="../fragments/header_head.jsp"/>
+    <script type='text/javascript' src='${staticContent}/scripts/calendar.js'></script>
+    <script type='text/javascript' src='${staticContent}/scripts/calendar-en.js'></script>
+    <script type='text/javascript' src='${staticContent}/scripts/calendar-setup.js'></script>
+    <script type="text/javascript" src="${ctx}/ajax/engine.js"></script>
+    <script type="text/javascript" src="${ctx}/ajax/util.js"></script>
+    <script type='text/javascript' src='${ctx}/ajax/interface/todos.js'></script>
+    <script type='text/javascript' src='${ctx}/ajax/interface/todo_lists.js'></script>
+</head>
+<body id="main"><div id="banner"></div>
+    <jsp:include page="../fragments/header_body.jsp"/>
 
 <script type='text/javascript'>
 
@@ -419,7 +416,7 @@ function validateForm(priority, dueDate, notes) {
         </td>
         <td>
          <input type="text" name="dueDate" id="editDueDateId" size="10" maxlength="10"/>
-         <img src="${staticCtx}/images/date.png" alt="Calendar" width="16" height="16" id="edit_trigger_calendar" style="cursor: pointer;" />
+         <img src="${staticContent}/images/date.png" alt="Calendar" width="16" height="16" id="edit_trigger_calendar" style="cursor: pointer;" />
          <span style="font-size: 80%">(${fn:toLowerCase(dateFormat)})</span>
         </td>
        </tr>
@@ -434,7 +431,7 @@ function validateForm(priority, dueDate, notes) {
        <tr>
         <td style="text-align: left">
          <fmt:message key="todos.notes"/>
-         <img src="${staticCtx}/images/note.png" width="16" height="16" alt=""/>
+         <img src="${staticContent}/images/note.png" width="16" height="16" alt=""/>
         </td>
         <td colspan="3" style="text-align: left">
          <textarea name="notes" rows="10" cols="37" onfocus="keyboardListener='off'" onblur="keyboardListener='on'"></textarea>
@@ -587,6 +584,6 @@ function validateForm(priority, dueDate, notes) {
  }
  reloadingTable();
 </script>
-
+    <jsp:include page="../fragments/footer.jsp"/>
 </body>
 </html>

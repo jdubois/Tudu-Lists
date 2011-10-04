@@ -5,7 +5,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ObjectRetrievalFailureException;
-import org.springframework.stereotype.Component;
 import tudu.domain.TodoList;
 import tudu.domain.User;
 import tudu.service.TodoListsService;
@@ -21,7 +20,6 @@ import java.util.TreeSet;
  * 
  * @author Julien Dubois
  */
-@Component("todoListsDwr")
 public class TodoListsDwrImpl implements TodoListsDwr {
 
     private final Log log = LogFactory.getLog(TodoListsDwrImpl.class);

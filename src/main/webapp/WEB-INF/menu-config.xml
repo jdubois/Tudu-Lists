@@ -21,7 +21,7 @@
 		<Menu 	name="Todos"
 				title="menu.todos"
 				description="My Todos"
-				page="/secure/showTodos"/>
+				page="/tudu/lists"/>
 		<Menu 	name="Administration"
 				title="menu.administration"
 				description="Administration"

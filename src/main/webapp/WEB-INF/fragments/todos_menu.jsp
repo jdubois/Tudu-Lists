@@ -177,27 +177,27 @@ function deleteTodoList(listId) {
   </tr>
   <tr>
    <td>
-    <a href="javascript:tracker('/ajax/refreshMenu');todos.forceGetCurrentTodoLists(replyCurrentTodoLists);"><img src="${staticCtx}/images/page_refresh.png" border="0"/> <fmt:message key="common.refresh"/></a>
+    <a href="javascript:tracker('/ajax/refreshMenu');todos.forceGetCurrentTodoLists(replyCurrentTodoLists);"><img src="${staticContent}/images/page_refresh.png" border="0"/> <fmt:message key="common.refresh"/></a>
    </td>
   </tr>
   <tr>
    <td>
-    <a href="javascript:showAddTodoList()"><img src="${staticCtx}/images/page_add.png" border="0"/> <fmt:message key="todo.lists.actions.add"/></a>
+    <a href="javascript:showAddTodoList()"><img src="${staticContent}/images/page_add.png" border="0"/> <fmt:message key="todo.lists.actions.add"/></a>
    </td>
   </tr>
   <tr>
    <td>
-    <a href="javascript:showEditTodoList();"><img src="${staticCtx}/images/pencil.png" border="0"/> <fmt:message key="todo.lists.actions.edit"/></a>
+    <a href="javascript:showEditTodoList();"><img src="${staticContent}/images/pencil.png" border="0"/> <fmt:message key="todo.lists.actions.edit"/></a>
    </td>
   </tr>
   <tr>
    <td>
-    <a href="javascript:showShareTodoList();"><img src="${staticCtx}/images/group.png" border="0"/> <fmt:message key="todo.lists.actions.share"/></a>
+    <a href="javascript:showShareTodoList();"><img src="${staticContent}/images/group.png" border="0"/> <fmt:message key="todo.lists.actions.share"/></a>
    </td>
   </tr>
   <tr>
    <td>
-    <a href="javascript:deleteTodoList();"><img src="${staticCtx}/images/bin_closed.png" border="0"/> <fmt:message key="todo.lists.actions.delete"/></a>
+    <a href="javascript:deleteTodoList();"><img src="${staticContent}/images/bin_closed.png" border="0"/> <fmt:message key="todo.lists.actions.delete"/></a>
    </td>
   </tr>
   <tr>
