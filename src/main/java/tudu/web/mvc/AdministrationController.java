@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import tudu.domain.Property;
 import tudu.domain.User;
 import tudu.service.ConfigurationService;
 import tudu.service.UserService;
@@ -43,15 +44,18 @@ public class AdministrationController {
 
         if (page.equals("configuration")) {
             mv.addObject("page", "configuration");
-            String propertyStaticPath = this.configurationService.getProperty(
-                    "application.static.path").getValue();
 
-            model.setPropertyStaticPath(propertyStaticPath);
+            Property propertyStaticPath = this.configurationService.getProperty(
+                    "application.static.path");
+            if (propertyStaticPath != null) {
+                model.setPropertyStaticPath(propertyStaticPath.getValue());
+            }
 
-            String googleAnalyticsKey = configurationService.getProperty(
-                    "google.analytics.key").getValue();
-
-            model.setGoogleAnalyticsKey(googleAnalyticsKey);
+            Property propertyGoogleAnalyticsKey = this.configurationService.getProperty(
+                    "google.analytics.key");
+            if (propertyGoogleAnalyticsKey != null) {
+                model.setGoogleAnalyticsKey(propertyGoogleAnalyticsKey.getValue());
+            }
 
             String smtpHost = configurationService.getProperty("smtp.host")
                     .getValue();

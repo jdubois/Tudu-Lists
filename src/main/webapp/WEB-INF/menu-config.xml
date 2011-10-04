@@ -21,7 +21,7 @@
 		<Menu 	name="Administration"
 				title="menu.administration"
 				description="Administration"
-				page="/secure/admin/administration"/>
+				page="/tudu/admin"/>
 		<Menu 	name="Logout"
 				title="menu.logout"
 				description="Log out"
