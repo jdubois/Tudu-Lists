@@ -31,12 +31,6 @@ public class AccountController {
         return user;
     }
 
-    @InitBinder
-	public void initBinder(WebDataBinder binder) {
-		binder.setRequiredFields(new String[]{"firstName", "lastName", "password", "verifyPassword"});
-        binder.setDisallowedFields(new String[] {"login"});
-	}
-
     /**
      * Display the "my user info" page.
      */
