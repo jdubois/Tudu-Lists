@@ -1,9 +1,16 @@
+<%@ page import="tudu.service.impl.ConfigurationServiceImpl" %>
 <%@ page language="java" errorPage="/WEB-INF/views/error.jsp" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
 <%
  request.setAttribute("ctx", request.getContextPath()); 
  request.setAttribute("now", java.util.Calendar.getInstance().getTime());
+ String staticContent = ConfigurationServiceImpl.staticContent;
+ if (staticContent.equals("")) {
+     request.setAttribute("staticContent", request.getContextPath());
+ } else {
+     request.setAttribute("staticContent", staticContent);
+ }
  %>
 
 <div style="font: 18px/1.3em Arial,Helvetica,sans-serif;">
@@ -43,7 +50,7 @@
     </td>
     <td class="${tdStyle}">
      <c:if test="${todo.dueDate.time le now.time}">
-      <img src="${ctx}/images/warning.gif" width="14" height="13" alt="!"/>
+      <img src="${staticContent}/images/warning.gif" width="14" height="13" alt="!"/>
      </c:if>
      ${todo.description}
     </td>
