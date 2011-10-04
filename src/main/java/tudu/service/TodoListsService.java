@@ -86,7 +86,7 @@ public interface TodoListsService {
      *            The Todo List
      * @return A JDOM document ready for backup
      */
-    Document backupTodoList(TodoList todoList);
+    Document backupTodoList(String listId);
 
     /**
      * Restore a Todo List.

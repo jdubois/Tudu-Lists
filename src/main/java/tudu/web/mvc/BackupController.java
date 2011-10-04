@@ -30,11 +30,10 @@ public class BackupController {
     public ModelAndView backup(@RequestParam String listId, HttpSession session)
             throws Exception {
 
-        TodoList todoList = todoListsService.findTodoList(listId);
-        Document doc = todoListsService.backupTodoList(todoList);
+        Document doc = todoListsService.backupTodoList(listId);
         session.setAttribute("todoListDocument", doc);
         ModelAndView mv = new ModelAndView();
-        mv.setView(new InternalResourceView("/secure/servlet/tudu_lists_backup.xml"));
+        mv.setView(new InternalResourceView("/servlet/tudu_lists_backup.xml"));
         return mv;
     }
 }

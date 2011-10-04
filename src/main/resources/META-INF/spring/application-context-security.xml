@@ -21,6 +21,7 @@
         <intercept-url pattern="/tudu/register" access="ROLE_ANONYMOUS,ROLE_USER"/>
         <intercept-url pattern="/tudu/admin" access="ROLE_ADMIN"/>
         <intercept-url pattern="/tudu/**" access="ROLE_USER"/>
+        <intercept-url pattern="/servlet/**" access="ROLE_USER"/>
 
         <form-login login-processing-url="/tudu/login"
                     login-page="/tudu/welcome"

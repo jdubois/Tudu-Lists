@@ -36,7 +36,6 @@ public class TodoListsServiceImpl implements TodoListsService {
 
     private final Log log = LogFactory.getLog(TodoListsServiceImpl.class);
 
-
     @PersistenceContext
     private EntityManager em;
 
@@ -145,10 +144,8 @@ public class TodoListsServiceImpl implements TodoListsService {
         this.updateTodoList(todoList);
     }
 
-    /**
-     * @see tudu.service.TodoListsService#backupTodoList(tudu.domain.TodoList)
-     */
-    public Document backupTodoList(TodoList todoList) {
+    public Document backupTodoList(String listId) {
+        TodoList todoList = findTodoList(listId);
         Document doc = new Document();
 
         Element todoListElement = new Element("todolist");

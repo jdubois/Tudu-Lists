@@ -1,5 +1,7 @@
 package tudu.web.mvc;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
@@ -17,6 +19,8 @@ import tudu.service.TodoListsService;
 @Controller
 @RequestMapping("/restore")
 public class RestoreController {
+
+    private final Log log = LogFactory.getLog(RestoreController.class);
 
     @Autowired
     private TodoListsService todoListsService;
@@ -38,7 +42,7 @@ public class RestoreController {
         form.setRestoreChoice("create");
         form.setListId(listId);
         mv.addObject("restoreTodoListForm", form);
-        mv.setViewName("RestoreController");
+        mv.setViewName("restore");
         return mv;
     }
 
@@ -47,8 +51,8 @@ public class RestoreController {
      */
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView restore(@ModelAttribute RestoreTodoListForm form) {
-
-        /*log.debug("Execute RestoreController action");
+        /*
+        log.debug("Execute RestoreController action");
         ActionMessages errors = form.validate(mapping, request);
         if (errors.size() != 0) {
             saveErrors(request, errors);
@@ -90,12 +94,13 @@ public class RestoreController {
             saveErrors(request, errors);
             return mapping.getInputForward();
         }
-        return mapping.findForward("showTodosAction");*/
+        return mapping.findForward("showTodosAction");
+        */
         return new ModelAndView();
     }
 
     public String cancel() {
-        return "redirect:showTodos.action";
+        return "redirect:lists";
     }
 
 }

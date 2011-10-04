@@ -176,6 +176,7 @@ public class TodoListsServiceImplTest {
     @Test
     public void testBackupTodoList() {
         todoList.getUsers().add(user);
+        user.getTodoLists().add(todoList);
 
         Todo todo = new Todo();
         todo.setTodoId("0001");
@@ -189,9 +190,12 @@ public class TodoListsServiceImplTest {
 
         todoList.getTodos().add(todo);
 
+        expect(em.find(TodoList.class, "001")).andReturn(todoList);
+        expect(userService.getCurrentUser()).andReturn(user);
+
         replay();
 
-        Document doc = todoListsService.backupTodoList(todoList);
+        Document doc = todoListsService.backupTodoList("001");
 
         XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
         String xmlContent = outputter.outputString(doc);
