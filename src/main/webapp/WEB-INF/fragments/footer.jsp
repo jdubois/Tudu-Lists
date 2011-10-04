@@ -4,8 +4,6 @@
 <%@ page import="tudu.service.impl.ConfigurationServiceImpl" %>
 <%
     String staticContent = ConfigurationServiceImpl.staticContent;
-    String googleAnalytics = ConfigurationServiceImpl.googleAnalyticsKey;
-    request.setAttribute("googleAnalytics", googleAnalytics);
     request.setAttribute("currentPage", request.getPathInfo());
 %>
     </div>
@@ -25,18 +23,12 @@
     initMenu();
 </script>
 <c:if test="${googleAnalytics ne ''}">
-    <script type="text/javascript">
-        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-    <script type="text/javascript">
-        try {
-            var pageTracker = _gat._getTracker("${googleAnalytics}");
-            pageTracker._setDomainName("none");
-            pageTracker._setAllowLinker(true);
-            pageTracker._trackPageview();
-        } catch(err) {
-        }</script>
+  <script type="text/javascript">  (function() {
+    var ga = document.createElement('script');     ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:'   == document.location.protocol ? 'https://ssl'   : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+   </script>
 </c:if>
 
 

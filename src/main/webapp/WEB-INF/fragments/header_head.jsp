@@ -2,7 +2,9 @@
 <%@ page import="tudu.service.impl.ConfigurationServiceImpl" %>
 <%
     String staticContent = ConfigurationServiceImpl.staticContent;
+    String googleAnalytics = ConfigurationServiceImpl.googleAnalyticsKey;
     request.setAttribute("staticContent", staticContent);
+    request.setAttribute("googleAnalytics", googleAnalytics);
     request.setAttribute("context", request.getContextPath());
 %>
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
@@ -22,3 +24,19 @@
 <script type="text/javascript">
     var context = "${context}";
 </script>
+<c:if test="${googleAnalytics ne ''}">
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', '${googleAnalytics}']);
+        _gaq.push(['_trackPageview']);
+        function tracker(url) {
+            _gaq.push(['_trackEvent', url, 'clicked'])
+        }
+    </script>
+</c:if>
+<c:if test="${googleAnalytics eq ''}">
+    <script type="text/javascript">
+        function tracker(url) {
+        }
+    </script>
+</c:if>
