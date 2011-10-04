@@ -5,6 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,7 +44,7 @@ public class RecoverPasswordController {
      * Send an email with the new password to the user.
      */
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView sendMail(@ModelAttribute User user) {
+    public ModelAndView sendMail(@ModelAttribute User user, BindingResult result) {
         ModelAndView mv = new ModelAndView();
         mv.addObject(user);
         mv.setViewName("recover_password");
@@ -51,18 +52,18 @@ public class RecoverPasswordController {
         try {
             user = userService.findUser(login);
         } catch (ObjectRetrievalFailureException orfe) {
-            mv.addObject("message", "recover.password.no.user");
+            result.rejectValue("login", "recover.password.no.user");
             return mv;
         }
         if (user.getEmail() == null || user.getEmail().equals("")) {
-            mv.addObject("message", "recover.password.no.email");
+            result.rejectValue("login", "recover.password.no.email");
             return mv;
         }
         try {
             userService.sendPassword(user);
             mv.addObject("success", "true");
         } catch (RuntimeException e) {
-            mv.addObject("message", "recover.password.smtp.error");
+            result.rejectValue("login", "recover.password.smtp.error");
             log.warn("Mail sending error : " + e.getMessage());
         }
         return mv;

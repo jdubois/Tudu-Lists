@@ -17,6 +17,8 @@
     <http>
         <intercept-url pattern="/ajax/**" access="ROLE_USER"/>
         <intercept-url pattern="/tudu/welcome" access="ROLE_ANONYMOUS,ROLE_USER"/>
+        <intercept-url pattern="/tudu/recoverPassword" access="ROLE_ANONYMOUS,ROLE_USER"/>
+        <intercept-url pattern="/tudu/register" access="ROLE_ANONYMOUS,ROLE_USER"/>
         <intercept-url pattern="/tudu/admin" access="ROLE_ADMIN"/>
         <intercept-url pattern="/tudu/**" access="ROLE_USER"/>
 

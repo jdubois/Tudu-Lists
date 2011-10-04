@@ -87,7 +87,7 @@
                     </p>
                     <p>
                         <fmt:message key="login.forgotten.password.1"/>
-                        <a href="recoverPassword.action"><fmt:message key="login.forgotten.password.link"/></a>
+                        <a href="${context}/tudu/recoverPassword"><fmt:message key="login.forgotten.password.link"/></a>
                         <fmt:message key="login.forgotten.password.2"/>
                     </p>
                 </td>
