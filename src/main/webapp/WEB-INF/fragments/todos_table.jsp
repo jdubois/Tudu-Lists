@@ -130,10 +130,10 @@
 </c:if>
 <c:if test="${not empty todoList}">
  <c:if test="${todoList.rssAllowed eq true}">
-  <a href="${ctx}/rss/showRssFeed.action?listId=${todoList.listId}">
+  <a href="${ctx}/tudu/rss?listId=${todoList.listId}">
    <img width="30" height="14" alt="RSS" src="${staticContent}/images/rss.gif" border="0"/>
   </a>
-  <link rel="alternate" title="RSS feed" href="${ctx}/rss/showRssFeed.action?listId=${todoList.listId}" TYPE="application/rss+xml">
+  <link rel="alternate" title="RSS feed" href="${ctx}/tudu/rss?listId=${todoList.listId}" TYPE="application/rss+xml">
   | 
  </c:if>
  <a href="${ctx}/tudu/backup?listId=${todoList.listId}">Backup <img width="9" height="10" alt="Backup" src="${staticContent}/images/asc.gif" border="0"/></a> |

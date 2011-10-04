@@ -72,7 +72,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>rss</servlet-name>
-        <url-pattern>/rss</url-pattern>
+        <url-pattern>/servlet/rss</url-pattern>
     </servlet-mapping>
 
     <servlet>

@@ -2,6 +2,7 @@ package tudu.service.impl;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Hibernate;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -85,7 +86,9 @@ public class TodoListsServiceImpl implements TodoListsService {
      */
     @Transactional(readOnly = true)
     public TodoList unsecuredFindTodoList(String listId) {
-        return em.find(TodoList.class, listId);
+        TodoList todoList = em.find(TodoList.class, listId);
+        Hibernate.initialize(todoList.getTodos());
+        return todoList;
     }
 
     /**

@@ -19,14 +19,14 @@ import javax.servlet.http.HttpServletRequest;
  * @author Julien Dubois
  */
 @Controller
-public class ShowRssFeedAction {
+public class ShowRssFeedController {
 
-    private final Log log = LogFactory.getLog(ShowRssFeedAction.class);
+    private final Log log = LogFactory.getLog(ShowRssFeedController.class);
 
     @Autowired
     private TodoListsService todoListsService;
 
-    @RequestMapping("/rss/showRssFeed.action")
+    @RequestMapping("/rss")
     public ModelAndView showRss(@RequestParam String listId, HttpServletRequest request)
             throws Exception {
 
@@ -37,9 +37,9 @@ public class ShowRssFeedAction {
             mv.addObject("todoList", todoList);
             mv.addObject("link", request.getScheme() + "://"
                     + request.getServerName() + ":" + request.getServerPort()
-                    + request.getContextPath() + "/secure/showTodos.action");
+                    + request.getContextPath() + "/tudu/lists");
 
-            mv.setView(new InternalResourceView("/WEB-INF/servlet/RssFeedServlet"));
+            mv.setView(new InternalResourceView("/servlet/rss"));
         } else {
             if (log.isDebugEnabled()) {
                 log.debug("Rendering RSS feed for Todo List ID '"
