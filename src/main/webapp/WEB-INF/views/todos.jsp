@@ -347,7 +347,7 @@ function validateForm(priority, dueDate, notes) {
         </td>
         <td style="text-align: left">
          <input type="text" name="dueDate" id="addDueDateId" size="10" maxlength="10"/>
-         <img src="${staticCtx}/images/date.png" alt="Calendar" width="16" height="16" id="add_trigger_calendar" style="cursor: pointer;"/>
+         <img src="${staticContent}/images/date.png" alt="Calendar" width="16" height="16" id="add_trigger_calendar" style="cursor: pointer;"/>
          <span style="font-size: 80%">(${fn:toLowerCase(dateFormat)})</span>
         </td>
        </tr>
@@ -362,7 +362,7 @@ function validateForm(priority, dueDate, notes) {
        <tr>
         <td style="text-align: left">
          <fmt:message key="todos.notes"/>
-         <img src="${staticCtx}/images/note.png" width="16" height="16" alt=""/>
+         <img src="${staticContent}/images/note.png" width="16" height="16" alt=""/>
         </td>
         <td colspan="3" style="text-align: left">
          <textarea name="notes" rows="10" cols="37" onfocus="keyboardListener='off'" onblur="keyboardListener='on'"></textarea>

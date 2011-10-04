@@ -13,6 +13,8 @@
       content="Tudu Lists is a free (non-commercial) on-line application for managing todo lists."/>
 <link rel="shortcut icon" href="${staticContent}/favicon.ico"/>
 <script type='text/javascript' src='${staticContent}/scripts/tabs.js'></script>
+<script type="text/javascript" src="${staticContent}/scripts/scriptaculous/prototype.js"></script>
+<script type="text/javascript" src="${staticContent}/scripts/scriptaculous/scriptaculous.js"></script>
 <script type='text/javascript' src='${staticContent}/scripts/tudu.js'></script>
 <style type="text/css" title="currentStyle" media="screen">
     @import "${staticContent}/tudu.css";
