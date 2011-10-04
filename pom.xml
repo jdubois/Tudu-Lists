@@ -225,6 +225,18 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>bees-plugins-snapshots</id>
+            <url>http://repository-cloudbees.forge.cloudbees.com/public-snapshot/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
     <build>
         <finalName>tudu</finalName>
         <plugins>
@@ -252,6 +264,10 @@
                     <stopKey>stop-jetty</stopKey>
                     <stopPort>9999</stopPort>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.cloudbees</groupId>
+                <artifactId>bees-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
