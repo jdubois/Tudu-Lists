@@ -158,6 +158,10 @@ table.list th.sorted_asc {
     margin: auto;
 }
 
+#headerTable {
+    width: 100%;
+}
+
 #title {
     font-size: 8px;
 }
@@ -189,6 +193,7 @@ table.list th.sorted_asc {
 	width: 150px;
 	text-align: left;
 }
+
 
 .message {
     margin-top: 100px;

@@ -4,9 +4,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://struts-menu.sf.net/tag-el" prefix="menu" %>
 <div id="container">
-    <table width="100%">
+    <table id="headerTable">
         <tr>
-            <td style="width: 152px"><a href="${context}/tudu/welcome"><img
+            <td style="width: 152px"><a href="${context}/tudu/welcome" style="background: transparent;"><img
                     src="${staticContent}/images/tudu_logo.png" alt="Tudu Lists" width="150" height="30"/></a></td>
             <% if (request.getRemoteUser() != null) { %>
             <td>
