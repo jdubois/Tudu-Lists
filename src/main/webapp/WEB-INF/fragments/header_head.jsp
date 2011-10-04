@@ -19,7 +19,7 @@
 <script type="text/javascript" src="${staticContent}/scripts/scriptaculous/scriptaculous.js"></script>
 <script type='text/javascript' src='${staticContent}/scripts/tudu.js'></script>
 <style type="text/css" title="currentStyle" media="screen">
-    @import "${staticContent}/tudu.css";
+    @import "${staticContent}/css/tudu.css";
 </style>
 <script type="text/javascript">
     var context = "${context}";

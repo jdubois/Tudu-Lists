@@ -27,7 +27,7 @@ li {
 
 a {
 	text-decoration: none;
-	background: transparent url(../static/images/dot.gif) repeat-x left bottom;
+	background: transparent url(../images/dot.gif) repeat-x left bottom;
 }
 
 a:link ,a:visited {
@@ -96,21 +96,21 @@ table.list tr.hidden {
 
 table.list th.sortable {
 	cursor: pointer;
-	background-image: url(../static/images/arrow_off.png);
+	background-image: url(../images/arrow_off.png);
 	background-repeat: no-repeat;
 	background-position: center right;
 }
 
 table.list th.sorted {
 	cursor: pointer;
-	background-image: url(../static/images/arrow_down.png);
+	background-image: url(../images/arrow_down.png);
 	background-repeat: no-repeat;
 	background-position: center right;
 }
 
 table.list th.sorted_asc {
 	cursor: pointer;
-	background-image: url(../static/images/arrow_up.png);
+	background-image: url(../images/arrow_up.png);
 	background-repeat: no-repeat;
 	background-position: center right;
 }
@@ -118,7 +118,7 @@ table.list th.sorted_asc {
 /* DHTML box for add/edit forms */
 
 .box, .box_body, .box_head, .box_head h2 {
-	background: transparent url(../static/images/box.png) no-repeat bottom right;
+	background: transparent url(../images/box.png) no-repeat bottom right;
 }
 
 .box {
@@ -220,7 +220,7 @@ table.list th.sorted_asc {
 }
 
 a.button {
-    background: transparent url("images/bg_button_a.gif") no-repeat scroll top right;
+    background: transparent url("../images/bg_button_a.gif") no-repeat scroll top right;
     color: #444;
     display: block;
     float: left;
@@ -232,7 +232,7 @@ a.button {
 }
 
 a.button span {
-    background: transparent url("images/bg_button_span.gif") no-repeat;
+    background: transparent url("../images/bg_button_span.gif") no-repeat;
     display: block;
     line-height: 14px;
     padding: 5px 0 5px 18px;

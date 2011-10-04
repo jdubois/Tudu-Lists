@@ -313,7 +313,8 @@ public class TodosDwrImpl implements TodosDwr {
      *      java.lang.String)
      */
     public String sortAndRenderTodos(String listId, String sorter) {
-        HttpSession session = null;
+        HttpSession session = WebContextFactory.get()
+                .getHttpServletRequest().getSession();
 
         String currentSorter = (String) session.getAttribute(TODO_LIST_SORT_BY);
         if (currentSorter != null && currentSorter.equals(sorter)
@@ -448,7 +449,8 @@ public class TodosDwrImpl implements TodosDwr {
      * @see tudu.web.dwr.TodosDwr#showOlderTodos(java.lang.String)
      */
     public String showOlderTodos(String listId) {
-        HttpSession session = null;
+        HttpSession session = WebContextFactory.get()
+                .getHttpServletRequest().getSession();
 
         session.setAttribute("hideOlderTodos", "false");
         return forceRenderTodos(listId);
@@ -458,7 +460,8 @@ public class TodosDwrImpl implements TodosDwr {
      * @see tudu.web.dwr.TodosDwr#hideOlderTodos(java.lang.String)
      */
     public String hideOlderTodos(String listId) {
-        HttpSession session = null;
+        HttpSession session = WebContextFactory.get()
+                .getHttpServletRequest().getSession();
 
         session.setAttribute("hideOlderTodos", "true");
         return forceRenderTodos(listId);

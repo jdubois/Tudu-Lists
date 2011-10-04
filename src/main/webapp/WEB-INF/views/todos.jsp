@@ -16,6 +16,9 @@
     <script type="text/javascript" src="${ctx}/ajax/util.js"></script>
     <script type='text/javascript' src='${ctx}/ajax/interface/todos.js'></script>
     <script type='text/javascript' src='${ctx}/ajax/interface/todo_lists.js'></script>
+    <style type="text/css" title="currentStyle" media="screen">
+    @import "${staticContent}/css/calendar-blue.css";
+</style>
 </head>
 <body id="main"><div id="banner"></div>
     <jsp:include page="../fragments/header_body.jsp"/>
