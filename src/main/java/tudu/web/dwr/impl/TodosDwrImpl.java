@@ -361,7 +361,7 @@ public class TodosDwrImpl implements TodosDwr {
     public String editTodo(String todoId, String description, String priority,
             String dueDate, String notes, String assignedUserLogin) {
 
-        /*Todo todo = todosService.findTodo(todoId);
+        Todo todo = todosService.findTodo(todoId);
         String escapedDescription = StringEscapeUtils.escapeHtml(description);
         todo.setDescription(escapedDescription);
 
@@ -388,20 +388,18 @@ public class TodosDwrImpl implements TodosDwr {
         inputAssignedUser(todo, assignedUserLogin);
 
         todosService.updateTodo(todo);
-        return forceRenderTodos(todo.getTodoList().getListId());*/
-        return "";
+        return forceRenderTodos(todo.getTodoList().getListId());
     }
     
     /**
      * @see tudu.web.dwr.TodosDwr#quickEditTodo(java.lang.String, java.lang.String)
      */
     public String quickEditTodo(String todoId, String description) {
-        /*Todo todo = todosService.findTodo(todoId);
+        Todo todo = todosService.findTodo(todoId);
         String escapedDescription = StringEscapeUtils.escapeHtml(description);
         todo.setDescription(escapedDescription);
         todosService.updateTodo(todo);
-        return forceRenderTodos(todo.getTodoList().getListId());*/
-        return "";
+        return forceRenderTodos(todo.getTodoList().getListId());
     }
 
     /**
