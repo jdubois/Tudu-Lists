@@ -11,8 +11,10 @@
     <jsp:include page="../fragments/header_head.jsp"/>
 </head>
 <body id="main">
-<div id="banner"></div>
 <jsp:include page="../fragments/header_body.jsp"/>
+<c:if test="${updated eq 'ok'}">
+    <h1><fmt:message key="common.update.ok"/></h1>
+</c:if>
 <h3><fmt:message key="user.info.title"/></h3>
 <form:form commandName="user">
     <table class="list" style="width:600px">

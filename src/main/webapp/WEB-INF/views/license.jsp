@@ -9,7 +9,7 @@
     <title>Tudu Lists</title>
     <jsp:include page="../fragments/header_head.jsp"/>
 </head>
-<body id="main"><div id="banner"></div>
+<body id="main">
     <jsp:include page="../fragments/header_body.jsp"/>
 <div dir="ltr">
 <h3 style="text-align: center;">GNU GENERAL PUBLIC LICENSE</h3>

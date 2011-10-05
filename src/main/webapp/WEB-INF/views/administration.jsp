@@ -11,7 +11,6 @@
     <jsp:include page="../fragments/header_head.jsp"/>
 </head>
 <body id="main">
-<div id="banner"></div>
 <jsp:include page="../fragments/header_body.jsp"/>
 <h3><fmt:message key="administration.title"/></h3>
 <c:if test="${success eq 'true'}">

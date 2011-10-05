@@ -20,7 +20,7 @@
     @import "${staticContent}/css/calendar-blue.css";
 </style>
 </head>
-<body id="main"><div id="banner"></div>
+<body id="main">
     <jsp:include page="../fragments/header_body.jsp"/>
 
 <script type='text/javascript'>

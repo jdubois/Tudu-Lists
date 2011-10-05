@@ -10,6 +10,7 @@ import tudu.Constants;
 import tudu.domain.User;
 import tudu.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 /**
@@ -43,7 +44,7 @@ public class AccountController {
      * Update user information.
      */
     @RequestMapping(method = RequestMethod.POST)
-    public String update(@Valid User user, BindingResult result) {
+    public String update(@Valid User user, BindingResult result, HttpServletRequest request) {
         if (result.hasErrors()) {
             return "account";
         }
@@ -62,6 +63,7 @@ public class AccountController {
             user.setDateFormat(Constants.DATEFORMAT_US);
         }
         userService.updateUser(user);
+        request.setAttribute("updated", "ok");
         return "account";
     }
 }

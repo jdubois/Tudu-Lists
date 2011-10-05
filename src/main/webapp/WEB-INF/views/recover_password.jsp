@@ -11,7 +11,6 @@
     <jsp:include page="../fragments/header_head.jsp"/>
 </head>
 <body id="main">
-<div id="banner"></div>
 <jsp:include page="../fragments/header_body.jsp"/>
 <h1><fmt:message key="recover.password.title"/></h1>
 <form:form commandName="user">

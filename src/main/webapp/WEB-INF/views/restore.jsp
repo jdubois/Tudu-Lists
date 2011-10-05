@@ -11,7 +11,6 @@
     <jsp:include page="../fragments/header_head.jsp"/>
 </head>
 <body id="main">
-<div id="banner"></div>
 <jsp:include page="../fragments/header_body.jsp"/>
 <h3><fmt:message key="restore.title"/></h3>
 <form:form commandName="restoreTodoListModel" enctype="multipart/form-data">

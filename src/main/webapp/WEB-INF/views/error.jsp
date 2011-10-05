@@ -10,7 +10,6 @@
     <jsp:include page="../fragments/header_head.jsp"/>
 </head>
 <body id="main">
-<div id="banner"></div>
 <jsp:include page="../fragments/header_body.jsp"/>
 
 <h3><fmt:message key="error.title"/></h3>

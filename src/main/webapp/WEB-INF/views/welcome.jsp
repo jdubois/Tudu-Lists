@@ -9,7 +9,7 @@
     <title>Tudu Lists</title>
     <jsp:include page="../fragments/header_head.jsp"/>
 </head>
-<body id="main"><div id="banner"></div>
+<body id="main">
     <jsp:include page="../fragments/header_body.jsp"/>
         <h1><fmt:message key="login.welcome"/></h1>
         <table>

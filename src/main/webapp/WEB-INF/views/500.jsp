@@ -10,7 +10,6 @@
     <jsp:include page="../fragments/header_head.jsp"/>
 </head>
 <body id="main">
-<div id="banner"></div>
 <jsp:include page="../fragments/header_body.jsp"/>
 <h1><fmt:message key="500.title"/></h1>
 <h2><a href="${context}/tudu/welcome"><fmt:message key="footer.home"/></a></h2>
