@@ -7,12 +7,27 @@
     <packaging>war</packaging>
     <name>Tudu Lists Web application</name>
     <properties>
+        <env>dev</env>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <wtpversion>1.5</wtpversion>
         <spring.version>3.0.6.RELEASE</spring.version>
         <spring.security.version>3.0.7.RELEASE</spring.security.version>
         <hibernate.version>3.6.7.Final</hibernate.version>
     </properties>
+    <profiles>
+        <profile>
+            <id>inmemory</id>
+            <properties>
+                <env>inmemory</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>cloudbees</id>
+            <properties>
+                <env>cloudbees</env>
+            </properties>
+        </profile>
+    </profiles>
     <dependencies>
         <dependency>
             <groupId>c3p0</groupId>
@@ -239,6 +254,22 @@
     </pluginRepositories>
     <build>
         <finalName>tudu</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>META-INF/spring/application-context-infrastructure-env.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>META-INF/spring/application-context-infrastructure-env.xml</exclude>
+                </excludes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

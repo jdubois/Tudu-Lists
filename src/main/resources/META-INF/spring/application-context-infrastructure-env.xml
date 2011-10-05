@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!--
+       This is where the configuration is set up for the current build.
+       ${env} is a variable that is replaced at build time by Maven (see pom.xml).
+    -->
+
+    <import resource="infrastructure/${env}/application-context-${env}-infrastructure.xml"/>
+
+</beans>
