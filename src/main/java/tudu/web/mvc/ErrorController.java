@@ -18,7 +18,7 @@ public class ErrorController {
     @RequestMapping("/404")
     public String pageNotFound(HttpServletRequest request) {
         if (log.isInfoEnabled()) {
-            log.info("404 error!");
+            log.info("404 error");
         }
         return "404";
     }
@@ -26,7 +26,7 @@ public class ErrorController {
     @RequestMapping("/500")
     public String internatServerError(HttpServletRequest request) {
         if (log.isInfoEnabled()) {
-            log.info("500 error when accessing page: " + request.getPathInfo());
+            log.info("500 error");
         }
         return "500";
     }
