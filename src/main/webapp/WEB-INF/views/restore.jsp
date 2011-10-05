@@ -14,7 +14,7 @@
 <div id="banner"></div>
 <jsp:include page="../fragments/header_body.jsp"/>
 <h3><fmt:message key="restore.title"/></h3>
-<form:form commandName="restoreTodoListForm" enctype="multipart/form-data">
+<form:form commandName="restoreTodoListModel" enctype="multipart/form-data">
     <form:errors/>
     <form:hidden path="listId"/>
     <table class="list" style="width:600px">
@@ -31,7 +31,7 @@
             <td>
                 <br/>
                 <input type="file" name="backupFile"/>
-                <br/><br/>
+                <br/><form:errors path="backupFile" cssClass="error"/><br/>
             </td>
         </tr>
         <tr class="even">
@@ -52,13 +52,20 @@
                 <fmt:message key="restore.choice.merge">
                     <fmt:param value="${todoList.name}"/>
                 </fmt:message>
+                <br/><form:errors path="restoreChoice" cssClass="error"/><br/>
+            </td>
+        </tr>
+         <tr>
+            <td colspan="2" style="padding-left: 250px;">
+                <br/>
+                <a class="button" href="javascript:submitForm();"
+                   onclick="this.blur();"><span><fmt:message key="form.submit"/></span></a>
                 <br/><br/>
             </td>
         </tr>
         </tbody>
     </table>
     <br/>
-    <input type="submit" value="<fmt:message key="form.submit"/>"/>
 </form:form>
 <jsp:include page="../fragments/footer.jsp"/>
 </body>

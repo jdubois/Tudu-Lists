@@ -41,6 +41,9 @@
         </property>
     </bean>
 
+    <bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
     <bean id="menu" class="net.sf.navigator.menu.MenuLoader">
         <property name="menuConfig" value="/WEB-INF/menu-config.xml"/>
     </bean>

@@ -2,14 +2,19 @@ package tudu.web.mvc;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.jdom.JDOMException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.support.StringMultipartFileEditor;
 import org.springframework.web.servlet.ModelAndView;
 import tudu.domain.TodoList;
 import tudu.service.TodoListsService;
+
+import javax.validation.Valid;
+import java.io.IOException;
 
 /**
  * Restore a Todo List.
@@ -33,15 +38,15 @@ public class RestoreController {
     /**
      * Display the main screen for restoring a Todo List.
      */
-    @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView display(@RequestParam String listId) {
+    @RequestMapping(value="/{listId}", method = RequestMethod.GET)
+    public ModelAndView display(@PathVariable String listId) {
         ModelAndView mv = new ModelAndView();
         TodoList todoList = todoListsService.findTodoList(listId);
         mv.addObject("todoList", todoList);
-        RestoreTodoListForm form = new RestoreTodoListForm();
-        form.setRestoreChoice("create");
-        form.setListId(listId);
-        mv.addObject("restoreTodoListForm", form);
+        RestoreTodoListModel restoreTodoListModel = new RestoreTodoListModel();
+        restoreTodoListModel.setRestoreChoice("create");
+        restoreTodoListModel.setListId(listId);
+        mv.addObject("restoreTodoListModel", restoreTodoListModel);
         mv.setViewName("restore");
         return mv;
     }
@@ -50,57 +55,39 @@ public class RestoreController {
      * Restore a Todo List.
      */
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView restore(@ModelAttribute RestoreTodoListForm form) {
-        /*
-        log.debug("Execute RestoreController action");
-        ActionMessages errors = form.validate(mapping, request);
-        if (errors.size() != 0) {
-            saveErrors(request, errors);
-            return mapping.getInputForward();
+    public ModelAndView restore(@Valid RestoreTodoListModel restoreTodoListModel, BindingResult result) {
+        log.debug("Execute RestoreController");
+        ModelAndView mv = new ModelAndView();
+        if (restoreTodoListModel.getListId() == null) {
+            mv.setViewName("redirect:/tudu/lists");
+            return mv;
         }
-        RestoreTodoListForm restoreTodoListForm = (RestoreTodoListForm) form;
+        TodoList todoList = todoListsService.findTodoList(restoreTodoListModel.getListId());
+        mv.addObject("todoList", todoList);
+        mv.addObject("restoreTodoListModel", restoreTodoListModel);
+        if (result.hasErrors()) {
+            mv.setViewName("restore");
+            return mv;
+        }
+        if (restoreTodoListModel.getBackupFile().isEmpty()) {
+            result.rejectValue("backupFile", "restore.file.empty", "Empty file.");
+            mv.setViewName("restore");
+            return mv;
+        }
         try {
-            todoListsService.restoreTodoList(restoreTodoListForm
-                    .getRestoreChoice(), restoreTodoListForm.getListId(),
-                    restoreTodoListForm.getBackupFile().getInputStream());
+            todoListsService.restoreTodoList(restoreTodoListModel.getRestoreChoice(),
+                    restoreTodoListModel.getListId(),
+                    restoreTodoListModel.getBackupFile().getInputStream());
 
-        } catch (FileNotFoundException e) {
-            log.info("FileNotFoundException : " + e.getMessage());
-            ActionMessage message = new ActionMessage("RestoreController.file.error");
-            errors.add(ActionMessages.GLOBAL_MESSAGE, message);
-        } catch (IOException e) {
-            log.info("IOException : " + e.getMessage());
-            ActionMessage message = new ActionMessage("RestoreController.file.error");
-            errors.add(ActionMessages.GLOBAL_MESSAGE, message);
-            if (log.isDebugEnabled()) {
-                e.printStackTrace();
-            }
+            mv.setViewName("redirect:/tudu/lists");
         } catch (JDOMException e) {
             log.info("JDOMException : " + e.getMessage());
-            ActionMessage message = new ActionMessage("RestoreController.file.error");
-            errors.add(ActionMessages.GLOBAL_MESSAGE, message);
-            if (log.isDebugEnabled()) {
-                e.printStackTrace();
-            }
-        } catch (Exception e) {
-            log.info("Exception : " + e.getMessage());
-            ActionMessage message = new ActionMessage("RestoreController.file.error");
-            errors.add(ActionMessages.GLOBAL_MESSAGE, message);
-            if (log.isDebugEnabled()) {
-                e.printStackTrace();
-            }
+            mv.setViewName("restore");
+        } catch (IOException e) {
+            log.info("FileNotFoundException : " + e.getMessage());
+            mv.setViewName("restore");
         }
-        if (errors.size() != 0) {
-            saveErrors(request, errors);
-            return mapping.getInputForward();
-        }
-        return mapping.findForward("showTodosAction");
-        */
-        return new ModelAndView();
-    }
-
-    public String cancel() {
-        return "redirect:lists";
+        return mv;
     }
 
 }

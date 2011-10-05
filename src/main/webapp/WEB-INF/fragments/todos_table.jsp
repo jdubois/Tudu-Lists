@@ -137,6 +137,6 @@
   | 
  </c:if>
  <a href="${ctx}/tudu/backup?listId=${todoList.listId}">Backup <img width="9" height="10" alt="Backup" src="${staticContent}/images/asc.gif" border="0"/></a> |
- <a href="${ctx}/tudu/restore?listId=${todoList.listId}">Restore <img width="9" height="10" alt="Restore" src="${staticContent}/images/desc.gif" border="0"/></a>
+ <a href="${ctx}/tudu/restore/${todoList.listId}">Restore <img width="9" height="10" alt="Restore" src="${staticContent}/images/desc.gif" border="0"/></a>
 </c:if>
  
