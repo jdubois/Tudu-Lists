@@ -11,7 +11,7 @@
   </tr>
   <tr>
    <td id="about">
-    Tudu Lists v. <%=tudu.Constants.VERSION%> | <a href="http://github.com/jdubois/Tudu-Lists"><fmt:message key="footer.dev"/></a> | <a href="${context}/tudu/license"><fmt:message key="footer.license"/></a> | <a href="http://www.julien-dubois.com"><fmt:message key="footer.copyright"/></a>
+    Tudu Lists v. <%=tudu.Constants.VERSION%> | TEST | <a href="http://github.com/jdubois/Tudu-Lists"><fmt:message key="footer.dev"/></a> | <a href="${context}/tudu/license"><fmt:message key="footer.license"/></a> | <a href="http://www.julien-dubois.com"><fmt:message key="footer.copyright"/></a>
    </td>
    <td id="bug">
     <img src="${staticContent}/images/bug.png" alt="bug"/> <fmt:message key="footer.bug.text"/> <a href="http://github.com/jdubois/Tudu-Lists/issues"><fmt:message key="footer.bug.link"/></a>
