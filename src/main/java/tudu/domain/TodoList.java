@@ -1,5 +1,6 @@
 package tudu.domain;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
@@ -39,10 +40,12 @@ public class TodoList implements Serializable, Comparable<TodoList> {
 
     @OneToMany(mappedBy = "todoList")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnore
     private Set<Todo> todos = new HashSet<Todo>();
 
     @ManyToMany(mappedBy = "todoLists")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnore
     private Set<User> users = new HashSet<User>();
 
     public String getListId() {
