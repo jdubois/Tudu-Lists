@@ -75,6 +75,7 @@ public class TodoTest {
         assertEquals("02", testTodo.getTodoId());
     }
 
+    @Test
     public void testEquals() {
         Todo todo1 = new Todo();
         todo1.setTodoId("001");
